@@ -1,14 +1,47 @@
 {
   "menuTabs": [
     {
-      "id": "small-plates",
-      "label": "Small Plates",
-      "note": "3 plates for £18 · 5 plates for £25 · Available all day Wednesday to Saturday",
+      "id": "two-course",
+      "label": "Two Course Menu",
+      "note": "Two courses + a drink for just £20 | Available Wed-Sun from 12:30pm",
       "columns": [
         {
           "sections": [
             {
-              "title": "Small Plates",
+              "title": "Starters",
+              "items": [
+                { "name": "Garlic Mushrooms", "desc": "Served with tomato and herb bread (GF/V)" },
+                { "name": "Spicy Hummus", "desc": "Made with chickpeas, tahini, cumin, olive oil, lemon juice & bread (VG)" },
+                { "name": "Soup of the Day", "desc": "Served with bread" }
+              ]
+            }
+          ]
+        },
+        {
+          "sections": [
+            {
+              "title": "Mains",
+              "items": [
+                { "name": "Chicken Katsu", "desc": "Crispy breaded chicken served with rice and garnish" },
+                { "name": "Thai Green Vegetable Curry", "desc": "Creamy coconut, aromatic lemongrass, steamed rice (VG/GF)" },
+                { "name": "Lasagne", "desc": "Oven baked with beef mince, napoli sauce and mozzarella cheese" },
+                { "name": "Hand Battered Cod", "desc": "Chunky chips, mushy peas, tartare sauce" },
+                { "name": "Smash Burger", "desc": "Two smashed beef patties, lettuce, tomato, onion, mature cheese" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tapas",
+      "label": "Tapas",
+      "note": "Tapas sharing boards from £18 | 5 tapas for £25",
+      "columns": [
+        {
+          "sections": [
+            {
+              "title": "Tapas Selection",
               "items": [
                 { "name": "Tempura King Prawns", "desc": "Asian slaw & sweet chilli dip", "price": "£11" },
                 { "name": "Thai Beef Skewers", "desc": "Slaw & black bean aioli", "price": "£10" },
@@ -26,11 +59,11 @@
               "title": "Light Bites",
               "items": [
                 { "name": "Chicken Wings", "desc": "BBQ, salt & chilli, or spicy", "price": "£10" },
-                { "name": "Halloumi Fries", "desc": "Spring onions, sweet chilli (v, gf)", "price": "£8" },
-                { "name": "Pan Fried Chorizo", "desc": "Red wine and garlic (gf)", "price": "£8" },
-                { "name": "Meatballs", "desc": "Spicy tomato sauce, spring onions (gf)", "price": "£9" },
-                { "name": "Patatas Bravas", "desc": "Spicy bravas sauce (vg)", "price": "£8" },
-                { "name": "Hummus & Red Pepper Bruschetta", "desc": "Rocket & balsamic glaze (vg)", "price": "£8" }
+                { "name": "Halloumi Fries", "desc": "Spring onions, sweet chilli (V, GF)", "price": "£8" },
+                { "name": "Pan Fried Chorizo", "desc": "Red wine and garlic (GF)", "price": "£8" },
+                { "name": "Meatballs", "desc": "Spicy tomato sauce, spring onions (GF)", "price": "£9" },
+                { "name": "Patatas Bravas", "desc": "Spicy bravas sauce (VG)", "price": "£8" },
+                { "name": "Hummus & Red Pepper Bruschetta", "desc": "Rocket & balsamic glaze (VG)", "price": "£8" }
               ]
             }
           ]
@@ -46,11 +79,11 @@
             {
               "title": "Mains",
               "items": [
-                { "name": "8oz Sirloin Steak", "desc": "Chunky chips, grilled tomato & mushrooms", "price": "£22" },
-                { "name": "Hand Battered Cod Fillet", "desc": "Chunky chips, mushy peas, tartare sauce", "price": "£15" },
-                { "name": "Asian Chicken Bites", "desc": "Sweet & spicy, rice & prawn crackers", "price": "£18" },
-                { "name": "Thai Green Curry", "desc": "Vegetables, rice (vg, gf) — add chicken or prawns", "price": "£16" },
-                { "name": "Chef's Pie of the Day", "desc": "Mushy peas, chunky chips or mash", "price": "£16" }
+                { "name": "8oz Sirloin or Ribeye Steak", "desc": "Garlic mushroom sauce, seasoned potatoes, garnish", "price": "£22" },
+                { "name": "Hand Battered Cod", "desc": "Chunky chips, mushy peas, tartare sauce", "price": "£15" },
+                { "name": "Chicken Katsu", "desc": "Crispy breaded chicken, rice & garnish", "price": "£16" },
+                { "name": "Thai Green Curry", "desc": "Vegetables, rice (VG, GF) — add chicken or prawns", "price": "£16" },
+                { "name": "Lasagne", "desc": "Beef mince, napoli sauce, mozzarella, garnish", "price": "£15" }
               ]
             }
           ]
@@ -60,9 +93,9 @@
             {
               "title": "Burgers",
               "items": [
-                { "name": "The Bank Burger", "desc": "Double patty, Monterey Jack, burger sauce, fries", "price": "£15" },
-                { "name": "Peri Peri Chicken Burger", "desc": "Double fried chicken, Monterey Jack, chicken wing, fries", "price": "£15" },
-                { "name": "Veggie Burger", "desc": "Halloumi, sweet chilli mayo, sweet potato fries (v)", "price": "£14" }
+                { "name": "Smash Burger", "desc": "Two smashed beef patties, lettuce, tomato, onion, cheese, fries", "price": "£15" },
+                { "name": "Peri Peri Chicken Burger", "desc": "Double fried chicken, Monterey Jack, fries", "price": "£15" },
+                { "name": "Veggie Burger", "desc": "Halloumi, sweet chilli mayo, sweet potato fries (V)", "price": "£14" }
               ]
             },
             {
@@ -78,59 +111,20 @@
       ]
     },
     {
-      "id": "sunday",
-      "label": "Sunday Lunch",
-      "note": "2 courses £19 · 3 courses £23 · Available every Sunday 12pm – 5pm",
+      "id": "brunch",
+      "label": "Bottomless Brunch",
+      "note": "£40pp | 90 minutes | Unlimited drinks + 2 tapas | Available all day midweek, Fri-Sat: 12:30pm, 2pm or 3:30pm",
       "columns": [
         {
           "sections": [
             {
-              "title": "Sunday Mains",
+              "title": "Bottomless Drinks",
               "items": [
-                { "name": "Merlot Braised Beef Feather Blade", "desc": "Duck fat roasties, swede purée, Yorkshire pud, red wine jus", "price": "£15" },
-                { "name": "Crispy Belly Pork", "desc": "Cider jus, homemade spiced apple sauce", "price": "£14.50" },
-                { "name": "Roast Chicken Supreme", "desc": "Stuffing, champ, giant Yorkshire pud", "price": "£14.50" },
-                { "name": "Confit Lamb", "desc": "Minted gravy, parsnip crisps (£2 supplement)", "price": "£16" },
-                { "name": "Homemade Nut Roast", "desc": "Chestnut & apricot, roasties, red wine jus (v)", "price": "£14" }
-              ]
-            }
-          ]
-        },
-        {
-          "sections": [
-            {
-              "title": "Sunday Starters",
-              "items": [
-                { "name": "Soup of the Day", "desc": "With bread" },
-                { "name": "Sticky BBQ Asian Chicken Wings", "desc": "Asian slaw & sweet chilli dip" },
-                { "name": "Halloumi Fries", "desc": "Sweet chilli sauce" }
-              ]
-            },
-            {
-              "title": "Sunday Desserts",
-              "items": [
-                { "name": "Caribbean Eton Mess", "desc": "Pineapple, mango, passionfruit & coconut" },
-                { "name": "Sticky Toffee Pudding", "desc": "Butterscotch sauce & ice cream" },
-                { "name": "Winter Berry Crumble", "desc": "Vegan vanilla ice cream (vg)" }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "breakfast",
-      "label": "Breakfast",
-      "columns": [
-        {
-          "sections": [
-            {
-              "title": "Breakfast",
-              "items": [
-                { "name": "Bankers Breakfast", "desc": "Sausage, bacon, hash brown, eggs, black pudding, beans, mushroom & toast", "price": "£12.50" },
-                { "name": "Vegetarian Breakfast", "desc": "Veggie sausage, eggs, hash brown, spinach, beans, mushroom, tomato & toast (v)", "price": "£11" },
-                { "name": "Eggs Benedict", "desc": "Toasted muffin, poached eggs, bacon & hollandaise", "price": "£10.50" },
-                { "name": "Eggs Royale", "desc": "Toasted muffin, poached eggs, smoked salmon & hollandaise", "price": "£11" }
+                { "name": "Glass of Prosecco", "desc": "Unlimited refills" },
+                { "name": "Selected Cocktails", "desc": "Choose from our brunch cocktail menu" },
+                { "name": "Pint of Coors or Cider", "desc": "Unlimited refills" },
+                { "name": "House Spirit + Mixer", "desc": "With draught mixer" },
+                { "name": "Mocktails", "desc": "Non-alcoholic options available" }
               ]
             }
           ]
@@ -149,27 +143,32 @@
                 "url": "https://www.just-eat.co.uk/restaurants-the-bank-gateshead"
               }
             ],
-            "note": "Breakfast served until 3pm, Wednesday to Saturday."
+            "note": "BOGOF on burgers via Uber Eats!"
           }
         }
       ]
     }
   ],
   "cocktails": [
-    { "name": "Old Fashioned", "desc": "Bourbon, Angostura bitters, brown sugar", "price": "£9" },
-    { "name": "Porn Star Martini", "desc": "Vodka, Passoa, lime, vanilla & passion fruit, pineapple, shot of Prosecco", "price": "£9" },
     { "name": "Espresso Martini", "desc": "Vodka, Tia Maria, vanilla syrup, fresh coffee", "price": "£9" },
+    { "name": "Porn Star Martini", "desc": "Vodka, Passoa, lime, vanilla & passion fruit, pineapple, shot of Prosecco", "price": "£9" },
+    { "name": "Old Fashioned", "desc": "Bourbon, Angostura bitters, brown sugar", "price": "£9" },
     { "name": "Negroni", "desc": "Martini Rosso, Campari, gin, squeeze of orange", "price": "£9" },
     { "name": "Bramble", "desc": "Gin, lemon juice, sugar syrup, Crème de Mure", "price": "£9" },
     { "name": "Bloody Mary", "desc": "Vodka, tomato juice, Tabasco, Lea & Perrins, lemon and black pepper", "price": "£9" }
   ],
+  "happyHour": {
+    "price": "2 cocktails for £14",
+    "times": "Until 5pm daily & 9-10pm"
+  },
   "openingHours": [
     { "day": "Monday", "time": "Closed", "closed": true },
     { "day": "Tuesday", "time": "Closed", "closed": true },
-    { "day": "Wednesday", "time": "12pm – Late", "closed": false },
-    { "day": "Thursday", "time": "12pm – Late", "closed": false },
-    { "day": "Friday", "time": "12pm – Late", "closed": false },
-    { "day": "Saturday", "time": "12pm – Late", "closed": false },
+    { "day": "Wednesday", "time": "12:30pm – Late", "closed": false },
+    { "day": "Thursday", "time": "12:30pm – Late", "closed": false },
+    { "day": "Friday", "time": "12:30pm – Late", "closed": false },
+    { "day": "Saturday", "time": "12:30pm – Late", "closed": false },
     { "day": "Sunday", "time": "12pm – 7:30pm", "closed": false }
-  ]
+  ],
+  "note": "Please note: Sunday is Tapas and Main Menu only (no Sunday lunch)"
 }
