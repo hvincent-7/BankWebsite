@@ -1,6 +1,7 @@
 const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
+const { parse } = require('csv-parse/sync');
 require('dotenv').config();
 
 const AIRTABLE_API_TOKEN = process.env.AIRTABLE_API_TOKEN;
@@ -19,44 +20,26 @@ const api = axios.create({
   }
 });
 
-// CSV parsing helper
+// CSV parsing helper using csv-parse library
 function parseCSV(filePath) {
   const content = fs.readFileSync(filePath, 'utf8');
-  const lines = content.trim().split('\n');
-  const headers = lines[0].split(',').map(h => h.trim());
+  const records = parse(content, {
+    columns: true,
+    skip_empty_lines: true,
+    trim: true
+  });
 
-  return lines.slice(1).map(line => {
-    // Better CSV parsing that handles quoted values
-    const values = [];
-    let current = '';
-    let inQuotes = false;
-
-    for (let i = 0; i < line.length; i++) {
-      const char = line[i];
-      if (char === '"') inQuotes = !inQuotes;
-      else if (char === ',' && !inQuotes) {
-        values.push(current.trim());
-        current = '';
+  return records.map(row => {
+    const cleanRow = {};
+    for (const [key, value] of Object.entries(row)) {
+      // Convert TRUE/FALSE strings to booleans for checkbox fields
+      if (key === 'happyHour' || key === 'closed') {
+        cleanRow[key] = value.toUpperCase() === 'TRUE';
       } else {
-        current += char;
+        cleanRow[key] = value;
       }
     }
-    values.push(current.trim());
-
-    const row = {};
-    headers.forEach((header, i) => {
-      let value = values[i] || '';
-      // Remove quotes if present
-      value = value.replace(/^"|"$/g, '');
-
-      // Convert TRUE/FALSE strings to booleans for checkbox fields
-      if (header === 'happyHour' || header === 'closed') {
-        row[header] = value.toUpperCase() === 'TRUE';
-      } else {
-        row[header] = value;
-      }
-    });
-    return row;
+    return cleanRow;
   });
 }
 
