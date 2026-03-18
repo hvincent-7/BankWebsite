@@ -26,14 +26,35 @@ function parseCSV(filePath) {
   const headers = lines[0].split(',').map(h => h.trim());
 
   return lines.slice(1).map(line => {
-    const values = line.split(',').map(v => v.trim());
+    // Better CSV parsing that handles quoted values
+    const values = [];
+    let current = '';
+    let inQuotes = false;
+
+    for (let i = 0; i < line.length; i++) {
+      const char = line[i];
+      if (char === '"') inQuotes = !inQuotes;
+      else if (char === ',' && !inQuotes) {
+        values.push(current.trim());
+        current = '';
+      } else {
+        current += char;
+      }
+    }
+    values.push(current.trim());
+
     const row = {};
     headers.forEach((header, i) => {
-      let value = values[i];
-      // Convert TRUE/FALSE strings to booleans
-      if (value === 'TRUE') value = true;
-      if (value === 'FALSE') value = false;
-      row[header] = value;
+      let value = values[i] || '';
+      // Remove quotes if present
+      value = value.replace(/^"|"$/g, '');
+
+      // Convert TRUE/FALSE strings to booleans for checkbox fields
+      if (header === 'happyHour' || header === 'closed') {
+        row[header] = value.toUpperCase() === 'TRUE';
+      } else {
+        row[header] = value;
+      }
     });
     return row;
   });
@@ -70,9 +91,9 @@ async function main() {
   console.log('🚀 Starting Airtable data import...\n');
 
   try {
-    await uploadToAirtable('Cocktails', path.join(__dirname, 'imports/Cocktails.csv'));
-    await uploadToAirtable('HappyHour', path.join(__dirname, 'imports/HappyHour.csv'));
-    await uploadToAirtable('OpeningHours', path.join(__dirname, 'imports/OpeningHours.csv'));
+    await uploadToAirtable('Cocktails', path.join(__dirname, '../imports/Cocktails.csv'));
+    await uploadToAirtable('HappyHour', path.join(__dirname, '../imports/HappyHour.csv'));
+    await uploadToAirtable('OpeningHours', path.join(__dirname, '../imports/OpeningHours.csv'));
 
     console.log('🎉 All data imported successfully!');
     console.log('\nNext steps:');
