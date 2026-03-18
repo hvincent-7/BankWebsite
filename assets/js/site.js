@@ -254,8 +254,11 @@ const renderCocktails = (siteData) => {
   const el = document.getElementById('cocktails-grid');
   if (!el) return;
   el.innerHTML = siteData.cocktails.map((c) => `
-    <div class="cocktail-card">
-      <div class="cocktail-name">${escapeHtml(c.name)}</div>
+    <div class="cocktail-card${c.happyHour ? ' happy-hour' : ''}">
+      <div class="cocktail-name">
+        ${escapeHtml(c.name)}
+        ${c.happyHour ? '<span class="happy-hour-badge" title="Happy Hour Cocktail">🍸</span>' : ''}
+      </div>
       <div class="cocktail-desc">${escapeHtml(c.desc)}</div>
       <div class="cocktail-price">${escapeHtml(c.price)}</div>
     </div>
@@ -328,14 +331,22 @@ const init = async () => {
   wirePrivateHireForm();
 
   try {
-    const response = await fetch('./data/site-data.json');
+    // Attempt to fetch from the API, with fallback to local data
+    let response = await fetch('/api/menu');
+
+    // If API fails (404 or other error), fall back to local JSON
+    if (!response.ok) {
+      console.warn('API unavailable, using local data');
+      response = await fetch('./data/site-data.json');
+    }
+
     if (!response.ok) throw new Error('Could not load data');
     const siteData = await response.json();
     renderMenus(siteData);
     renderCocktails(siteData);
     renderHours(siteData);
   } catch (error) {
-    console.error(error);
+    console.error('Error loading menu data:', error);
   }
 };
 

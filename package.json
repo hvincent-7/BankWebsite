@@ -1,0 +1,29 @@
+{
+  "name": "the-bank-website",
+  "version": "1.0.0",
+  "description": "The Bank Restaurant & Bar - Website",
+  "main": "api/menu.js",
+  "scripts": {
+    "dev": "vercel dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Recon-7/BankWebsite.git"
+  },
+  "keywords": [
+    "restaurant",
+    "bar",
+    "cocktails",
+    "menu"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.0",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "vercel": "^32.0.0"
+  }
+}
