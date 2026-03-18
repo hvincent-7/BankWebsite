@@ -2,17 +2,19 @@
   "menuTabs": [
     {
       "id": "two-course",
-      "label": "Two Course Menu",
-      "note": "Two courses + a drink for just £20 | Available Wed-Sun from 12:30pm",
+      "label": "Two Course Deal",
+      "note": "Choose either a starter and a main, or a main and dessert with a drink for £20pp",
+      "drinkNote": "Drinks include: any selected cocktail, 175ml glass of wine or prosecco, draught pint of Coors or Cornish Cider or soft drink",
       "columns": [
         {
           "sections": [
             {
               "title": "Starters",
               "items": [
-                { "name": "Garlic Mushrooms", "desc": "Served with tomato and herb bread (GF/V)" },
-                { "name": "Spicy Hummus", "desc": "Made with chickpeas, tahini, cumin, olive oil, lemon juice & bread (VG)" },
-                { "name": "Soup of the Day", "desc": "Served with bread" }
+                { "name": "Garlic Mushrooms", "desc": "Served with bread (AGF/V)" },
+                { "name": "Beef Meatballs", "desc": "Served in a spicy tomato and herb sauce" },
+                { "name": "Spicy Hummus", "desc": "Made from chickpeas, tahini (sesame paste), cumin, olive oil, lemon juice & garlic served with bread (VG)" },
+                { "name": "Soup of the Day", "desc": "Served with warm bread (V)" }
               ]
             }
           ]
@@ -22,11 +24,19 @@
             {
               "title": "Mains",
               "items": [
-                { "name": "Chicken Katsu", "desc": "Crispy breaded chicken served with rice and garnish" },
-                { "name": "Thai Green Vegetable Curry", "desc": "Creamy coconut, aromatic lemongrass, steamed rice (VG/GF)" },
-                { "name": "Lasagne", "desc": "Oven baked with beef mince, napoli sauce and mozzarella cheese" },
-                { "name": "Hand Battered Cod", "desc": "Chunky chips, mushy peas, tartare sauce" },
-                { "name": "Smash Burger", "desc": "Two smashed beef patties, lettuce, tomato, onion, mature cheese" }
+                { "name": "Chicken Katsu", "desc": "Crispy breaded chicken served with Japanese-style curry sauce, steamed rice and garnish" },
+                { "name": "Thai Green Vegetable Curry", "desc": "An aromatic green curry infused with lemongrass and kaffir lime, creamy coconut milk with tender vegetables and steamed rice (V) (VG) (GF)" },
+                { "name": "Homemade Lasagne", "desc": "Oven baked with beef mince, topped with mozzarella cheese and napoli sauce, served with chunky chips and salad garnish" },
+                { "name": "Hand Battered Cod", "desc": "Served with chunky chips, mushy peas and tartare sauce" },
+                { "name": "Smash Burger", "desc": "Two smashed beef patties, lettuce, tomato, red onion, mature cheese, burger sauce and homemade coleslaw served with fries" }
+              ]
+            },
+            {
+              "title": "Desserts",
+              "items": [
+                { "name": "Chocolate Brownie", "desc": "Served with vanilla ice cream" },
+                { "name": "Sticky Toffee Pudding", "desc": "Served with custard or vanilla ice cream" },
+                { "name": "Ice Cream", "desc": "Choice of vanilla, chocolate or strawberry" }
               ]
             }
           ]
@@ -61,7 +71,7 @@
                 { "name": "Chicken Wings", "desc": "BBQ, salt & chilli, or spicy", "price": "£10" },
                 { "name": "Halloumi Fries", "desc": "Spring onions, sweet chilli (V, GF)", "price": "£8" },
                 { "name": "Pan Fried Chorizo", "desc": "Red wine and garlic (GF)", "price": "£8" },
-                { "name": "Meatballs", "desc": "Spicy tomato sauce, spring onions (GF)", "price": "£9" },
+                { "name": "Beef Meatballs", "desc": "Spicy tomato sauce, spring onions (GF)", "price": "£9" },
                 { "name": "Patatas Bravas", "desc": "Spicy bravas sauce (VG)", "price": "£8" },
                 { "name": "Hummus & Red Pepper Bruschetta", "desc": "Rocket & balsamic glaze (VG)", "price": "£8" }
               ]
@@ -72,18 +82,18 @@
     },
     {
       "id": "mains",
-      "label": "Mains",
+      "label": "À La Carte",
       "columns": [
         {
           "sections": [
             {
               "title": "Mains",
               "items": [
-                { "name": "8oz Sirloin or Ribeye Steak", "desc": "Garlic mushroom sauce, seasoned potatoes, garnish", "price": "£22" },
+                { "name": "8oz Sirloin or Ribeye Steak", "desc": "Rich garlic mushroom sauce, seasoned potatoes and garnish", "price": "£22" },
                 { "name": "Hand Battered Cod", "desc": "Chunky chips, mushy peas, tartare sauce", "price": "£15" },
-                { "name": "Chicken Katsu", "desc": "Crispy breaded chicken, rice & garnish", "price": "£16" },
-                { "name": "Thai Green Curry", "desc": "Vegetables, rice (VG, GF) — add chicken or prawns", "price": "£16" },
-                { "name": "Lasagne", "desc": "Beef mince, napoli sauce, mozzarella, garnish", "price": "£15" }
+                { "name": "Chicken Katsu", "desc": "Crispy breaded chicken, Japanese-style curry sauce, steamed rice", "price": "£16" },
+                { "name": "Thai Green Vegetable Curry", "desc": "Lemongrass, coconut milk, vegetables, steamed rice (V, VG, GF)", "price": "£16" },
+                { "name": "Homemade Lasagne", "desc": "Beef mince, napoli sauce, mozzarella, chunky chips, salad", "price": "£15" }
               ]
             }
           ]
@@ -93,7 +103,7 @@
             {
               "title": "Burgers",
               "items": [
-                { "name": "Smash Burger", "desc": "Two smashed beef patties, lettuce, tomato, onion, cheese, fries", "price": "£15" },
+                { "name": "Smash Burger", "desc": "Two smashed beef patties, lettuce, tomato, red onion, mature cheese, burger sauce, coleslaw, fries", "price": "£15" },
                 { "name": "Peri Peri Chicken Burger", "desc": "Double fried chicken, Monterey Jack, fries", "price": "£15" },
                 { "name": "Veggie Burger", "desc": "Halloumi, sweet chilli mayo, sweet potato fries (V)", "price": "£14" }
               ]
@@ -101,9 +111,9 @@
             {
               "title": "Desserts",
               "items": [
-                { "name": "Sticky Toffee Pudding", "desc": "Butterscotch sauce & vanilla ice cream", "price": "£7" },
-                { "name": "Triple Chocolate Brownie", "desc": "Peanut brittle, berry compote, vanilla ice cream", "price": "£7" },
-                { "name": "Cheese Board", "desc": "Crackers, chutney & grapes", "price": "£10" }
+                { "name": "Chocolate Brownie", "desc": "Served with vanilla ice cream", "price": "£7" },
+                { "name": "Sticky Toffee Pudding", "desc": "Served with custard or vanilla ice cream", "price": "£7" },
+                { "name": "Ice Cream", "desc": "Choice of vanilla, chocolate or strawberry", "price": "£5" }
               ]
             }
           ]
@@ -113,23 +123,33 @@
     {
       "id": "brunch",
       "label": "Bottomless Brunch",
-      "note": "£40pp | 90 minutes | Unlimited drinks + 2 tapas | Available all day midweek, Fri-Sat: 12:30pm, 2pm or 3:30pm",
+      "note": "£40pp | 90 minutes | Choose any two tapas with unlimited drinks",
       "columns": [
         {
           "sections": [
             {
-              "title": "Bottomless Drinks",
+              "title": "Unlimited Drinks",
               "items": [
                 { "name": "Glass of Prosecco", "desc": "Unlimited refills" },
                 { "name": "Selected Cocktails", "desc": "Choose from our brunch cocktail menu" },
                 { "name": "Pint of Coors or Cider", "desc": "Unlimited refills" },
-                { "name": "House Spirit + Mixer", "desc": "With draught mixer" },
+                { "name": "Selected House Spirit", "desc": "With draught mixer" },
                 { "name": "Mocktails", "desc": "Non-alcoholic options available" }
               ]
             }
           ]
         },
         {
+          "sections": [
+            {
+              "title": "Availability",
+              "items": [
+                { "name": "Midweek", "desc": "Available all day Wednesday to Friday" },
+                { "name": "Friday & Saturday", "desc": "12:30pm, 2pm or 3:30pm sittings" },
+                { "name": "Max Table Size", "desc": "6 persons. T&Cs apply" }
+              ]
+            }
+          ],
           "delivery": {
             "title": "Delivery",
             "intro": "Can't dine in with us? Order via Uber Eats or Just Eat for delivery or collection.",
@@ -150,16 +170,27 @@
     }
   ],
   "cocktails": [
-    { "name": "Espresso Martini", "desc": "Vodka, Tia Maria, vanilla syrup, fresh coffee", "price": "£9" },
-    { "name": "Porn Star Martini", "desc": "Vodka, Passoa, lime, vanilla & passion fruit, pineapple, shot of Prosecco", "price": "£9" },
-    { "name": "Old Fashioned", "desc": "Bourbon, Angostura bitters, brown sugar", "price": "£9" },
-    { "name": "Negroni", "desc": "Martini Rosso, Campari, gin, squeeze of orange", "price": "£9" },
-    { "name": "Bramble", "desc": "Gin, lemon juice, sugar syrup, Crème de Mure", "price": "£9" },
-    { "name": "Bloody Mary", "desc": "Vodka, tomato juice, Tabasco, Lea & Perrins, lemon and black pepper", "price": "£9" }
+    { "name": "Raspberry Collins", "desc": "Our twist on a traditional Tom Collins. Raspberry puree, Gin, Lemon juice and sugar syrup served long and topped up with soda", "price": "£9", "happyHour": true },
+    { "name": "The Pornstar Martini", "desc": "Vodka, passion fruit, vanilla and passionfruit syrup, pineapple and a shot of Prosecco", "price": "£9", "happyHour": true },
+    { "name": "Long Island Iced Tea", "desc": "A blend of 5 liqueurs. Vodka, gin, white rum, tequila, triple sec with a splash of cola and lemon juice", "price": "£10" },
+    { "name": "Sours", "desc": "Whiskey, Amaretto or limoncello, lemon juice, sugar syrup and egg white", "price": "£10", "happyHour": true },
+    { "name": "Espresso Martini", "desc": "Tia Maria, vodka, vanilla syrup, fresh shot of espresso", "price": "£10", "happyHour": true },
+    { "name": "Margarita", "desc": "Tequila, triple sec and lime juice, served straight up with a salted rim", "price": "£10", "happyHour": true },
+    { "name": "French Martini", "desc": "A New York favourite brought to Low Fell. A sweet blend of blackberries, malt with vodka, raspberry liqueur and pineapple juice", "price": "£9", "happyHour": true },
+    { "name": "Mojito", "desc": "A Cuban classic! A refreshing blend of muddled limes, sugar syrup, white rum & fresh mint topped up with soda", "price": "£10", "happyHour": true },
+    { "name": "Old Fashioned", "desc": "Whiskey, Angostura bitters, brown sugar and orange peel garnish", "price": "£9", "happyHour": true },
+    { "name": "Ice Lolly", "desc": "The Bank's signature cocktail. Lychee liqueur, Midori, strawberry syrup and pineapple juice. Layered to make a colourful, refreshing smooth cocktail", "price": "£9", "happyHour": true },
+    { "name": "Dark & Stormy", "desc": "Ginger beer, topped with dark rum and a squeeze of fresh lime", "price": "£12", "happyHour": true },
+    { "name": "Very Berry", "desc": "A berry nice mix of amaretto, raspberry liqueur and strawberry puree mixed with vanilla syrup, fresh cream and pineapple juice", "price": "£9", "happyHour": true },
+    { "name": "Bloody Mary", "desc": "Vodka, tomato juice, Worcester sauce, lemon juice & black pepper", "price": "£10", "happyHour": true },
+    { "name": "Pina Colada", "desc": "White rum and coconut rum with just enough cream and pineapple juice. A tropical classic!", "price": "£9", "happyHour": true },
+    { "name": "Aperol Spritz / Lemon Spritz", "desc": "Sipping on Italian sunshine. Your choice of aperol or limoncello topped up with prosecco and soda", "price": "£9", "happyHour": true },
+    { "name": "Mocktails", "desc": "Alcohol free selected cocktails, please ask your server", "price": "£6 or 2 for £10", "happyHour": true }
   ],
   "happyHour": {
     "price": "2 cocktails for £14",
-    "times": "Until 5pm daily & 9-10pm"
+    "times": "Fri-Sat 6-9pm & 9-9:30pm",
+    "note": "Mix & Match Happy Hour - All Day"
   },
   "openingHours": [
     { "day": "Monday", "time": "Closed", "closed": true },
@@ -170,5 +201,5 @@
     { "day": "Saturday", "time": "12:30pm – Late", "closed": false },
     { "day": "Sunday", "time": "12pm – 7:30pm", "closed": false }
   ],
-  "note": "Please note: Sunday is Tapas and Main Menu only (no Sunday lunch)"
+  "sundayNote": "Serving Tapas and Main Menu only. Please note we do not serve Sunday lunch."
 }
