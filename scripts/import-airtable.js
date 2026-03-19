@@ -77,6 +77,8 @@ async function main() {
     await uploadToAirtable('Cocktails', path.join(__dirname, '../imports/Cocktails.csv'));
     await uploadToAirtable('HappyHour', path.join(__dirname, '../imports/HappyHour.csv'));
     await uploadToAirtable('OpeningHours', path.join(__dirname, '../imports/OpeningHours.csv'));
+    await uploadToAirtable('Wines', path.join(__dirname, '../imports/Wines.csv'));
+    await uploadToAirtable('HotBeverages', path.join(__dirname, '../imports/HotBeverages.csv'));
 
     console.log('🎉 All data imported successfully!');
     console.log('\nNext steps:');

@@ -170,27 +170,26 @@
     }
   ],
   "cocktails": [
-    { "name": "Raspberry Collins", "desc": "Our twist on a traditional Tom Collins. Raspberry puree, Gin, Lemon juice and sugar syrup served long and topped up with soda", "price": "£9", "happyHour": true },
-    { "name": "The Pornstar Martini", "desc": "Vodka, passion fruit, vanilla and passionfruit syrup, pineapple and a shot of Prosecco", "price": "£9", "happyHour": true },
-    { "name": "Long Island Iced Tea", "desc": "A blend of 5 liqueurs. Vodka, gin, white rum, tequila, triple sec with a splash of cola and lemon juice", "price": "£10" },
-    { "name": "Sours", "desc": "Whiskey, Amaretto or limoncello, lemon juice, sugar syrup and egg white", "price": "£10", "happyHour": true },
-    { "name": "Espresso Martini", "desc": "Tia Maria, vodka, vanilla syrup, fresh shot of espresso", "price": "£10", "happyHour": true },
-    { "name": "Margarita", "desc": "Tequila, triple sec and lime juice, served straight up with a salted rim", "price": "£10", "happyHour": true },
-    { "name": "French Martini", "desc": "A New York favourite brought to Low Fell. A sweet blend of blackberries, malt with vodka, raspberry liqueur and pineapple juice", "price": "£9", "happyHour": true },
-    { "name": "Mojito", "desc": "A Cuban classic! A refreshing blend of muddled limes, sugar syrup, white rum & fresh mint topped up with soda", "price": "£10", "happyHour": true },
-    { "name": "Old Fashioned", "desc": "Whiskey, Angostura bitters, brown sugar and orange peel garnish", "price": "£9", "happyHour": true },
+    { "name": "Raspberry Collins", "desc": "Our fruity take on a traditional Tom Collins. Raspberry puree, Gin, Lemon Juice and sugar syrup served long and topped up with soda", "price": "£9", "happyHour": true },
+    { "name": "The Pornstar Martini", "desc": "Vodka, passoa, lime, vanilla and passionfruit syrup, pineapple and a shot of Prosecco", "price": "£9", "happyHour": true },
+    { "name": "Long Island Iced Tea", "desc": "A blend of 5 liqueurs. Vodka, gin, white rum, tequila, triple sec with a splash of cola and lemon juice", "price": "£10", "happyHour": false },
+    { "name": "Sours", "desc": "Whiskey, Amaretto or limoncello, lemon juice, sugar syrup and egg white", "price": "£10", "happyHour": false },
+    { "name": "Espresso Martini", "desc": "Vodka, Tia Maria, vanilla syrup, fresh shot of espresso", "price": "£10", "happyHour": true },
+    { "name": "Margarita", "desc": "Tequila, triple sec and lime juice, served straight up with a salted rim", "price": "£10", "happyHour": false },
+    { "name": "French Martini", "desc": "A New York favourite brought to Low Fell. A sweet blend of blackberries, muddled with vodka, raspberry liqueur and pineapple juice", "price": "£9", "happyHour": true },
+    { "name": "Mojito", "desc": "A Cuban classic! A refreshing blend of muddled limes, sugar syrup, white rum & fresh mint topped up with soda", "price": "£9", "happyHour": true },
+    { "name": "Old Fashioned", "desc": "Whiskey, Angostura bitters, brown sugar and orange peel garnish", "price": "£10", "happyHour": true },
     { "name": "Ice Lolly", "desc": "The Bank's signature cocktail. Lychee liqueur, Midori, strawberry syrup and pineapple juice. Layered to make a colourful, refreshing smooth cocktail", "price": "£9", "happyHour": true },
-    { "name": "Dark & Stormy", "desc": "Ginger beer, topped with dark rum and a squeeze of fresh lime", "price": "£12", "happyHour": true },
-    { "name": "Very Berry", "desc": "A berry nice mix of amaretto, raspberry liqueur and strawberry puree mixed with vanilla syrup, fresh cream and pineapple juice", "price": "£9", "happyHour": true },
-    { "name": "Bloody Mary", "desc": "Vodka, tomato juice, Worcester sauce, lemon juice & black pepper", "price": "£10", "happyHour": true },
+    { "name": "Dark & Stormy", "desc": "Ginger beer, topped with dark rum and a squeeze of fresh lime", "price": "£10", "happyHour": false },
+    { "name": "Very Berry", "desc": "A berry nice mix of amaretto, raspberry liqueur and strawberry puree mixed with vanilla syrup, fresh lime and pineapple juice", "price": "£9", "happyHour": true },
+    { "name": "Bloody Mary", "desc": "Vodka, tomato juice, Worcester sauce, lemon juice & black pepper", "price": "£10", "happyHour": false },
     { "name": "Pina Colada", "desc": "White rum and coconut rum with just enough cream and pineapple juice. A tropical classic!", "price": "£9", "happyHour": true },
-    { "name": "Aperol Spritz / Lemon Spritz", "desc": "Sipping on Italian sunshine. Your choice of aperol or limoncello topped up with prosecco and soda", "price": "£9", "happyHour": true },
-    { "name": "Mocktails", "desc": "Alcohol free selected cocktails, please ask your server", "price": "£6 or 2 for £10", "happyHour": true }
+    { "name": "Aperol Spritz / Lemon Spritz", "desc": "Sipping on Italian sunshine. Your choice of aperol or limoncello topped up with prosecco and soda", "price": "£9", "happyHour": true }
   ],
   "happyHour": {
     "price": "2 cocktails for £14",
-    "times": "Fri-Sat 6-9pm & 9-9:30pm",
-    "note": "Mix & Match Happy Hour - All Day"
+    "times": "Fri/Sat 12-5pm & 9-10pm",
+    "note": "Mix & Match Happy Hour"
   },
   "openingHours": [
     { "day": "Monday", "time": "Closed", "closed": true },
@@ -200,6 +199,39 @@
     { "day": "Friday", "time": "12:30pm – Late", "closed": false },
     { "day": "Saturday", "time": "12:30pm – Late", "closed": false },
     { "day": "Sunday", "time": "12pm – 7:30pm", "closed": false }
+  ],
+  "wines": [
+    { "name": "Sauvignon Blanc Concha Y Toro Mountain Range", "origin": "Chile", "type": "White", "glass125ml": "£4.25", "glass175ml": "£6.25", "glass250ml": "£7.75", "bottle": "£21.00" },
+    { "name": "Pinot Grigio Provincia di Pavia IGT Ancora", "origin": "Italy", "type": "White", "glass125ml": "£4.25", "glass175ml": "£6.25", "glass250ml": "£7.75", "bottle": "£21.00" },
+    { "name": "Chardonnay Andrew Peace", "origin": "Australia", "type": "White", "glass125ml": "£4.25", "glass175ml": "£6.25", "glass250ml": "£7.75", "bottle": "£21.00" },
+    { "name": "Vinho Verde DDOC Vila Nova", "origin": "Portugal", "type": "White", "bottle": "£25.00" },
+    { "name": "Viognier IGP Pays d'Oc Cuvee de Vedilhan", "origin": "France", "type": "White", "bottle": "£25.00" },
+    { "name": "Sauvignon Blanc Marlborough", "origin": "New Zealand", "type": "White", "bottle": "£30.00" },
+    { "name": "Merlot Mountain Range Concha Y Toro", "origin": "Chile", "type": "Red", "glass125ml": "£4.25", "glass175ml": "£6.25", "glass250ml": "£7.75", "bottle": "£21.00" },
+    { "name": "Malbec Tribu Mendoza Trivento", "origin": "Argentina", "type": "Red", "glass125ml": "£4.25", "glass175ml": "£6.25", "glass250ml": "£7.75", "bottle": "£22.00" },
+    { "name": "Shiraz Andrew Peace", "origin": "Australia", "type": "Red", "glass125ml": "£4.25", "glass175ml": "£6.25", "glass250ml": "£7.75", "bottle": "£21.00" },
+    { "name": "Rioja DDOC Joven Tinto Tempranillo Manoso", "origin": "Spain", "type": "Red", "bottle": "£26.00" },
+    { "name": "Pinot Grigio Blush delle Venezie IGT San Vigilio", "origin": "Italy", "type": "Rosé", "glass125ml": "£4.25", "glass175ml": "£6.25", "glass250ml": "£7.75", "bottle": "£21.00" },
+    { "name": "Zinfandel Rose Wildwood", "origin": "California", "type": "Rosé", "glass125ml": "£4.25", "glass175ml": "£6.25", "glass250ml": "£7.75", "bottle": "£21.00" },
+    { "name": "Chateau des Ferrages AOP Cotes de Provence Roumery", "origin": "France", "type": "Rosé", "bottle": "£26.00" },
+    { "name": "Prosecco DOC Extra Dry Terredirai", "origin": "Italy", "type": "Sparkling", "glass125ml": "£7.00", "bottle": "£26.00" },
+    { "name": "Prosecco DOC Rose Extra Dry Terredirai", "origin": "Italy", "type": "Sparkling", "glass125ml": "£7.00", "bottle": "£26.00" },
+    { "name": "Irroy Brut N.V.", "origin": "France", "type": "Champagne", "glass125ml": "£10.00", "bottle": "£50.00" },
+    { "name": "Moet et Chandon N.V. Brut", "origin": "France", "type": "Champagne", "bottle": "£75.00" },
+    { "name": "Laurent Perrier N.V. Brut Rose", "origin": "France", "type": "Champagne", "bottle": "£115.00" },
+    { "name": "Dom Perignon", "origin": "France", "type": "Champagne", "bottle": "POA" }
+  ],
+  "hotBeverages": [
+    { "name": "Americano", "price": "£2.75" },
+    { "name": "Espresso", "description": "Single/Double", "price": "£2.00/£2.75" },
+    { "name": "Cappuccino", "price": "£3.50" },
+    { "name": "Latte", "price": "£3.75" },
+    { "name": "Flat White", "price": "£3.50" },
+    { "name": "Decaf Coffee", "price": "£3.25" },
+    { "name": "Mocha", "price": "£4.00" },
+    { "name": "Hot Chocolate", "price": "£4.50" },
+    { "name": "Pot of English Tea", "price": "£3.50" },
+    { "name": "Liqueur Coffees", "description": "Baileys, Tia Maria, Jameson, Amaretto, Brandy", "price": "£7.00" }
   ],
   "sundayNote": "Serving Tapas and Main Menu only. Please note we do not serve Sunday lunch."
 }

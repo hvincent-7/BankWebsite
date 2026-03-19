@@ -37,6 +37,20 @@ async function createFields() {
         { name: 'day', type: 'singleLineText' },
         { name: 'time', type: 'singleLineText' },
         { name: 'closed', type: 'checkbox' }
+      ],
+      'Wines': [
+        { name: 'name', type: 'singleLineText' },
+        { name: 'origin', type: 'singleLineText' },
+        { name: 'type', type: 'singleLineText' },
+        { name: 'glass125ml', type: 'singleLineText' },
+        { name: 'glass175ml', type: 'singleLineText' },
+        { name: 'glass250ml', type: 'singleLineText' },
+        { name: 'bottle', type: 'singleLineText' }
+      ],
+      'HotBeverages': [
+        { name: 'name', type: 'singleLineText' },
+        { name: 'description', type: 'singleLineText' },
+        { name: 'price', type: 'singleLineText' }
       ]
     };
 

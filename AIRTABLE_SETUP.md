@@ -16,10 +16,12 @@ This guide walks you through setting up Airtable as the content management syste
 
 ## Step 3: Create Tables
 
-Your base needs 3 tables (you can create them empty):
+Your base needs 5 tables (you can create them empty):
 - **Cocktails**
 - **HappyHour**
 - **OpeningHours**
+- **Wines**
+- **HotBeverages**
 
 (Don't worry about fields yet - the import script will create them automatically!)
 
@@ -78,7 +80,31 @@ Alternatively, if you want to manually create fields, do this for each table bel
 
 **Add 7 records** (one for each day of the week) from `data/site-data.json`
 
-### Table 4: Menus (Optional for future use)
+### Table 4: Wines
+
+| Field Name | Field Type | Notes |
+|------------|-----------|-------|
+| name | Single line text | e.g., "Sauvignon Blanc Marlborough" |
+| origin | Single line text | e.g., "New Zealand" |
+| type | Single line text | White, Red, Rosé, Sparkling, Champagne |
+| glass125ml | Single line text | e.g., "£4.25" (leave empty if not available) |
+| glass175ml | Single line text | e.g., "£6.25" (leave empty if not available) |
+| glass250ml | Single line text | e.g., "£7.75" (leave empty if not available) |
+| bottle | Single line text | e.g., "£21.00" |
+
+**Add 19 records** - full wine list from menu
+
+### Table 5: HotBeverages
+
+| Field Name | Field Type | Notes |
+|------------|-----------|-------|
+| name | Single line text | e.g., "Cappuccino" |
+| description | Single line text | e.g., "Single/Double" (optional) |
+| price | Single line text | e.g., "£3.50" |
+
+**Add 10 records** - hot beverages list from menu
+
+### Menus (Optional for future use)
 
 For now, keep the existing `data/site-data.json` for complex menu items. This table can be added later if needed.
 

@@ -29,7 +29,7 @@ const injectLayout = () => {
           <ul class="nav-links">
             <li><a href="index.html" class="${current === 'home' ? 'active' : ''}" ${current === 'home' ? 'aria-current="page"' : ''}>Home</a></li>
             <li><a href="menus.html" class="${current === 'menus' ? 'active' : ''}" ${current === 'menus' ? 'aria-current="page"' : ''}>Menus</a></li>
-            <li><a href="cocktails.html" class="${current === 'cocktails' ? 'active' : ''}" ${current === 'cocktails' ? 'aria-current="page"' : ''}>Cocktails</a></li>
+            <li><a href="cocktails.html" class="${current === 'cocktails' ? 'active' : ''}" ${current === 'cocktails' ? 'aria-current="page"' : ''}>Drinks</a></li>
             <li><a href="private-hire.html" class="${current === 'private-hire' ? 'active' : ''}" ${current === 'private-hire' ? 'aria-current="page"' : ''}>Private Hire</a></li>
             <li><a href="visit.html" class="${current === 'visit' ? 'active' : ''}" ${current === 'visit' ? 'aria-current="page"' : ''}>Visit</a></li>
           </ul>
@@ -44,6 +44,19 @@ const injectLayout = () => {
     footer.setAttribute('aria-label', 'Site footer');
     footer.innerHTML = `
       <div class="container">
+        <!-- Newsletter Signup -->
+        <div class="footer-newsletter">
+          <h3>Stay in the Loop</h3>
+          <p>Get exclusive offers, event invites, and news straight to your inbox.</p>
+          <form class="newsletter-form" id="newsletter-form">
+            <input type="email" name="email" placeholder="Enter your email" required class="newsletter-input" aria-label="Email address">
+            <button type="submit" class="newsletter-btn">Subscribe</button>
+          </form>
+          <p class="newsletter-status" id="newsletter-status" aria-live="polite"></p>
+        </div>
+
+        <div class="footer-divider"></div>
+
         <div class="footer-social">
           <a href="https://www.facebook.com/TheBankLowFell" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
@@ -55,6 +68,10 @@ const injectLayout = () => {
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.006 4.295c-2.67 0-5.338.784-7.645 2.353H0l1.963 2.135a5.997 5.997 0 0 0 4.04 10.432 5.976 5.976 0 0 0 4.075-1.6L12 19.5l1.922-1.886a5.976 5.976 0 0 0 4.075 1.6 5.997 5.997 0 0 0 4.04-10.432L24 6.647h-4.35a13.573 13.573 0 0 0-7.644-2.353zM6.003 17.215a3.997 3.997 0 1 1 0-7.994 3.997 3.997 0 0 1 0 7.994zm5.997-4.806a6.034 6.034 0 0 0-1.19-2.357 10.552 10.552 0 0 1 2.38-.273c.82 0 1.62.097 2.38.273a6.034 6.034 0 0 0-1.19 2.357c-.4-.166-.85-.26-1.38-.26s-.98.094-1.38.26h.38zm5.997 4.806a3.997 3.997 0 1 1 0-7.994 3.997 3.997 0 0 1 0 7.994zm0-5.997a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-11.994 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/></svg>
           </a>
         </div>
+
+        <!-- Live Open/Closed Status -->
+        <div class="open-status" id="open-status"></div>
+
         <p>© 2026 The Bank Bar. All rights reserved.</p>
         <p>516 Durham Road, Low Fell, Gateshead, NE9 6HU · 0191 487 9038 · info@thebanklowfell.co.uk</p>
       </div>
@@ -253,16 +270,34 @@ const renderMenus = (siteData) => {
 const renderCocktails = (siteData) => {
   const el = document.getElementById('cocktails-grid');
   if (!el) return;
+  
   el.innerHTML = siteData.cocktails.map((c) => `
     <div class="cocktail-card${c.happyHour ? ' happy-hour' : ''}">
-      <div class="cocktail-name">
-        ${escapeHtml(c.name)}
-        ${c.happyHour ? '<span class="happy-hour-badge" title="Happy Hour Cocktail">🍸</span>' : ''}
+      <div class="cocktail-card-image">
+        <img src="assets/images/cocktails-new.jpg" alt="${escapeHtml(c.name)}" loading="lazy">
       </div>
-      <div class="cocktail-desc">${escapeHtml(c.desc)}</div>
-      <div class="cocktail-price">${escapeHtml(c.price)}</div>
+      <div class="cocktail-card-content">
+        <div class="cocktail-name">
+          ${escapeHtml(c.name)}
+          ${c.happyHour ? '<span class="happy-hour-badge" title="Happy Hour Cocktail">🍸</span>' : ''}
+        </div>
+        <div class="cocktail-desc">${escapeHtml(c.desc)}</div>
+        <div class="cocktail-price">${escapeHtml(c.price)}</div>
+      </div>
     </div>
   `).join('');
+};
+
+const renderHappyHour = (siteData) => {
+  const timesEl = document.getElementById('happy-hour-times');
+  const priceEl = document.getElementById('happy-hour-price');
+  if (!timesEl || !priceEl) return;
+
+  const { happyHour } = siteData;
+  if (happyHour) {
+    timesEl.textContent = happyHour.times || 'Check with staff for times';
+    priceEl.textContent = happyHour.price || '';
+  }
 };
 
 const renderHours = (siteData) => {
@@ -274,6 +309,150 @@ const renderHours = (siteData) => {
       <span class="${h.closed ? 'closed' : 'time'}">${escapeHtml(h.time)}</span>
     </div>
   `).join('');
+};
+
+// Drinks page tabs and rendering
+const DRINKS_TABS = [
+  { id: 'cocktails', label: 'Cocktails' },
+  { id: 'white', label: 'White Wines' },
+  { id: 'red', label: 'Red Wines' },
+  { id: 'rose', label: 'Rosé' },
+  { id: 'sparkling', label: 'Fizz & Champagne' },
+  { id: 'hot', label: 'Hot Drinks' }
+];
+
+const renderDrinksTabs = () => {
+  const tabsEl = document.getElementById('drinks-tabs');
+  if (!tabsEl) return;
+
+  tabsEl.innerHTML = DRINKS_TABS.map((tab, i) => {
+    const selected = i === 0;
+    return `<button class="menu-tab${selected ? ' active' : ''}" id="tab-${tab.id}" role="tab" aria-selected="${selected}" aria-controls="panel-${tab.id}" tabindex="${selected ? '0' : '-1'}" data-panel="${tab.id}" type="button">${escapeHtml(tab.label)}</button>`;
+  }).join('');
+};
+
+const renderWineCard = (wine) => {
+  const prices = [];
+  if (wine.glass125ml) prices.push(`125ml: ${wine.glass125ml}`);
+  if (wine.glass175ml) prices.push(`175ml: ${wine.glass175ml}`);
+  if (wine.glass250ml) prices.push(`250ml: ${wine.glass250ml}`);
+  if (wine.bottle) prices.push(`Bottle: ${wine.bottle}`);
+
+  return `
+    <div class="wine-card">
+      <div class="wine-header">
+        <div class="wine-name">${escapeHtml(wine.name)}</div>
+        <div class="wine-origin">${escapeHtml(wine.origin)}</div>
+      </div>
+      <div class="wine-prices">${prices.join(' · ')}</div>
+    </div>
+  `;
+};
+
+const renderWines = (siteData) => {
+  if (!siteData.wines || siteData.wines.length === 0) return;
+
+  const winesByType = {
+    White: [],
+    Red: [],
+    'Rosé': [],
+    Sparkling: [],
+    Champagne: []
+  };
+
+  siteData.wines.forEach(wine => {
+    const type = wine.type || 'White';
+    if (winesByType[type]) {
+      winesByType[type].push(wine);
+    }
+  });
+
+  // White wines
+  const whiteGrid = document.getElementById('wines-white-grid');
+  if (whiteGrid) {
+    whiteGrid.innerHTML = winesByType.White.map(renderWineCard).join('') || '<p>No white wines available</p>';
+  }
+
+  // Red wines
+  const redGrid = document.getElementById('wines-red-grid');
+  if (redGrid) {
+    redGrid.innerHTML = winesByType.Red.map(renderWineCard).join('') || '<p>No red wines available</p>';
+  }
+
+  // Rosé wines
+  const roseGrid = document.getElementById('wines-rose-grid');
+  if (roseGrid) {
+    roseGrid.innerHTML = winesByType['Rosé'].map(renderWineCard).join('') || '<p>No rosé wines available</p>';
+  }
+
+  // Sparkling & Champagne
+  const sparklingGrid = document.getElementById('wines-sparkling-grid');
+  if (sparklingGrid) {
+    const sparkling = [...winesByType.Sparkling, ...winesByType.Champagne];
+    sparklingGrid.innerHTML = sparkling.map(renderWineCard).join('') || '<p>No sparkling wines available</p>';
+  }
+};
+
+const renderHotDrinks = (siteData) => {
+  const el = document.getElementById('hot-drinks-grid');
+  if (!el || !siteData.hotBeverages) return;
+
+  el.innerHTML = siteData.hotBeverages.map(drink => `
+    <div class="wine-card">
+      <div class="wine-header">
+        <div class="wine-name">${escapeHtml(drink.name)}</div>
+        <div class="wine-origin">${escapeHtml(drink.price)}</div>
+      </div>
+      ${drink.description ? `<div class="wine-prices">${escapeHtml(drink.description)}</div>` : ''}
+    </div>
+  `).join('');
+};
+
+const initDrinksTabs = () => {
+  const tabsEl = document.getElementById('drinks-tabs');
+  const panelsEl = document.getElementById('drinks-panels');
+  if (!tabsEl || !panelsEl) return;
+
+  const tabs = [...tabsEl.querySelectorAll('.menu-tab')];
+  const panels = [...panelsEl.querySelectorAll('.drinks-panel')];
+
+  const setActiveTab = (tab, moveFocus = false) => {
+    if (!tab) return;
+    const panelId = `panel-${tab.dataset.panel}`;
+
+    tabs.forEach((item) => {
+      const isActive = item === tab;
+      item.classList.toggle('active', isActive);
+      item.setAttribute('aria-selected', String(isActive));
+      item.tabIndex = isActive ? 0 : -1;
+    });
+
+    panels.forEach((panel) => {
+      const isActive = panel.id === panelId;
+      panel.classList.toggle('active', isActive);
+      panel.hidden = !isActive;
+    });
+
+    if (moveFocus) tab.focus();
+  };
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => setActiveTab(tab));
+    tab.addEventListener('keydown', (event) => {
+      const index = tabs.indexOf(tab);
+      let targetIndex = -1;
+
+      if (event.key === 'ArrowRight') targetIndex = (index + 1) % tabs.length;
+      if (event.key === 'ArrowLeft') targetIndex = (index - 1 + tabs.length) % tabs.length;
+      if (event.key === 'Home') targetIndex = 0;
+      if (event.key === 'End') targetIndex = tabs.length - 1;
+
+      if (targetIndex >= 0) {
+        event.preventDefault();
+        setActiveTab(tabs[targetIndex], true);
+      }
+    });
+  });
 };
 
 const wireDojoLinks = () => {
@@ -321,6 +500,35 @@ const wirePrivateHireForm = () => {
   });
 };
 
+// Fetch with retry logic
+const fetchWithRetry = async (url, retries = 2, delay = 1000) => {
+  for (let i = 0; i <= retries; i++) {
+    try {
+      const response = await fetch(url);
+      if (response.ok) return response;
+      if (response.status >= 500 && i < retries) {
+        await new Promise(r => setTimeout(r, delay * (i + 1)));
+        continue;
+      }
+      throw new Error(`HTTP ${response.status}`);
+    } catch (err) {
+      if (i === retries) throw err;
+      await new Promise(r => setTimeout(r, delay * (i + 1)));
+    }
+  }
+};
+
+// Show loading state
+const setLoadingState = (loading) => {
+  const containers = ['#cocktails-grid', '#menu-panels', '#hours-grid'];
+  containers.forEach(selector => {
+    const el = document.querySelector(selector);
+    if (el && loading && !el.innerHTML.includes('menu-item')) {
+      el.innerHTML = '<div class="loading-state">Loading...</div>';
+    }
+  });
+};
+
 const init = async () => {
   injectLayout();
   initAccessibility();
@@ -329,25 +537,284 @@ const init = async () => {
   initReveal();
   wireDojoLinks();
   wirePrivateHireForm();
+  initTestimonialsCarousel();
+  initNewsletterForm();
+  initOpenStatus();
+  initParallax();
+  initFloatingButton();
+
+  setLoadingState(true);
 
   try {
-    // Attempt to fetch from the API, with fallback to local data
-    let response = await fetch('/api/menu');
-
-    // If API fails (404 or other error), fall back to local JSON
-    if (!response.ok) {
+    // Attempt to fetch from the API with retry, fallback to local data
+    let response;
+    try {
+      response = await fetchWithRetry('/api/menu');
+    } catch {
       console.warn('API unavailable, using local data');
       response = await fetch('./data/site-data.json');
     }
 
     if (!response.ok) throw new Error('Could not load data');
     const siteData = await response.json();
+    
     renderMenus(siteData);
     renderCocktails(siteData);
+    renderHappyHour(siteData);
     renderHours(siteData);
+    
+    // Drinks page
+    renderDrinksTabs();
+    renderWines(siteData);
+    renderHotDrinks(siteData);
+    initDrinksTabs();
   } catch (error) {
     console.error('Error loading menu data:', error);
+    // Show error state
+    const cocktailsGrid = document.getElementById('cocktails-grid');
+    if (cocktailsGrid) {
+      cocktailsGrid.innerHTML = '<p class="error-state">Unable to load cocktails. Please refresh or try again later.</p>';
+    }
   }
 };
+
+// Testimonials Carousel
+const initTestimonialsCarousel = () => {
+  const carousel = document.getElementById('testimonials-carousel');
+  if (!carousel) return;
+
+  const testimonials = carousel.querySelectorAll('.testimonial');
+  const dotsContainer = carousel.querySelector('.testimonial-dots');
+  if (!testimonials.length) return;
+
+  let currentIndex = 0;
+  let interval;
+
+  // Create dots
+  testimonials.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = `testimonial-dot${i === 0 ? ' active' : ''}`;
+    dot.setAttribute('role', 'tab');
+    dot.setAttribute('aria-label', `Testimonial ${i + 1}`);
+    dot.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+    dot.addEventListener('click', () => goTo(i));
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = dotsContainer.querySelectorAll('.testimonial-dot');
+
+  const goTo = (index) => {
+    testimonials[currentIndex].classList.remove('active');
+    dots[currentIndex].classList.remove('active');
+    dots[currentIndex].setAttribute('aria-selected', 'false');
+
+    currentIndex = index;
+
+    testimonials[currentIndex].classList.add('active');
+    dots[currentIndex].classList.add('active');
+    dots[currentIndex].setAttribute('aria-selected', 'true');
+  };
+
+  const next = () => goTo((currentIndex + 1) % testimonials.length);
+
+  const startAutoplay = () => {
+    interval = setInterval(next, 5000);
+  };
+
+  const stopAutoplay = () => {
+    clearInterval(interval);
+  };
+
+  carousel.addEventListener('mouseenter', stopAutoplay);
+  carousel.addEventListener('mouseleave', startAutoplay);
+
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    startAutoplay();
+  }
+};
+
+// Newsletter Form
+const initNewsletterForm = () => {
+  const form = document.getElementById('newsletter-form');
+  const status = document.getElementById('newsletter-status');
+  if (!form) return;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = form.querySelector('input[name="email"]').value;
+    
+    // Simulate subscription (would connect to email service in production)
+    if (status) {
+      status.textContent = 'Thanks for subscribing! We\'ll be in touch.';
+      status.classList.add('success');
+      form.reset();
+      
+      setTimeout(() => {
+        status.textContent = '';
+        status.classList.remove('success');
+      }, 4000);
+    }
+  });
+};
+
+// Open/Closed Status
+const initOpenStatus = () => {
+  const statusEl = document.getElementById('open-status');
+  if (!statusEl) return;
+
+  const HOURS = {
+    0: null, // Sunday - closed
+    1: null, // Monday - closed
+    2: { open: 16, close: 23 }, // Tuesday 4pm-11pm
+    3: { open: 16, close: 23 }, // Wednesday 4pm-11pm
+    4: { open: 16, close: 23.5 }, // Thursday 4pm-11:30pm
+    5: { open: 12, close: 24 }, // Friday 12pm-12am
+    6: { open: 12, close: 24 }  // Saturday 12pm-12am
+  };
+
+  const updateStatus = () => {
+    const now = new Date();
+    const day = now.getDay();
+    const hour = now.getHours() + now.getMinutes() / 60;
+    const todayHours = HOURS[day];
+
+    let isOpen = false;
+    let message = '';
+
+    if (todayHours && hour >= todayHours.open && hour < todayHours.close) {
+      isOpen = true;
+      const closeHour = Math.floor(todayHours.close);
+      const closeMin = (todayHours.close % 1) * 60;
+      message = `Open now · Closes at ${closeHour === 24 ? '12' : closeHour > 12 ? closeHour - 12 : closeHour}${closeMin ? ':30' : ''}${closeHour >= 12 ? 'am' : 'pm'}`;
+    } else {
+      // Find next opening
+      let nextDay = day;
+      for (let i = 1; i <= 7; i++) {
+        nextDay = (day + i) % 7;
+        if (HOURS[nextDay]) {
+          const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+          const openHour = HOURS[nextDay].open;
+          message = `Closed · Opens ${i === 1 ? 'tomorrow' : days[nextDay]} at ${openHour > 12 ? openHour - 12 : openHour}${openHour >= 12 ? 'pm' : 'am'}`;
+          break;
+        }
+      }
+    }
+
+    statusEl.innerHTML = `<span class="status-dot ${isOpen ? 'open' : 'closed'}"></span>${message}`;
+  };
+
+  updateStatus();
+  setInterval(updateStatus, 60000); // Update every minute
+};
+
+// Parallax Effect (disabled)
+const initParallax = () => {
+  // Zoom effect disabled per preference
+  return;
+};
+
+// Floating Book Button
+const initFloatingButton = () => {
+  const btn = document.querySelector('.floating-book-btn');
+  if (!btn) return;
+
+  let lastScroll = 0;
+  const threshold = 300;
+
+  const handleScroll = () => {
+    const currentScroll = window.scrollY;
+    
+    if (currentScroll > threshold) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+    
+    lastScroll = currentScroll;
+  };
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+};
+
+// Scroll Reveal Animation
+const initScrollReveal = () => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-stagger');
+  if (!revealElements.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  revealElements.forEach(el => observer.observe(el));
+};
+
+// Scroll to Top Button
+const initScrollToTop = () => {
+  // Create button if not exists
+  if (document.querySelector('.scroll-to-top')) return;
+  
+  const btn = document.createElement('button');
+  btn.className = 'scroll-to-top';
+  btn.setAttribute('aria-label', 'Scroll to top');
+  btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>`;
+  document.body.appendChild(btn);
+
+  const handleScroll = () => {
+    if (window.scrollY > 400) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  };
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+};
+
+// Auto-add reveal classes to common sections
+const autoAddRevealClasses = () => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  // Add reveal to sections
+  document.querySelectorAll('section > .container, .hero-tagline, .featured-cocktail, .testimonials-section, .footer-newsletter').forEach(el => {
+    if (!el.classList.contains('reveal') && !el.classList.contains('reveal-left') && !el.classList.contains('reveal-right')) {
+      el.classList.add('reveal');
+    }
+  });
+
+  // Add stagger to grids
+  document.querySelectorAll('.gallery-grid, .wines-grid').forEach(el => {
+    if (!el.classList.contains('reveal-stagger')) {
+      el.classList.add('reveal-stagger');
+    }
+  });
+};
+
+// Initialize all visual enhancements
+const initVisualEnhancements = () => {
+  autoAddRevealClasses();
+  initScrollReveal();
+  initScrollToTop();
+};
+
+// Call after DOM ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initVisualEnhancements);
+} else {
+  initVisualEnhancements();
+}
 
 init();

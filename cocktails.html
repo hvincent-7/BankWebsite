@@ -3,7 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cocktails — The Bank</title>
+  <title>Drinks Menu — The Bank | Cocktails, Wines & More</title>
+  <meta name="description" content="Explore our drinks menu featuring signature cocktails, fine wines, champagne, and hot drinks. Happy hour available on selected cocktails.">
+  
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Drinks Menu — The Bank">
+  <meta property="og:description" content="Signature cocktails, fine wines, champagne and hot drinks. Happy hour deals available.">
+  <meta property="og:image" content="https://thebanklowfell.co.uk/assets/images/cocktails-new.jpg">
+  <meta property="og:url" content="https://thebanklowfell.co.uk/cocktails.html">
+  <meta name="twitter:card" content="summary_large_image">
+  
   <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,29 +24,98 @@
   <nav id="app-nav" class="site-nav"></nav>
 
   <main>
-    <section class="page-hero">
-      <div class="container">
+    <!-- Drinks Hero with Image -->
+    <section class="drinks-hero">
+      <div class="drinks-hero-image">
+        <img src="assets/images/cocktails-new.jpg" alt="Signature cocktails at The Bank" loading="eager">
+      </div>
+      <div class="drinks-hero-content">
         <p class="eyebrow reveal">The Bank</p>
-        <h1 class="section-title reveal">Signature <em>Cocktails</em></h1>
-        <p class="section-copy reveal copy-center">Wines &ndash; Tapas &ndash; Cocktails</p>
+        <h1 class="section-title reveal">Drinks <em>Menu</em></h1>
+        <p class="section-copy reveal">Handcrafted cocktails, fine wines, and premium spirits</p>
       </div>
     </section>
 
     <section class="section">
       <div class="container reveal">
-        <p class="section-copy">Classic serves and house favourites at The Bank bar.</p>
-        <div id="cocktails-grid" class="cocktails-grid"></div>
-      </div>
-    </section>
+        <!-- Drinks Tabs -->
+        <div id="drinks-tabs" class="menu-tabs" role="tablist" aria-label="Drinks categories"></div>
+        
+        <!-- Drinks Panels -->
+        <div id="drinks-panels" class="drinks-panels">
+          <!-- Cocktails Panel -->
+          <div id="panel-cocktails" class="drinks-panel active" role="tabpanel" aria-labelledby="tab-cocktails">
+            <!-- Featured Cocktail -->
+            <div class="featured-cocktail reveal">
+              <div class="featured-cocktail-image">
+                <img src="assets/images/cocktails-new.jpg" alt="Signature Cocktails" loading="lazy">
+              </div>
+              <div class="featured-cocktail-content">
+                <span class="eyebrow">Happy Hour</span>
+                <h3>Cocktail Hour</h3>
+                <p id="happy-hour-times">Loading times...</p>
+                <p class="featured-cocktail-price" id="happy-hour-price"></p>
+                <p class="featured-cocktail-note">Available on selected cocktails marked with 🍸</p>
+              </div>
+            </div>
+            
+            <h3 class="drinks-section-title">Our Cocktails</h3>
+            <div id="cocktails-grid" class="cocktails-grid"></div>
+          </div>
 
-    <section class="section alt">
-      <div class="container card reveal">
-        <h3>Happy Hour</h3>
-        <p>Wednesday–Thursday all day · Friday 12pm–6pm</p>
-        <p class="mt-05 happy-hour-price">£8.50 each or 2 for £14</p>
+          <!-- White Wines Panel -->
+          <div id="panel-white" class="drinks-panel" role="tabpanel" aria-labelledby="tab-white" hidden>
+            <div class="wine-intro reveal">
+              <h3 class="drinks-section-title">White Wines</h3>
+              <p class="wine-intro-text">Crisp, refreshing whites from around the world</p>
+            </div>
+            <div id="wines-white-grid" class="wines-grid"></div>
+          </div>
+
+          <!-- Red Wines Panel -->
+          <div id="panel-red" class="drinks-panel" role="tabpanel" aria-labelledby="tab-red" hidden>
+            <div class="wine-intro reveal">
+              <h3 class="drinks-section-title">Red Wines</h3>
+              <p class="wine-intro-text">Bold reds and smooth finishes</p>
+            </div>
+            <div id="wines-red-grid" class="wines-grid"></div>
+          </div>
+
+          <!-- Rosé Wines Panel -->
+          <div id="panel-rose" class="drinks-panel" role="tabpanel" aria-labelledby="tab-rose" hidden>
+            <div class="wine-intro reveal">
+              <h3 class="drinks-section-title">Rosé Wines</h3>
+              <p class="wine-intro-text">Light and elegant rosés for any occasion</p>
+            </div>
+            <div id="wines-rose-grid" class="wines-grid"></div>
+          </div>
+
+          <!-- Sparkling & Champagne Panel -->
+          <div id="panel-sparkling" class="drinks-panel" role="tabpanel" aria-labelledby="tab-sparkling" hidden>
+            <div class="wine-intro reveal">
+              <h3 class="drinks-section-title">Fizz & Champagne</h3>
+              <p class="wine-intro-text">Celebrate with our selection of bubbles</p>
+            </div>
+            <div id="wines-sparkling-grid" class="wines-grid"></div>
+          </div>
+
+          <!-- Hot Drinks Panel -->
+          <div id="panel-hot" class="drinks-panel" role="tabpanel" aria-labelledby="tab-hot" hidden>
+            <div class="wine-intro reveal">
+              <h3 class="drinks-section-title">Hot Drinks</h3>
+              <p class="wine-intro-text">Warm up with our specialty coffees and teas</p>
+            </div>
+            <div id="hot-drinks-grid" class="hot-drinks-grid"></div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
+
+  <!-- Floating Book Button -->
+  <a href="https://web.dojo.app/create_booking/vendor/0XYLokEoeff77KUU00p7ex68kXi4SF8dCobxdAlAkQ0_restaurant" class="floating-book-btn" aria-label="Reserve a table" target="_blank" rel="noopener noreferrer">
+    <span>Book</span>
+  </a>
 
   <footer id="app-footer" class="site-footer"></footer>
   <script src="assets/js/site.js" defer></script>
