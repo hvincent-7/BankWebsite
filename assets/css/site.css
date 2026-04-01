@@ -177,7 +177,7 @@ select:focus-visible {
   background:
     linear-gradient(180deg, rgba(13,12,10,0.5) 0%, rgba(13,12,10,0.88) 100%),
     radial-gradient(circle at 50% 45%, rgba(201,168,92,0.15), transparent 55%),
-    url('../images/tapas-platter.jpg') center/cover no-repeat,
+    url('../images/food/tapas-platter.jpg') center/cover no-repeat,
     linear-gradient(180deg, var(--ink) 0%, #110f0c 100%);
 }
 .hero h1 {
@@ -200,8 +200,7 @@ select:focus-visible {
   text-align: center;
   background:
     linear-gradient(180deg, rgba(26, 24, 20, 0.85) 0%, rgba(13, 12, 10, 0.95) 100%),
-    url('../images/hero-page.jpg') center/cover no-repeat,
-    linear-gradient(180deg, rgba(26, 24, 20, 0.95) 0%, rgba(13, 12, 10, 0.25) 100%);
+    url('../images/venue/interior-dining-room-logo.jpg') center/cover no-repeat;
 }
 .page-hero .section-title { margin-bottom: 0.35rem; }
 

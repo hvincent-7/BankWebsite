@@ -11,18 +11,26 @@ Smash Burger,"Two smashed beef patties, lettuce, tomato, red onion, mature chees
 Chocolate Brownie,Served with vanilla ice cream,,two-course,Desserts,1
 Sticky Toffee Pudding,Served with custard or vanilla ice cream,,two-course,Desserts,2
 Ice Cream,"Choice of vanilla, chocolate or strawberry",,two-course,Desserts,3
-Tempura King Prawns,Asian slaw & sweet chilli dip,£11,tapas,Tapas Selection,1
-Thai Beef Skewers,Slaw & black bean aioli,£10,tapas,Tapas Selection,2
-Char Sui Belly Pork,Slaw & 5 spice carrot purée,£10,tapas,Tapas Selection,3
-Mussels,Thai curry or white wine sauce,£10,tapas,Tapas Selection,4
-Panko Breaded Calamari,Garlic mayonnaise,£9,tapas,Tapas Selection,5
-Fish Goujons,"Battered cod, tartare sauce",£9,tapas,Tapas Selection,6
-Chicken Wings,"BBQ, salt & chilli, or spicy",£10,tapas,Light Bites,1
-Halloumi Fries,"Spring onions, sweet chilli (V, GF)",£8,tapas,Light Bites,2
-Pan Fried Chorizo,Red wine and garlic (GF),£8,tapas,Light Bites,3
-Beef Meatballs,"Spicy tomato sauce, spring onions (GF)",£9,tapas,Light Bites,4
-Patatas Bravas,Spicy bravas sauce (VG),£8,tapas,Light Bites,5
-Hummus & Red Pepper Bruschetta,Rocket & balsamic glaze (VG),£8,tapas,Light Bites,6
+Mussels,In Thai curry or garlic and white wine cream (GF),£9,tapas,Tapas,1
+Gambas Pil Pil,"Baby prawns cooked in garlic, paprika and chilli oil (GF)",£9,tapas,Tapas,2
+Cod Fish Goujons,"Deep fried cod goujons, served with tartare sauce",£8,tapas,Tapas,3
+Beef Meatballs,Served in a spicy tomato and herb sauce (GF),£9,tapas,Tapas,4
+Garlic Mushrooms,"In a creamy, white wine sauce (V)(GF)",£8,tapas,Tapas,5
+Patatas Bravas,Deep fried potatoes with spicy tomato and herb sauce (VG)(GF),£8,tapas,Tapas,6
+Honey Garlic Chicken,Topped with spring onion and sesame seeds,£8,tapas,Tapas,7
+Halloumi Fries,"Topped with spring onions, served with sweet chilli sauce (V)(GF)",£8,tapas,Tapas,8
+Chicken Wings,Teriyaki marinade with sesame seeds or salt and chilli,£8,tapas,Tapas,9
+Spicy Hummus,"Made from chickpeas, tahini (sesame paste), cumin, olive oil, lemon juice & garlic, served with bread (VG)",£7,tapas,Tapas,10
+Spring Rolls & Onion Bhaji,Served with sweet chilli sauce & mint yoghurt (V),£7,tapas,Tapas,11
+Salt & Chilli Squid,"Lightly battered calamari, tossed in salt & chilli flakes, served with garlic mayo",£8,tapas,Tapas,12
+Cheese Nachos,"Served with sour cream, salsa, guacamole and jalapeno (V)",£7,tapas,Tapas,13
+Extra Bread,,£2,tapas,Sides,1
+Garlic Bread Slices,(V),£5,tapas,Sides,2
+Garlic Bread Cheese Slices,(V),£6.50,tapas,Sides,3
+Fries/Chips,(VG),£4.50,tapas,Sides,4
+Sweet Potato Fries,(V),£5,tapas,Sides,5
+Mixed Salad,(VG)(GF),£4.50,tapas,Sides,6
+Salt & Pepper Fries,(VG),£5,tapas,Sides,7
 Ribeye/Sirloin Steak,"Succulent 8oz ribeye or sirloin cooked to your liking, served with a rich garlic mushroom sauce, seasoned baby potatoes and garnish (GF)",£22,mains,Mains,1
 Chicken Katsu,"Crispy breaded chicken served with Japanese-style curry sauce, steamed rice and garnish",£14,mains,Mains,2
 Thai Green Chicken/Prawn Curry,"Aromatic green curry infused with lemongrass and kaffir lime, creamy coconut milk, served with steamed rice (GF)",£16,mains,Mains,3
@@ -40,8 +48,8 @@ Selected Cocktails,Choose from our brunch cocktail menu,,brunch,Unlimited Drinks
 Pint of Coors or Cider,Unlimited refills,,brunch,Unlimited Drinks,3
 Selected House Spirit,With draught mixer,,brunch,Unlimited Drinks,4
 Mocktails,Non-alcoholic options available,,brunch,Unlimited Drinks,5
-Available Any Day We're Open,Flexible booking — no fixed sittings,,brunch,Availability,1
-Last Booking,5pm (3pm on Sundays),,brunch,Availability,2
+Midweek,Available all day Wednesday to Friday,,brunch,Availability,1
+Friday & Saturday,"12:30pm, 2pm or 3:30pm sittings",,brunch,Availability,2
 Max Table Size,6 persons. T&Cs apply,,brunch,Availability,3
 Fish and Chips,Hand-battered cod served with chunky chips and mushy peas,£14.00,delivery,Mains,1
 Asian Sharer Box,"Salt & chilli pepper chicken wings, Asian style breaded items and sauces",£20.00,delivery,Mains,2
