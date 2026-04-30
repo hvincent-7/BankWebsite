@@ -1,55 +1,13 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "api/menu.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "*.html",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "assets/**",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "data/**",
-      "use": "@vercel/static"
-    }
+  "rewrites": [
+    { "source": "/api/menu", "destination": "/api/menu.js" },
+    { "source": "/api/health", "destination": "/api/menu.js" },
+    { "source": "/(menus|drinks|visit|book|private-hire|cocktails)", "destination": "/$1.html" },
+    { "source": "/(.*)\\.html", "destination": "/$1.html" }
   ],
-  "routes": [
-    {
-      "src": "/api/menu",
-      "dest": "/api/menu.js"
-    },
-    {
-      "src": "/api/health",
-      "dest": "/api/menu.js"
-    },
-    {
-      "src": "/assets/(.*)",
-      "dest": "/assets/$1"
-    },
-    {
-      "src": "/data/(.*)",
-      "dest": "/data/$1"
-    },
-    {      "src": "/(cocktails|cocktails\.html)",
-      "headers": { "Location": "/drinks" },
-      "status": 301
-    },
-    {      "src": "/(.*)\\.html",
-      "dest": "/$1.html"
-    },
-    {
-      "src": "/",
-      "dest": "/index.html"
-    },
-    {
-      "src": "/(menus|drinks|visit|book|private-hire)",
-      "dest": "/$1.html"
-    }
+  "redirects": [
+    { "source": "/cocktails", "destination": "/drinks", "permanent": true },
+    { "source": "/cocktails.html", "destination": "/drinks", "permanent": true }
   ],
   "headers": [
     {
@@ -65,8 +23,5 @@
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  }
+  ]
 }
