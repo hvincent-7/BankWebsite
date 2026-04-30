@@ -773,13 +773,17 @@ const initOpenStatus = (siteData) => {
     if (todayHours && hour >= todayHours.open && hour < todayHours.close) {
       isOpen = true;
       message = `Open now · Closes around ${format12Hour(todayHours.close)}`;
+    } else if (todayHours && hour < todayHours.open) {
+      // Hasn't opened yet today
+      message = `Closed · Opens today at ${format12Hour(todayHours.open)}`;
     } else {
-      // Find next opening
+      // Closed for the rest of today — find next open day
       let nextDay = day;
       for (let i = 1; i <= 7; i++) {
         nextDay = (day + i) % 7;
         if (hours[nextDay]) {
-          message = `Closed · Opens ${i === 1 ? 'tomorrow' : days[nextDay]} at ${format12Hour(hours[nextDay].open)}`;
+          const label = i === 1 ? 'tomorrow' : `${days[nextDay]}`;
+          message = `Closed · Opens ${label} at ${format12Hour(hours[nextDay].open)}`;
           break;
         }
       }
