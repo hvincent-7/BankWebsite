@@ -76,6 +76,7 @@ const initMobileNav = () => {
     nav.classList.toggle('open', open);
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+    document.body.style.overflow = open ? 'hidden' : '';
   };
 
   toggle.addEventListener('click', () => {
