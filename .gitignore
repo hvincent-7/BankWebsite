@@ -19,6 +19,12 @@ yarn.lock
 .DS_Store
 Thumbs.db
 
+# Stray media files in root
+/*.mov
+/*.mp4
+/*.webp
+/*.webm
+
 # Build outputs
 .next
 dist

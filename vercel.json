@@ -35,8 +35,11 @@
       "src": "/data/(.*)",
       "dest": "/data/$1"
     },
-    {
-      "src": "/(.*)\\.html",
+    {      "src": "/(cocktails|cocktails\.html)",
+      "headers": { "Location": "/drinks" },
+      "status": 301
+    },
+    {      "src": "/(.*)\\.html",
       "dest": "/$1.html"
     },
     {
