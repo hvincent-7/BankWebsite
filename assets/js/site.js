@@ -729,15 +729,18 @@ const renderReviews = (siteData) => {
     return `<span class="review-source-badge">${escapeHtml(source)}</span>`;
   };
 
+  const taUrl = 'https://www.tripadvisor.co.uk/Restaurant_Review-g186394-d8090498-Reviews-The_Bank_Restaurant_Bar-Gateshead_Tyne_and_Wear_England.html';
+
   grid.innerHTML = reviews.map((r, i) => `
-    <div class="review-card" data-index="${i}" aria-hidden="${i !== 0}">
+    <a class="review-card" data-index="${i}" aria-hidden="${i !== 0}" href="${r.url || taUrl}" target="_blank" rel="noopener noreferrer" aria-label="Read this review on ${escapeHtml(r.source || 'TripAdvisor')}">
       <div class="review-stars" aria-label="${r.rating} out of 5 stars">${stars(r.rating)}</div>
       <blockquote class="review-quote">"${escapeHtml(r.quote)}"</blockquote>
       <div class="review-footer">
         <span class="review-author">- ${escapeHtml(r.author)}</span>
+        <span class="review-verify">Verify ↗</span>
         ${sourceIcon(r.source)}
       </div>
-    </div>
+    </a>
   `).join('');
 
   // Overall rating summary
