@@ -796,7 +796,7 @@ input[type="date"].form-input {
 @media (max-width: 900px) {
   .grid-2, .menu-cols, .form-grid-2 { grid-template-columns: 1fr; }
   .cocktails-grid { grid-template-columns: 1fr; }
-  .cocktail-card-image { width: 110px; min-width: 110px; min-height: 110px; }
+  .cocktail-card-image { width: 110px; min-width: 110px; height: 110px; align-self: flex-start; }
   .private-hire-showcase { grid-template-columns: 1fr; }
   .private-hire-showcase-media { min-height: 260px; }
   .gallery { grid-template-columns: repeat(2, 1fr); }
