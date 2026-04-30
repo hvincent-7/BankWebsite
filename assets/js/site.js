@@ -752,7 +752,8 @@ const renderReviews = (siteData) => {
         <span class="reviews-overall-score">4.1</span>
         <div>
           <div class="reviews-overall-stars" aria-label="4.1 out of 5">${stars(4)}</div>
-          <span class="reviews-overall-count">Based on 485 reviews on TripAdvisor</span>
+          <span class="reviews-overall-count">485 reviews on TripAdvisor</span>
+          <span class="reviews-overall-rank">#25 of 296 Restaurants in Gateshead</span>
         </div>
       </div>
     `;

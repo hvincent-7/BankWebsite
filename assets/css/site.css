@@ -1463,6 +1463,15 @@ input[type="date"].form-input {
   letter-spacing: 0.08em;
 }
 
+.reviews-overall-rank {
+  display: block;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  color: var(--gold);
+  letter-spacing: 0.06em;
+  margin-top: 0.2rem;
+}
+
 .reviews-grid {
   position: relative;
 }
