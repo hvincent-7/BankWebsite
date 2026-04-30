@@ -165,7 +165,14 @@
       <div class="container">
         <h2 class="section-title reveal">What Our Guests <em>Say</em></h2>
         <div id="reviews-summary" class="reviews-summary reveal"></div>
-        <div id="reviews-grid" class="reviews-grid reveal"></div>
+        <div class="reviews-carousel-wrap reveal">
+          <button class="reviews-prev" aria-label="Previous review">&#8249;</button>
+          <div class="reviews-carousel-viewport">
+            <div id="reviews-grid" class="reviews-grid"></div>
+          </div>
+          <button class="reviews-next" aria-label="Next review">&#8250;</button>
+        </div>
+        <div id="reviews-dots" class="reviews-dots"></div>
       </div>
     </section>
   </main>

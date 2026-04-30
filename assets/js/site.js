@@ -711,6 +711,9 @@ const init = async () => {
 const renderReviews = (siteData) => {
   const grid = document.getElementById('reviews-grid');
   const summary = document.getElementById('reviews-summary');
+  const dotsEl = document.getElementById('reviews-dots');
+  const prevBtn = document.querySelector('.reviews-prev');
+  const nextBtn = document.querySelector('.reviews-next');
   if (!grid) return;
 
   const reviews = siteData.reviews || [];
@@ -726,12 +729,12 @@ const renderReviews = (siteData) => {
     return `<span class="review-source-badge">${escapeHtml(source)}</span>`;
   };
 
-  grid.innerHTML = reviews.map(r => `
-    <div class="review-card">
+  grid.innerHTML = reviews.map((r, i) => `
+    <div class="review-card" data-index="${i}" aria-hidden="${i !== 0}">
       <div class="review-stars" aria-label="${r.rating} out of 5 stars">${stars(r.rating)}</div>
       <blockquote class="review-quote">"${escapeHtml(r.quote)}"</blockquote>
       <div class="review-footer">
-        <span class="review-author">— ${escapeHtml(r.author)}</span>
+        <span class="review-author">- ${escapeHtml(r.author)}</span>
         ${sourceIcon(r.source)}
       </div>
     </div>
@@ -751,6 +754,53 @@ const renderReviews = (siteData) => {
       </div>
     `;
   }
+
+  // Dots
+  if (dotsEl) {
+    dotsEl.innerHTML = reviews.map((_, i) => `<button class="reviews-dot${i === 0 ? ' active' : ''}" aria-label="Go to review ${i + 1}" data-index="${i}"></button>`).join('');
+  }
+
+  // Carousel logic
+  let current = 0;
+  const cards = [...grid.querySelectorAll('.review-card')];
+  const dots = dotsEl ? [...dotsEl.querySelectorAll('.reviews-dot')] : [];
+
+  const goTo = (index) => {
+    cards[current].classList.remove('active');
+    cards[current].setAttribute('aria-hidden', 'true');
+    dots[current]?.classList.remove('active');
+
+    current = (index + reviews.length) % reviews.length;
+
+    cards[current].classList.add('active');
+    cards[current].setAttribute('aria-hidden', 'false');
+    dots[current]?.classList.add('active');
+  };
+
+  // Initialise first card
+  cards[0].classList.add('active');
+
+  prevBtn?.addEventListener('click', () => goTo(current - 1));
+  nextBtn?.addEventListener('click', () => goTo(current + 1));
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => goTo(Number(dot.dataset.index)));
+  });
+
+  // Auto-advance every 6s
+  let timer = setInterval(() => goTo(current + 1), 6000);
+  const resetTimer = () => { clearInterval(timer); timer = setInterval(() => goTo(current + 1), 6000); };
+  prevBtn?.addEventListener('click', resetTimer);
+  nextBtn?.addEventListener('click', resetTimer);
+  dots.forEach(dot => dot.addEventListener('click', resetTimer));
+
+  // Swipe support
+  let touchStartX = 0;
+  grid.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  grid.addEventListener('touchend', (e) => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) { goTo(diff > 0 ? current + 1 : current - 1); resetTimer(); }
+  }, { passive: true });
 };
 
 // Newsletter Form

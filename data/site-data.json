@@ -345,5 +345,13 @@
     { "name": "Pot of English Tea", "price": "£3.50" },
     { "name": "Liqueur Coffees", "description": "Baileys, Tia Maria, Jameson, Amaretto, Brandy", "price": "£7.00" }
   ],
-  "sundayNote": "Serving Tapas and Main Menu only. Please note we do not serve Sunday lunch."
+  "sundayNote": "Serving Tapas and Main Menu only. Please note we do not serve Sunday lunch.",
+  "reviews": [
+    { "author": "Lisa C.", "quote": "1st time visiting and would definitely return. Highly recommended their bottomless brunch — staff couldn't do enough for you, very friendly and fantastic atmosphere.", "source": "TripAdvisor", "rating": 5 },
+    { "author": "BDavis", "quote": "We shared the 5 Tapas Board which was delicious — every dish was packed with flavour. Our server Abbie was so pleasant and attentive. The atmosphere was lively but relaxed, ideal for catching up after work. Would definitely recommend.", "source": "TripAdvisor", "rating": 5 },
+    { "author": "Colette J.", "quote": "Love this place! The best pint of Guinness on the fell, can always have a good chat with the bar staff. Food is amazing as well!", "source": "TripAdvisor", "rating": 5 },
+    { "author": "FrequentFlier", "quote": "Tried the Bank Smash Burger — it was fantastic! Juicy, flavoursome, and cooked perfectly. Easily one of the best burgers I've had in a while. Perfect place for good food, great cocktails, and a relaxed night out.", "source": "TripAdvisor", "rating": 5 },
+    { "author": "Eric M.", "quote": "We took our grandchildren for a treat for mocktails. The staff were so friendly and helpful — they worked out the best deal for drinks and even brought some chips. Such a great welcome and wonderful service.", "source": "TripAdvisor", "rating": 5 },
+    { "author": "Joanne G.", "quote": "I've taken my elderly mum, who is a wheelchair user, to The Bank twice for lunch and each time the meals were very good. The staff are very courteous and made sure mum had everything she needed. I recommend this bar restaurant without reservation.", "source": "TripAdvisor", "rating": 5 }
+  ]
 }
