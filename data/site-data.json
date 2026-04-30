@@ -89,7 +89,6 @@
             {
               "title": "Mains",
               "items": [
-                { "name": "Ribeye/Sirloin Steak", "desc": "Succulent 8oz ribeye or sirloin cooked to your liking, served with a rich garlic mushroom sauce, seasoned baby potatoes and garnish (GF)", "price": "£22" },
                 { "name": "Chicken Katsu", "desc": "Crispy breaded chicken served with Japanese-style curry sauce, steamed rice and garnish", "price": "£14" },
                 { "name": "Thai Green Chicken/Prawn Curry", "desc": "Aromatic green curry infused with lemongrass and kaffir lime, creamy coconut milk, served with steamed rice (GF)", "price": "£16" },
                 { "name": "Thai Green Vegetable Curry", "desc": "Aromatic green curry infused with lemongrass and kaffir lime, creamy coconut milk, served with steamed rice (V)(VG)", "price": "£14" },
@@ -187,7 +186,6 @@
               {
                 "title": "Mains",
                 "items": [
-                  { "name": "8oz Sirloin or Ribeye Steak", "price": "£22", "desc": "Rich garlic mushroom sauce, seasoned potatoes and garnish" },
                   { "name": "Hand Battered Cod", "price": "£15", "desc": "Chunky chips, mushy peas, tartare sauce" },
                   { "name": "Chicken Katsu", "price": "£16", "desc": "Crispy breaded chicken, Japanese-style curry sauce, steamed rice" },
                   { "name": "Thai Green Vegetable Curry", "price": "£16", "desc": "Lemongrass, coconut milk, vegetables, steamed rice (V, VG, GF)" },

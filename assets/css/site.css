@@ -200,9 +200,35 @@ select:focus-visible {
   text-align: center;
   background:
     linear-gradient(180deg, rgba(26, 24, 20, 0.85) 0%, rgba(13, 12, 10, 0.95) 100%),
-    url('../images/venue/interior-dining-room-logo.jpg') center/cover no-repeat;
+    url('../images/venue/interior-evening-blue-purple.jpg') center/cover no-repeat;
 }
 .page-hero .section-title { margin-bottom: 0.35rem; }
+
+[data-page="menus"] .page-hero {
+  background:
+    linear-gradient(180deg, rgba(26, 24, 20, 0.85) 0%, rgba(13, 12, 10, 0.95) 100%),
+    url('../images/food/tapas-spread-nachos-hummus-prawns.jpg') center/cover no-repeat;
+}
+[data-page="private-hire"] .page-hero {
+  background:
+    linear-gradient(180deg, rgba(26, 24, 20, 0.85) 0%, rgba(13, 12, 10, 0.95) 100%),
+    url('../images/venue/private-hire-balloons-dining-room.jpg') center/cover no-repeat;
+}
+[data-page="visit"] .page-hero {
+  background:
+    linear-gradient(180deg, rgba(26, 24, 20, 0.85) 0%, rgba(13, 12, 10, 0.95) 100%),
+    url('../images/venue/bar-interior-daytime.jpg') center/cover no-repeat;
+}
+[data-page="drinks"] .page-hero {
+  background:
+    linear-gradient(180deg, rgba(26, 24, 20, 0.85) 0%, rgba(13, 12, 10, 0.95) 100%),
+    url('../images/drinks/bottomless-brunch-cocktails.jpg') center/cover no-repeat;
+}
+[data-page="cocktails"] .page-hero {
+  background:
+    linear-gradient(180deg, rgba(26, 24, 20, 0.85) 0%, rgba(13, 12, 10, 0.95) 100%),
+    url('../images/drinks/happy-hour-2-for-14-cocktail-selection.jpg') center/cover no-repeat;
+}
 
 .eyebrow {
   display: inline-block;
@@ -1534,90 +1560,6 @@ input[type="date"].form-input {
     height: 50px;
     font-size: 0.6rem;
   }
-}
-
-/* ===== NEWSLETTER FORM ===== */
-.footer-newsletter {
-  max-width: 400px;
-  margin: 0 auto 1.5rem;
-  text-align: center;
-}
-
-.footer-newsletter h3 {
-  font-family: var(--serif);
-  color: var(--gold);
-  font-size: 1.3rem;
-  margin: 0 0 0.5rem;
-  font-weight: 400;
-}
-
-.footer-newsletter > p {
-  font-size: 0.85rem;
-  color: var(--cream-dim);
-  margin: 0 0 1rem;
-}
-
-.newsletter-form {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.newsletter-input {
-  flex: 1;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(201, 168, 92, 0.3);
-  color: var(--cream);
-  padding: 0.75rem 1rem;
-  font-family: var(--sans);
-  font-size: 0.85rem;
-  transition: border-color 0.2s ease, background 0.2s ease;
-}
-
-.newsletter-input:focus {
-  outline: none;
-  border-color: var(--gold);
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.newsletter-input::placeholder {
-  color: var(--cream-dim);
-  opacity: 0.6;
-}
-
-.newsletter-btn {
-  background: var(--gold);
-  color: var(--ink);
-  border: none;
-  padding: 0.75rem 1.25rem;
-  font-family: var(--sans);
-  font-size: 0.7rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.newsletter-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(201, 168, 92, 0.3);
-}
-
-.newsletter-status {
-  font-size: 0.8rem;
-  margin-top: 0.75rem;
-  min-height: 1.2em;
-}
-
-.newsletter-status.success {
-  color: var(--gold);
-}
-
-.footer-divider {
-  width: 60px;
-  height: 1px;
-  background: rgba(201, 168, 92, 0.3);
-  margin: 1.5rem auto;
 }
 
 /* ===== OPEN/CLOSED STATUS ===== */

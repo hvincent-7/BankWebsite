@@ -1,5 +1,5 @@
 Name,description,price,happyHour
-Raspberry Collins,"Our fruity take on a traditional Tom Collins. Raspberry puree, Gin, Lemon Juice and sugar syrup served long and topped up with soda",£9,TRUE
+Tom Collins,"A classic Tom Collins. Gin, lemon juice, sugar syrup, topped up with soda and served long",£9,TRUE
 The Pornstar Martini,"Vodka, passoa, lime, vanilla and passionfruit syrup, pineapple and a shot of Prosecco",£9,TRUE
 Long Island Iced Tea,"A blend of 5 liqueurs. Vodka, gin, white rum, tequila, triple sec with a splash of cola and lemon juice",£10,FALSE
 Sours,"Whiskey, Amaretto or limoncello, lemon juice, sugar syrup and egg white",£10,FALSE
@@ -13,4 +13,5 @@ Dark & Stormy,"Ginger beer, topped with dark rum and a squeeze of fresh lime",£
 Very Berry,"A berry nice mix of amaretto, raspberry liqueur and strawberry puree mixed with vanilla syrup, fresh lime and pineapple juice",£9,TRUE
 Bloody Mary,"Vodka, tomato juice, Worcester sauce, lemon juice & black pepper",£10,FALSE
 Pina Colada,"White rum and coconut rum with just enough cream and pineapple juice. A tropical classic!",£9,TRUE
-Aperol Spritz / Lemon Spritz,"Sipping on Italian sunshine. Your choice of aperol or limoncello topped up with prosecco and soda",£9,TRUE
+Aperol Spritz,"Sipping on Italian sunshine. Aperol topped up with prosecco and soda",£9,TRUE
+Limoncello Spritz,"Sipping on Italian sunshine. Limoncello topped up with prosecco and soda",£9,TRUE

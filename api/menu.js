@@ -28,7 +28,7 @@ async function fetchAllRecords(baseId, tableName, apiToken) {
 
     const response = await axios.get(url.toString(), {
       headers: { Authorization: `Bearer ${apiToken}` },
-      timeout: 10000 // 10 second timeout
+      timeout: 60000 // 60 second timeout
     });
 
     records.push(...response.data.records);

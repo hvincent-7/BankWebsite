@@ -44,19 +44,6 @@ const injectLayout = () => {
     footer.setAttribute('aria-label', 'Site footer');
     footer.innerHTML = `
       <div class="container">
-        <!-- Newsletter Signup -->
-        <div class="footer-newsletter">
-          <h3>Stay in the Loop</h3>
-          <p>Get exclusive offers, event invites, and news straight to your inbox.</p>
-          <form class="newsletter-form" id="newsletter-form">
-            <input type="email" name="email" placeholder="Enter your email" required class="newsletter-input" aria-label="Email address">
-            <button type="submit" class="newsletter-btn">Subscribe</button>
-          </form>
-          <p class="newsletter-status" id="newsletter-status" aria-live="polite"></p>
-        </div>
-
-        <div class="footer-divider"></div>
-
         <div class="footer-social">
           <a href="https://www.facebook.com/TheBankLowFell" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
@@ -316,9 +303,25 @@ const renderCocktails = (siteData) => {
       ? 'assets/images/drinks/espresso-martini.png'
       : nameLower.includes('pornstar')
         ? 'assets/images/drinks/pornstar-martini.png'
-        : nameLower.includes('aperol spritz') || nameLower.includes('lemon spritz')
+        : nameLower.includes('aperol spritz')
           ? 'assets/images/drinks/aperol-spritz.webp'
-        : 'assets/images/drinks/cocktails.jpg';
+        : nameLower.includes('limoncello spritz')
+          ? 'assets/images/drinks/cocktail-limoncello-spritz.jpg'
+        : nameLower.includes('ice lolly')
+          ? 'assets/images/drinks/cocktail-ice-lolly.jpg'
+        : nameLower.includes('very berry')
+          ? 'assets/images/drinks/cocktail-very-berry.jpg'
+        : nameLower.includes('cosmopolitan') || nameLower.includes('cosmo')
+          ? 'assets/images/drinks/cocktail-cosmopolitan.jpg'
+        : nameLower.includes('margarita')
+          ? 'assets/images/drinks/cocktail-margarita.jpeg'
+        : nameLower.includes('french martini')
+          ? 'assets/images/drinks/cocktail-french-martini.jpeg'
+        : nameLower.includes('tom collins')
+          ? 'assets/images/drinks/cocktail-tom-collins.jpeg'
+        : nameLower.includes('mojito')
+          ? 'assets/images/drinks/cocktail-mojito.jpeg'
+        : 'assets/images/drinks/cocktail-2-very-berry-pornstar-martini.jpg';
     return `
     <div class="cocktail-card${c.happyHour ? ' happy-hour' : ''}">
       <div class="cocktail-card-image">
@@ -662,7 +665,6 @@ const init = async () => {
   initReveal();
   wireDojoLinks();
   wirePrivateHireForm();
-  initNewsletterForm();
   initParallax();
   initFloatingButton();
 
@@ -751,29 +753,6 @@ const renderReviews = (siteData) => {
 };
 
 // Newsletter Form
-const initNewsletterForm = () => {
-  const form = document.getElementById('newsletter-form');
-  const status = document.getElementById('newsletter-status');
-  if (!form) return;
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const email = form.querySelector('input[name="email"]').value;
-    
-    // Simulate subscription (would connect to email service in production)
-    if (status) {
-      status.textContent = 'Thanks for subscribing! We\'ll be in touch.';
-      status.classList.add('success');
-      form.reset();
-      
-      setTimeout(() => {
-        status.textContent = '';
-        status.classList.remove('success');
-      }, 4000);
-    }
-  });
-};
-
 // Open/Closed Status
 const initOpenStatus = (siteData) => {
   const statusEl = document.getElementById('open-status');
