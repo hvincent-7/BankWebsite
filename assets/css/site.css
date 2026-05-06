@@ -114,10 +114,6 @@ a { color: inherit; }
 .brand-logo {
   height: 90px;
   width: auto;
-  transition: transform 300ms ease;
-}
-.brand:hover .brand-logo {
-  transform: rotate(8deg) scale(1.05);
 }
 .nav-links {
   display: flex;
