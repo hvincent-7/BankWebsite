@@ -112,7 +112,7 @@ a { color: inherit; }
   text-transform: uppercase;
 }
 .brand-logo {
-  height: 60px;
+  height: 70px;
   width: auto;
   transition: transform 300ms ease;
 }
