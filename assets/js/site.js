@@ -1,6 +1,6 @@
 const DOJO_BOOKING_URL = 'https://web.dojo.app/create_booking/vendor/0XYLokEoeff77KUU00p7ex68kXi4SF8dCobxdAlAkQ0_restaurant';
 
-const LOGO_IMG = `<img src="assets/images/the_bank_logo_horizontal_transparent.png" alt="The Bank" class="brand-logo">`;
+const LOGO_IMG = `<img src="assets/images/Bank Logo Transparent.png" alt="The Bank" class="brand-logo">`;
 
 const escapeHtml = (str = '') => str
   .replaceAll('&', '&amp;')
