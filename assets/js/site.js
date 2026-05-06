@@ -1,6 +1,6 @@
 const DOJO_BOOKING_URL = 'https://web.dojo.app/create_booking/vendor/0XYLokEoeff77KUU00p7ex68kXi4SF8dCobxdAlAkQ0_restaurant';
 
-const LOGO_IMG = `<img src="assets/images/favicon-32x32.png" alt="" class="brand-logo" width="32" height="32">`;
+const LOGO_IMG = `<img src="assets/images/the_bank_logo_horizontal_transparent.png" alt="The Bank" class="brand-logo">`;
 
 const escapeHtml = (str = '') => str
   .replaceAll('&', '&amp;')
@@ -20,7 +20,6 @@ const injectLayout = () => {
       <div class="site-nav-inner container">
         <a class="brand" href="index.html" aria-label="The Bank home">
           ${LOGO_IMG}
-          <span class="brand-word">The Bank</span>
         </a>
         <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-primary" aria-label="Toggle navigation">
           <span class="nav-toggle-lines" aria-hidden="true"></span>

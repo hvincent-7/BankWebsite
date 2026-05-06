@@ -112,9 +112,8 @@ a { color: inherit; }
   text-transform: uppercase;
 }
 .brand-logo {
-  height: 32px;
-  width: 32px;
-  border-radius: 50%;
+  height: 40px;
+  width: auto;
   transition: transform 300ms ease;
 }
 .brand:hover .brand-logo {
@@ -422,6 +421,32 @@ select:focus-visible {
 .menu-item-desc { font-size: 0.74rem; color: var(--cream-dim); margin-top: 0.16rem; }
 .menu-item-price { color: var(--gold); white-space: nowrap; }
 .menu-note { color: var(--cream-dim); margin-top: 1rem; font-size: 0.8rem; }
+.dietary-key {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1.25rem;
+  margin: 0.75rem 0 1.5rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(var(--gold-rgb, 212,175,55), 0.25);
+  border-radius: 4px;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: var(--cream-dim);
+}
+.dietary-key-label {
+  font-family: var(--serif);
+  font-size: 0.8rem;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.dietary-key-item abbr {
+  font-weight: 600;
+  color: var(--cream);
+  text-decoration: none;
+  cursor: default;
+}
 .menu-section .btn + .btn { margin-left: .5rem; }
 
 .cocktails-grid { 
