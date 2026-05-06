@@ -76,7 +76,6 @@ const initMobileNav = () => {
     nav.classList.toggle('open', open);
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
-    document.body.style.overflow = open ? 'hidden' : '';
   };
 
   toggle.addEventListener('click', () => {
@@ -303,7 +302,13 @@ const renderCocktails = (siteData) => {
     const img = nameLower.includes('espresso martini')
       ? 'assets/images/drinks/espresso-martini.png'
       : nameLower.includes('pornstar')
-        ? 'assets/images/drinks/pornstar-martini.png'
+        ? 'assets/images/drinks/Cocktail-Pornstar-Martini.JPG'
+        : nameLower.includes('bloody mary')
+          ? 'assets/images/drinks/Cocktail-Bloody-Mary.jpeg'
+        : nameLower.includes('dark') && nameLower.includes('storm')
+          ? 'assets/images/drinks/Cocktail-Dark-Stormy.jpeg'
+        : nameLower.includes('pina colada')
+          ? 'assets/images/drinks/Cocktail-Pina-Colada.jpeg'
         : nameLower.includes('aperol spritz')
           ? 'assets/images/drinks/aperol-spritz.webp'
         : nameLower.includes('limoncello spritz')
@@ -711,9 +716,6 @@ const init = async () => {
 const renderReviews = (siteData) => {
   const grid = document.getElementById('reviews-grid');
   const summary = document.getElementById('reviews-summary');
-  const dotsEl = document.getElementById('reviews-dots');
-  const prevBtn = document.querySelector('.reviews-prev');
-  const nextBtn = document.querySelector('.reviews-next');
   if (!grid) return;
 
   const reviews = siteData.reviews || [];
@@ -729,18 +731,15 @@ const renderReviews = (siteData) => {
     return `<span class="review-source-badge">${escapeHtml(source)}</span>`;
   };
 
-  const taUrl = 'https://www.tripadvisor.co.uk/Restaurant_Review-g186394-d8090498-Reviews-The_Bank_Restaurant_Bar-Gateshead_Tyne_and_Wear_England.html';
-
-  grid.innerHTML = reviews.map((r, i) => `
-    <a class="review-card" data-index="${i}" aria-hidden="${i !== 0}" href="${r.url || taUrl}" target="_blank" rel="noopener noreferrer" aria-label="Read this review on ${escapeHtml(r.source || 'TripAdvisor')}">
+  grid.innerHTML = reviews.map(r => `
+    <div class="review-card">
       <div class="review-stars" aria-label="${r.rating} out of 5 stars">${stars(r.rating)}</div>
       <blockquote class="review-quote">"${escapeHtml(r.quote)}"</blockquote>
       <div class="review-footer">
-        <span class="review-author">- ${escapeHtml(r.author)}</span>
-        <span class="review-verify">Verify ↗</span>
+        <span class="review-author">— ${escapeHtml(r.author)}</span>
         ${sourceIcon(r.source)}
       </div>
-    </a>
+    </div>
   `).join('');
 
   // Overall rating summary
@@ -749,62 +748,14 @@ const renderReviews = (siteData) => {
     const rounded = Math.round(avg * 10) / 10;
     summary.innerHTML = `
       <div class="reviews-overall">
-        <span class="reviews-overall-score">4.1</span>
+        <span class="reviews-overall-score">${rounded}</span>
         <div>
-          <div class="reviews-overall-stars" aria-label="4.1 out of 5">${stars(4)}</div>
-          <span class="reviews-overall-count">485 reviews on TripAdvisor</span>
-          <span class="reviews-overall-rank">#25 of 296 Bars & Dining in Gateshead</span>
+          <div class="reviews-overall-stars" aria-label="${rounded} out of 5">${stars(Math.round(avg))}</div>
+          <span class="reviews-overall-count">Based on ${reviews.length} review${reviews.length !== 1 ? 's' : ''}</span>
         </div>
       </div>
     `;
   }
-
-  // Dots
-  if (dotsEl) {
-    dotsEl.innerHTML = reviews.map((_, i) => `<button class="reviews-dot${i === 0 ? ' active' : ''}" aria-label="Go to review ${i + 1}" data-index="${i}"></button>`).join('');
-  }
-
-  // Carousel logic
-  let current = 0;
-  const cards = [...grid.querySelectorAll('.review-card')];
-  const dots = dotsEl ? [...dotsEl.querySelectorAll('.reviews-dot')] : [];
-
-  const goTo = (index) => {
-    cards[current].classList.remove('active');
-    cards[current].setAttribute('aria-hidden', 'true');
-    dots[current]?.classList.remove('active');
-
-    current = (index + reviews.length) % reviews.length;
-
-    cards[current].classList.add('active');
-    cards[current].setAttribute('aria-hidden', 'false');
-    dots[current]?.classList.add('active');
-  };
-
-  // Initialise first card
-  cards[0].classList.add('active');
-
-  prevBtn?.addEventListener('click', () => goTo(current - 1));
-  nextBtn?.addEventListener('click', () => goTo(current + 1));
-
-  dots.forEach(dot => {
-    dot.addEventListener('click', () => goTo(Number(dot.dataset.index)));
-  });
-
-  // Auto-advance every 6s
-  let timer = setInterval(() => goTo(current + 1), 6000);
-  const resetTimer = () => { clearInterval(timer); timer = setInterval(() => goTo(current + 1), 6000); };
-  prevBtn?.addEventListener('click', resetTimer);
-  nextBtn?.addEventListener('click', resetTimer);
-  dots.forEach(dot => dot.addEventListener('click', resetTimer));
-
-  // Swipe support
-  let touchStartX = 0;
-  grid.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
-  grid.addEventListener('touchend', (e) => {
-    const diff = touchStartX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 50) { goTo(diff > 0 ? current + 1 : current - 1); resetTimer(); }
-  }, { passive: true });
 };
 
 // Newsletter Form
@@ -827,17 +778,13 @@ const initOpenStatus = (siteData) => {
     if (todayHours && hour >= todayHours.open && hour < todayHours.close) {
       isOpen = true;
       message = `Open now · Closes around ${format12Hour(todayHours.close)}`;
-    } else if (todayHours && hour < todayHours.open) {
-      // Hasn't opened yet today
-      message = `Closed · Opens today at ${format12Hour(todayHours.open)}`;
     } else {
-      // Closed for the rest of today — find next open day
+      // Find next opening
       let nextDay = day;
       for (let i = 1; i <= 7; i++) {
         nextDay = (day + i) % 7;
         if (hours[nextDay]) {
-          const label = i === 1 ? 'tomorrow' : `${days[nextDay]}`;
-          message = `Closed · Opens ${label} at ${format12Hour(hours[nextDay].open)}`;
+          message = `Closed · Opens ${i === 1 ? 'tomorrow' : days[nextDay]} at ${format12Hour(hours[nextDay].open)}`;
           break;
         }
       }
