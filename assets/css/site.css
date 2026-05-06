@@ -55,14 +55,14 @@ a { color: inherit; }
   box-shadow: 0 10px 32px rgba(0, 0, 0, 0.35);
 }
 .site-nav-inner {
-  height: 78px;
+  height: 110px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
   transition: height 220ms ease;
 }
-.site-nav.scrolled .site-nav-inner { height: 70px; }
+.site-nav.scrolled .site-nav-inner { height: 95px; }
 .nav-primary {
   display: flex;
   align-items: center;
@@ -112,7 +112,7 @@ a { color: inherit; }
   text-transform: uppercase;
 }
 .brand-logo {
-  height: 70px;
+  height: 90px;
   width: auto;
   transition: transform 300ms ease;
 }
