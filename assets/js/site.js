@@ -741,8 +741,8 @@ const renderReviews = (siteData) => {
     return `<span class="review-source-badge">${escapeHtml(source)}</span>`;
   };
 
-  grid.innerHTML = reviews.map(r => `
-    <div class="review-card">
+  grid.innerHTML = reviews.map((r, i) => `
+    <div class="review-card${i === 0 ? ' active' : ''}">
       <div class="review-stars" aria-label="${r.rating} out of 5 stars">${stars(r.rating)}</div>
       <blockquote class="review-quote">"${escapeHtml(r.quote)}"</blockquote>
       <div class="review-footer">
@@ -751,6 +751,34 @@ const renderReviews = (siteData) => {
       </div>
     </div>
   `).join('');
+
+  // Carousel
+  const cards = [...grid.querySelectorAll('.review-card')];
+  const dotsEl = document.getElementById('reviews-dots');
+  const prevBtn = document.querySelector('.reviews-prev');
+  const nextBtn = document.querySelector('.reviews-next');
+  let current = 0;
+
+  const goTo = (index) => {
+    cards[current].classList.remove('active');
+    if (dotsEl) dotsEl.children[current]?.classList.remove('active');
+    current = (index + cards.length) % cards.length;
+    cards[current].classList.add('active');
+    if (dotsEl) dotsEl.children[current]?.classList.add('active');
+  };
+
+  if (dotsEl) {
+    dotsEl.innerHTML = cards.map((_, i) =>
+      `<button class="reviews-dot${i === 0 ? ' active' : ''}" aria-label="Review ${i + 1}"></button>`
+    ).join('');
+    [...dotsEl.children].forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+  }
+
+  if (prevBtn) prevBtn.addEventListener('click', () => goTo(current - 1));
+  if (nextBtn) nextBtn.addEventListener('click', () => goTo(current + 1));
+
+  // Auto-advance every 6 seconds
+  setInterval(() => goTo(current + 1), 6000);
 
   // Overall rating summary
   if (summary && reviews.length) {
