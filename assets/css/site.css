@@ -104,7 +104,7 @@ a { color: inherit; }
   color: var(--gold);
   transition: opacity 180ms ease;
 }
-.brand:hover { opacity: 0.85; }
+.brand:hover { opacity: 1; }
 .brand-word {
   font-family: var(--serif);
   font-size: 1.45rem;
@@ -626,10 +626,10 @@ input[type="date"].form-input {
   margin-bottom: 1.25rem;
 }
 .package-downloads-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 280px));
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
-  justify-content: center;
+  align-items: center;
 }
 .package-download-card {
   display: flex;

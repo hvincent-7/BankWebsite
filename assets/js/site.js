@@ -687,6 +687,17 @@ const init = async () => {
 
     if (!response.ok) throw new Error('Could not load data');
     const siteData = await response.json();
+
+    // If API returned no reviews, fall back to local data for reviews
+    if (!siteData.reviews || !siteData.reviews.length) {
+      try {
+        const localRes = await fetch('./data/site-data.json');
+        if (localRes.ok) {
+          const localData = await localRes.json();
+          siteData.reviews = localData.reviews || [];
+        }
+      } catch { /* keep empty */ }
+    }
     
     renderMenus(siteData);
     renderCocktails(siteData);
