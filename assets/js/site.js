@@ -608,7 +608,7 @@ const wirePrivateHireForm = () => {
     event.preventDefault();
     const formData = new FormData(form);
     const name = String(formData.get('name') || '').trim();
-    const email = String(formData.get('email') || '').trim();
+    const phone = String(formData.get('phone') || '').trim();
     const packageInterest = String(formData.get('packageInterest') || '').trim();
     const eventDate = String(formData.get('eventDate') || '').trim();
     const guestCount = String(formData.get('guestCount') || '').trim();
@@ -619,7 +619,7 @@ const wirePrivateHireForm = () => {
       'Private Hire Enquiry',
       '',
       `Name: ${name}`,
-      `Email: ${email}`,
+      `Phone: ${phone}`,
       `Package: ${packageInterest}`,
       `Event Date: ${eventDate}`,
       `Number of Guests: ${guestCount}`,

@@ -92,8 +92,8 @@
                 <input class="form-input" id="hireName" name="name" type="text" autocomplete="name" required>
               </div>
               <div class="form-group">
-                <label class="form-label" for="hireEmail">Email address</label>
-                <input class="form-input" id="hireEmail" name="email" type="email" autocomplete="email" required>
+                <label class="form-label" for="hirePhone">Phone number</label>
+                <input class="form-input" id="hirePhone" name="phone" type="tel" autocomplete="tel" required>
               </div>
             </div>
             <div class="form-group mt-09">
@@ -122,15 +122,42 @@
                 </label>
               </div>
             </div>
-            <div class="form-grid-2 mt-09">
-              <div class="form-group">
-                <label class="form-label" for="hireDate">Event date</label>
-                <input class="form-input" id="hireDate" name="eventDate" type="date" required>
+            <div class="form-group mt-09">
+              <span class="form-label">Number of guests</span>
+              <div class="package-selector" role="group" aria-label="Number of guests">
+                <label class="package-option">
+                  <input type="radio" name="guestCount" value="25+" required>
+                  <span class="package-option-inner">
+                    <span class="package-option-name">25+</span>
+                    <span class="package-option-price">Guests</span>
+                  </span>
+                </label>
+                <label class="package-option">
+                  <input type="radio" name="guestCount" value="35+">
+                  <span class="package-option-inner">
+                    <span class="package-option-name">35+</span>
+                    <span class="package-option-price">Guests</span>
+                  </span>
+                </label>
+                <label class="package-option">
+                  <input type="radio" name="guestCount" value="40+">
+                  <span class="package-option-inner">
+                    <span class="package-option-name">40+</span>
+                    <span class="package-option-price">Guests</span>
+                  </span>
+                </label>
+                <label class="package-option">
+                  <input type="radio" name="guestCount" value="Not sure yet">
+                  <span class="package-option-inner">
+                    <span class="package-option-name">Not sure yet</span>
+                    <span class="package-option-price">Max 50&ndash;55</span>
+                  </span>
+                </label>
               </div>
-              <div class="form-group">
-                <label class="form-label" for="hireGuests">Number of guests</label>
-                <input class="form-input" id="hireGuests" name="guestCount" type="text" required>
-              </div>
+            </div>
+            <div class="form-group mt-09">
+              <label class="form-label" for="hireDate">Event date</label>
+              <input class="form-input" id="hireDate" name="eventDate" type="date" required>
             </div>
             <div class="form-group mt-09">
               <label class="form-label" for="hireDetails">Tell us about your event</label>
