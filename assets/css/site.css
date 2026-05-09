@@ -1551,15 +1551,19 @@ input[type="date"].form-input {
 /* ===== REVIEWS CAROUSEL ===== */
 .reviews-carousel-wrap {
   position: relative;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
 }
 
 .reviews-carousel-viewport {
-  flex: 1;
   overflow: hidden;
   min-height: 220px;
+}
+
+.reviews-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.25rem;
 }
 
 .reviews-prev,
@@ -1589,7 +1593,6 @@ input[type="date"].form-input {
   display: flex;
   justify-content: center;
   gap: 0.5rem;
-  margin-top: 1.25rem;
 }
 
 .reviews-dot {
