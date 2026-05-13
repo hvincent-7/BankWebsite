@@ -325,7 +325,7 @@ const renderCocktails = (siteData) => {
         : nameLower.includes('limoncello spritz')
           ? 'assets/images/drinks/cocktail-limoncello-spritz.jpg'
         : nameLower.includes('ice lolly')
-          ? 'assets/images/drinks/cocktail-ice-lolly.jpg'
+          ? 'assets/images/drinks/Cocktail-Ice-Lolly.jpeg'
         : nameLower.includes('very berry')
           ? 'assets/images/drinks/cocktail-very-berry.jpg'
         : nameLower.includes('cosmopolitan') || nameLower.includes('cosmo')
