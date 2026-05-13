@@ -334,6 +334,24 @@ select:focus-visible {
 }
 .section-copy { color: var(--cream-dim); line-height: 1.8; max-width: 760px; }
 
+.contact-links {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--gold);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: opacity 160ms ease;
+}
+.contact-link:hover { opacity: 0.8; }
+.contact-link svg { flex-shrink: 0; color: var(--gold); }
+
 .grid-2 { display: grid; gap: 1.25rem; grid-template-columns: repeat(2, minmax(0,1fr)); }
 .card {
   background: var(--ink-soft);

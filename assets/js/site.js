@@ -59,9 +59,21 @@ const injectLayout = () => {
         <div class="open-status" id="open-status"></div>
 
         <p>© 2026 The Bank Bar. All rights reserved.</p>
-        <p>516 Durham Road, Low Fell, Gateshead, NE9 6HU · 0191 487 9038 · info@thebanklowfell.co.uk</p>
+        <p>516 Durham Road, Low Fell, Gateshead, NE9 6HU &middot; 0191 487 9038 &middot; <span id="footer-email"></span></p>
       </div>
     `;
+  }
+};
+
+const injectEmail = () => {
+  const u = 'info', d = 'thebanklowfell', t = '.co.uk';
+  const e = u + '@' + d + t;
+  const el = document.getElementById('footer-email');
+  if (el) {
+    const a = document.createElement('a');
+    a.href = 'mailto:' + e;
+    a.textContent = e;
+    el.appendChild(a);
   }
 };
 
@@ -664,6 +676,7 @@ const setLoadingState = (loading) => {
 
 const init = async () => {
   injectLayout();
+  injectEmail();
   initAccessibility();
   initMobileNav();
   initStickyNav();
