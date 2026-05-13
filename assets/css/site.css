@@ -627,9 +627,10 @@ input[type="date"].form-input {
 }
 .package-downloads-grid {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 1rem;
-  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .package-download-card {
   display: flex;

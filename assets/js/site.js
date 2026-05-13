@@ -691,7 +691,7 @@ const init = async () => {
     // If API returned no reviews, fall back to local data for reviews
     if (!siteData.reviews || !siteData.reviews.length) {
       try {
-        const localRes = await fetch('./data/site-data.json');
+        const localRes = await fetch('/data/site-data.json');
         if (localRes.ok) {
           const localData = await localRes.json();
           siteData.reviews = localData.reviews || [];
