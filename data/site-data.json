@@ -212,6 +212,16 @@
                   "name": "Hand Battered Cod",
                   "desc": "Served with chunky chips, mushy peas and tartare sauce",
                   "price": "£14"
+                },
+                {
+                  "name": "Grilled Honey Garlic Chicken Wrap",
+                  "desc": "Toasted wrap filled with grilled honey garlic chicken, lettuce, tomato, red onion, mozzarella cheese and mayonnaise, served with fries",
+                  "price": "£12"
+                },
+                {
+                  "name": "Fish Goujon Wrap",
+                  "desc": "Toasted wrap filled with crispy fish goujons, lettuce, cucumber and tartare sauce, served with fries",
+                  "price": "£12"
                 }
               ]
             }
