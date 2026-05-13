@@ -338,6 +338,10 @@ const renderCocktails = (siteData) => {
           ? 'assets/images/drinks/cocktail-tom-collins.jpeg'
         : nameLower.includes('mojito')
           ? 'assets/images/drinks/cocktail-mojito.jpeg'
+        : nameLower.includes('old fashioned')
+          ? 'assets/images/drinks/Cocktail-Old-Fashioned.jpeg'
+        : nameLower.includes('long island')
+          ? 'assets/images/drinks/Cocktail-Long-Island-Iced-Tea.jpeg'
         : 'assets/images/drinks/cocktail-2-very-berry-pornstar-martini.jpg';
     return `
     <div class="cocktail-card${c.happyHour ? ' happy-hour' : ''}">
