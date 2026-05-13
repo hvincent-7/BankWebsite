@@ -1,7 +1,7 @@
 {
   "name": "the-bank-website",
   "version": "1.0.0",
-  "description": "The Bank Bar - Website",
+  "description": "The Bank Wine & Cocktail Bar - Website",
   "main": "api/menu.js",
   "scripts": {
     "dev": "NODE_ENV=development node server.js",

@@ -1,4 +1,4 @@
-# robots.txt for The Bank Bar
+# robots.txt for The Bank Wine & Cocktail Bar
 
 User-agent: *
 Allow: /
