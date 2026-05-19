@@ -634,8 +634,8 @@
     },
     {
       "day": "Tuesday",
-      "time": "Closed",
-      "closed": true
+      "time": "4pm – 9pm",
+      "closed": false
     },
     {
       "day": "Wednesday",

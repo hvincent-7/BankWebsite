@@ -1,6 +1,6 @@
 day,time,closed
 Monday,Closed,TRUE
-Tuesday,Closed,TRUE
+Tuesday,4pm – 9pm,FALSE
 Wednesday,12:30pm – 10pm approx.,FALSE
 Thursday,12:30pm – 10pm approx.,FALSE
 Friday,12:30pm – 11pm approx.,FALSE
