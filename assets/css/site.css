@@ -8,6 +8,11 @@
   --cream-dim: #d4cdbd;
   --serif: 'Cormorant Garamond', Georgia, serif;
   --sans: 'Jost', sans-serif;
+  /* Tracking tokens */
+  --track-tight: 0.03em;   /* small sans body text */
+  --track-label: 0.08em;   /* small uppercase sans labels */
+  --track-wide: 0.16em;    /* medium uppercase labels */
+  --track-display: 0.22em; /* hero-adjacent eyebrow / small caps */
 }
 
 * { box-sizing: border-box; }
@@ -30,7 +35,7 @@ body {
   padding: 0.5rem 0.75rem;
   text-decoration: none;
   font-size: 0.75rem;
-  letter-spacing: 0.03em;
+  letter-spacing: var(--track-tight);
 }
 .skip-link:focus,
 .skip-link:focus-visible {
@@ -107,8 +112,9 @@ a { color: inherit; }
 .brand:hover { opacity: 1; }
 .brand-word {
   font-family: var(--serif);
+  font-weight: 400;
   font-size: 1.45rem;
-  letter-spacing: 0.12em;
+  letter-spacing: var(--track-wide);
   text-transform: uppercase;
 }
 .brand-logo {
@@ -127,7 +133,7 @@ a { color: inherit; }
   text-decoration: none;
   color: var(--cream-dim);
   font-size: 0.72rem;
-  letter-spacing: 0.18em;
+  letter-spacing: var(--track-wide);
   text-transform: uppercase;
   transition: color 180ms ease;
 }
@@ -145,7 +151,7 @@ a { color: inherit; }
   color: var(--ink);
   padding: 0.65rem 1rem;
   font-size: 0.68rem;
-  letter-spacing: 0.18em;
+  letter-spacing: var(--track-wide);
   text-transform: uppercase;
   transition: transform 180ms ease, box-shadow 180ms ease;
 }
@@ -185,9 +191,12 @@ select:focus-visible {
 .hero p {
   margin: 1rem 0 2rem;
   color: var(--cream-dim);
-  font-family: var(--serif);
-  font-size: 1.08rem;
-  font-style: italic;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  font-weight: 400;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: var(--track-display);
 }
 
 .page-hero {
@@ -229,7 +238,7 @@ select:focus-visible {
   display: inline-block;
   margin: 0 0 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 0.22em;
+  letter-spacing: var(--track-display);
   color: var(--gold);
   font-size: 0.68rem;
 }
@@ -248,7 +257,7 @@ select:focus-visible {
   display: inline-block;
   text-decoration: none;
   padding: 0.9rem 1.4rem;
-  letter-spacing: 0.16em;
+  letter-spacing: var(--track-wide);
   text-transform: uppercase;
   font-size: 0.7rem;
   transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
@@ -321,7 +330,7 @@ select:focus-visible {
 }
 .section-title em { 
   color: var(--gold); 
-  font-style: italic;
+  font-style: normal;
   background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
@@ -415,7 +424,7 @@ select:focus-visible {
   cursor: pointer;
   padding: 0.6rem 0.9rem;
   text-transform: uppercase;
-  letter-spacing: 0.13em;
+  letter-spacing: var(--track-wide);
   font-size: 0.66rem;
   transition: color 180ms ease, border-color 180ms ease, background 180ms ease;
 }
@@ -445,14 +454,14 @@ select:focus-visible {
   border: 1px solid rgba(var(--gold-rgb, 212,175,55), 0.25);
   border-radius: 4px;
   font-size: 0.75rem;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--track-tight);
   color: var(--cream-dim);
 }
 .dietary-key-label {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 0.8rem;
   color: var(--gold);
-  letter-spacing: 0.1em;
+  letter-spacing: var(--track-label);
   text-transform: uppercase;
 }
 .dietary-key-item abbr {
@@ -605,7 +614,7 @@ select:focus-visible {
   margin-bottom: 0.45rem;
   color: var(--cream-dim);
   font-size: 0.82rem;
-  letter-spacing: 0.04em;
+  letter-spacing: var(--track-tight);
 }
 .form-input {
   width: 100%;
@@ -678,7 +687,7 @@ input[type="date"].form-input {
 .package-download-sub {
   font-size: 0.75rem;
   color: var(--cream-dim);
-  letter-spacing: 0.05em;
+  letter-spacing: var(--track-tight);
 }
 
 .package-selector {
@@ -732,7 +741,7 @@ input[type="date"].form-input {
 .package-option-price {
   font-size: 0.78rem;
   color: var(--cream-dim);
-  letter-spacing: 0.03em;
+  letter-spacing: var(--track-tight);
 }
 
 .private-hire-showcase {
@@ -1035,7 +1044,7 @@ input[type="date"].form-input {
   font-size: 0.8rem;
   color: var(--gold);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--track-tight);
   white-space: nowrap;
 }
 
@@ -1128,7 +1137,7 @@ input[type="date"].form-input {
   font-family: var(--sans);
   font-size: 0.7rem;
   font-weight: 500;
-  letter-spacing: 0.08em;
+  letter-spacing: var(--track-label);
   text-transform: uppercase;
   color: var(--ink);
   background: var(--gold);
@@ -1138,8 +1147,8 @@ input[type="date"].form-input {
 }
 
 .delivery-option-desc {
-  font-family: var(--serif);
-  font-size: 1rem;
+  font-family: var(--sans);
+  font-size: 0.95rem;
   color: var(--cream-dim);
   line-height: 1.7;
   margin: 0 0 auto;
@@ -1313,7 +1322,6 @@ input[type="date"].form-input {
   color: var(--cream-dim);
   font-size: 0.95rem;
   margin: 0;
-  font-style: italic;
 }
 
 /* ===== ANIMATED BANNER / MARQUEE ===== */
@@ -1336,7 +1344,7 @@ input[type="date"].form-input {
   gap: 3rem;
   padding: 0.65rem 0;
   font-size: 0.78rem;
-  letter-spacing: 0.14em;
+  letter-spacing: var(--track-wide);
   text-transform: uppercase;
   font-weight: 500;
 }
@@ -1542,7 +1550,7 @@ input[type="date"].form-input {
 .reviews-overall-stars {
   font-size: 1.1rem;
   color: var(--gold);
-  letter-spacing: 0.05em;
+  letter-spacing: var(--track-tight);
   margin-bottom: 0.25rem;
 }
 
@@ -1551,7 +1559,7 @@ input[type="date"].form-input {
   font-size: 0.8rem;
   color: var(--cream-dim);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: var(--track-label);
 }
 
 .reviews-overall-rank {
@@ -1559,7 +1567,7 @@ input[type="date"].form-input {
   font-family: var(--sans);
   font-size: 0.75rem;
   color: var(--gold);
-  letter-spacing: 0.06em;
+  letter-spacing: var(--track-label);
   margin-top: 0.2rem;
 }
 
@@ -1663,7 +1671,7 @@ input[type="date"].form-input {
 .review-verify {
   font-size: 0.72rem;
   color: var(--cream-dim);
-  letter-spacing: 0.04em;
+  letter-spacing: var(--track-tight);
   opacity: 0.7;
 }
 
@@ -1678,13 +1686,13 @@ input[type="date"].form-input {
 .review-stars {
   font-size: 1.1rem;
   color: var(--gold);
-  letter-spacing: 0.05em;
+  letter-spacing: var(--track-tight);
 }
 
 .review-quote {
   font-family: var(--serif);
-  font-size: 1.1rem;
-  font-style: italic;
+  font-size: 1.15rem;
+  font-style: normal;
   color: var(--cream);
   line-height: 1.65;
   margin: 0;
@@ -1704,14 +1712,14 @@ input[type="date"].form-input {
   font-size: 0.85rem;
   color: var(--gold);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: var(--track-label);
 }
 
 .review-source-badge {
   font-family: var(--sans);
   font-size: 0.7rem;
   font-weight: 600;
-  letter-spacing: 0.06em;
+  letter-spacing: var(--track-label);
   text-transform: uppercase;
   padding: 0.2rem 0.6rem;
   border-radius: 4px;
@@ -1740,7 +1748,7 @@ input[type="date"].form-input {
   text-decoration: none;
   font-size: 0.7rem;
   font-weight: 500;
-  letter-spacing: 0.08em;
+  letter-spacing: var(--track-label);
   text-transform: uppercase;
   box-shadow: 0 4px 20px rgba(201, 168, 92, 0.4);
   opacity: 0;
