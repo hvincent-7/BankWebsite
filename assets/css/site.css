@@ -194,7 +194,7 @@ select:focus-visible {
   z-index: 2;
 }
 
-/* Hero image gallery */
+/* Hero image gallery — triptych */
 .hero-bg {
   position: absolute;
   inset: 0;
@@ -203,34 +203,24 @@ select:focus-visible {
 }
 .hero-panel {
   position: absolute;
-  inset: -10%;
+  top: 0;
+  bottom: 0;
+  width: 33.34%;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0;
-  will-change: transform, opacity;
-  animation: hero-fade 18s ease-in-out infinite;
 }
 .hero-panel:nth-child(1) {
-  /* Wines — bar interior */
+  left: 0;
   background-image: url('../images/venue/interior-evening-blue-purple.jpg');
 }
 .hero-panel:nth-child(2) {
-  /* Cocktails */
+  left: 33.33%;
   background-image: url('../images/drinks/bottomless-brunch-cocktails.jpg');
-  animation-delay: 6s;
 }
 .hero-panel:nth-child(3) {
-  /* Tapas */
+  left: 66.67%;
   background-image: url('../images/food/tapas-spread-nachos-hummus-prawns.jpg');
-  animation-delay: 12s;
-}
-@keyframes hero-fade {
-  0%    { opacity: 0; transform: scale(1);    }
-  8%    { opacity: 1; transform: scale(1.01); }
-  33%   { opacity: 1; transform: scale(1.06); }
-  41%   { opacity: 0; transform: scale(1.07); }
-  100%  { opacity: 0; transform: scale(1.07); }
 }
 .hero h1 {
   font-family: var(--serif);
@@ -924,12 +914,6 @@ input[type="date"].form-input {
     animation: none;
     background: var(--gold);
     -webkit-text-fill-color: var(--gold);
-  }
-  .hero-panel {
-    animation: none;
-  }
-  .hero-panel:nth-child(1) {
-    opacity: 1;
   }
   .hero .btn-primary,
   .hero .btn-ghost {
