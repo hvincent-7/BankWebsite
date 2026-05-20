@@ -181,9 +181,10 @@ select:focus-visible {
 .hero::before {
   content: '';
   position: absolute;
-  inset: -8%;
-  background: url('../images/venue/bar-spirits-lets-party-neon.jpg') center 28%/cover no-repeat;
-  animation: hero-zoom 20s ease-out forwards;
+  inset: -10%;
+  background: url('../images/venue/interior-evening-blue-purple.jpg') center/cover no-repeat;
+  animation: hero-zoom 18s ease-in-out infinite;
+  will-change: transform;
   z-index: 0;
 }
 .hero::after {
@@ -200,8 +201,8 @@ select:focus-visible {
   z-index: 2;
 }
 @keyframes hero-zoom {
-  from { transform: scale(1); }
-  to   { transform: scale(1.1); }
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.08); }
 }
 .hero h1 {
   font-family: var(--serif);
