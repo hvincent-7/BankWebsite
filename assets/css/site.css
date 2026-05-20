@@ -938,6 +938,16 @@ input[type="date"].form-input {
 }
 
 @media (max-width: 900px) {
+  /* Hero: collapse triptych to single full-width image */
+  .hero-panel:nth-child(1) {
+    width: 100%;
+    border-right: none;
+  }
+  .hero-panel:nth-child(2),
+  .hero-panel:nth-child(3) {
+    display: none;
+  }
+
   .grid-2, .menu-cols, .form-grid-2 { grid-template-columns: 1fr; }
   .cocktails-grid { grid-template-columns: 1fr; }
   .cocktail-card-image { width: 110px; min-width: 110px; }
