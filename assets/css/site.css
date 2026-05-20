@@ -184,8 +184,7 @@ select:focus-visible {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(13,12,10,0.42) 0%, rgba(13,12,10,0.88) 100%),
-    radial-gradient(circle at 50% 40%, rgba(201,168,92,0.1), transparent 55%);
+    linear-gradient(180deg, rgba(13,12,10,0.15) 0%, rgba(13,12,10,0.60) 100%);
   z-index: 1;
   pointer-events: none;
 }
@@ -212,11 +211,11 @@ select:focus-visible {
 }
 .hero-panel:nth-child(1) {
   left: 0;
-  background-image: url('../images/venue/interior-evening-blue-purple.jpg');
+  background-image: url('../images/venue/baby-shower-function.jpg');
 }
 .hero-panel:nth-child(2) {
   left: 33.33%;
-  background-image: url('../images/drinks/bottomless-brunch-cocktails.jpg');
+  background-image: url('../images/drinks/happy-hour-2-for-14-cocktail-selection.jpg');
 }
 .hero-panel:nth-child(3) {
   left: 66.67%;
