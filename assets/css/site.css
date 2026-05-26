@@ -852,7 +852,7 @@ input[type="date"].form-input {
 .sg-hero-bg {
   position: absolute;
   inset: -25% 0;
-  background-image: url('assets/images/drinks/pimms-outdoor-terrace.jpg');
+  background-image: url('../images/drinks/pimms-outdoor-terrace.jpg');
   background-size: cover;
   background-position: center;
   will-change: transform;
@@ -1099,7 +1099,7 @@ input[type="date"].form-input {
 .sg-card-link:hover::after { width: 100%; }
 
 /* ── Gallery ── */
-.sg-gallery-section { padding: 4rem 0 0; }
+.sg-gallery-section { padding: 4rem 0 5rem; }
 .sg-gallery-section .container { margin-bottom: 2rem; }
 .sg-gallery {
   display: grid;
@@ -1256,7 +1256,7 @@ input[type="date"].form-input {
   margin: 0.5rem 0 1.2rem;
 }
 .sg-cta-inner h2 em { color: var(--gold); font-style: italic; }
-.sg-cta-inner > p:not(.sg-cta-access) {
+.sg-cta-inner > p:not(.sg-cta-access):not(.eyebrow) {
   font-family: var(--sans);
   font-size: 0.92rem;
   font-weight: 300;
