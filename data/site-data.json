@@ -49,7 +49,7 @@
                   "desc": "Oven baked with beef mince, topped with mozzarella cheese and napoli sauce, served with chunky chips and salad garnish"
                 },
                 {
-                  "name": "Hand Battered Cod",
+                  "name": "Hand-Battered Cod",
                   "desc": "Served with chunky chips, mushy peas and tartare sauce"
                 },
                 {
@@ -71,7 +71,7 @@
                 },
                 {
                   "name": "Ice Cream",
-                  "desc": "Choice of vanilla, chocolate or strawberry"
+                  "desc": "Choice of vanilla, chocolate or strawberry ice cream"
                 }
               ]
             }
@@ -209,7 +209,7 @@
                   "price": "£11"
                 },
                 {
-                  "name": "Hand Battered Cod",
+                  "name": "Hand-Battered Cod",
                   "desc": "Served with chunky chips, mushy peas and tartare sauce",
                   "price": "£14"
                 },
@@ -242,7 +242,7 @@
                 },
                 {
                   "name": "Ice Cream",
-                  "desc": "Choice of vanilla, chocolate or strawberry",
+                  "desc": "Choice of vanilla, chocolate or strawberry ice cream",
                   "price": "£5"
                 }
               ]
@@ -395,7 +395,7 @@
                 "title": "Mains",
                 "items": [
                   {
-                    "name": "Hand Battered Cod",
+                    "name": "Hand-Battered Cod",
                     "price": "£15",
                     "desc": "Chunky chips, mushy peas, tartare sauce"
                   },
@@ -452,7 +452,7 @@
                   {
                     "name": "Ice Cream",
                     "price": "£5",
-                    "desc": "Choice of vanilla, chocolate or strawberry"
+                    "desc": "Choice of vanilla, chocolate or strawberry ice cream"
                   }
                 ]
               }
@@ -544,7 +544,7 @@
     },
     {
       "name": "Long Island Iced Tea",
-      "desc": "A blend of 5 liqueurs. Vodka, gin, white rum, tequila, triple sec with a splash of cola and lemon juice",
+      "desc": "A blend of five spirits. Vodka, gin, white rum, tequila, triple sec with a splash of cola and lemon juice",
       "price": "£10",
       "happyHour": false
     },
@@ -639,27 +639,27 @@
     },
     {
       "day": "Wednesday",
-      "time": "12:30pm – 10pm approx.",
+      "time": "12:30pm – 10pm",
       "closed": false
     },
     {
       "day": "Thursday",
-      "time": "12:30pm – 10pm approx.",
+      "time": "12:30pm – 10pm",
       "closed": false
     },
     {
       "day": "Friday",
-      "time": "12:30pm – 11:30pm approx.",
+      "time": "12:30pm – 11:30pm",
       "closed": false
     },
     {
       "day": "Saturday",
-      "time": "12:30pm – 11:30pm approx.",
+      "time": "12:30pm – 11:30pm",
       "closed": false
     },
     {
       "day": "Sunday",
-      "time": "12pm – 7pm approx.",
+      "time": "12pm – 7pm",
       "closed": false
     }
   ],

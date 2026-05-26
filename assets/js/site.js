@@ -60,6 +60,11 @@ const injectLayout = () => {
 
         <p>© 2026 The Bank Bar. All rights reserved.</p>
         <p>516 Durham Road, Low Fell, Gateshead, NE9 6HU &middot; 0191 487 9038 &middot; <span id="footer-email"></span></p>
+        <p class="footer-legal">Opening hours and events may vary subject to availability and licensing requirements. Challenge 25 policy in operation. Please inform staff of any allergies or dietary requirements.</p>
+        <div class="footer-legal-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms &amp; Conditions</a>
+        </div>
       </div>
     `;
   }

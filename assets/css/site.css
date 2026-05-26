@@ -828,6 +828,50 @@ input[type="date"].form-input {
   text-align: center;
 }
 .site-footer p { color: rgba(212,205,189,0.72); margin: 0.2rem 0; font-size: 0.76rem; }
+.footer-legal { color: rgba(212,205,189,0.48) !important; font-size: 0.7rem !important; margin-top: 0.8rem !important; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.5; }
+.footer-legal-links { display: flex; justify-content: center; gap: 1.2rem; margin-top: 0.6rem; }
+.footer-legal-links a { color: rgba(212,205,189,0.48); font-size: 0.7rem; text-decoration: underline; text-underline-offset: 3px; }
+.footer-legal-links a:hover { color: var(--gold); }
+
+/* Occasions grid (private hire) */
+.occasions-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+}
+.occasions-grid span {
+  background: rgba(201,168,92,0.1);
+  border: 1px solid rgba(201,168,92,0.3);
+  color: var(--gold);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  padding: 0.4rem 1rem;
+  border-radius: 2rem;
+  font-family: var(--font-body);
+}
+
+/* Secret Garden */
+.secret-garden-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+.secret-garden-content { }
+.secret-garden-image img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: 4px;
+}
+@media (max-width: 768px) {
+  .secret-garden-inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .secret-garden-image { order: -1; }
+}
 .footer-social {
   display: flex;
   justify-content: center;
