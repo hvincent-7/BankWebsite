@@ -279,6 +279,54 @@ select:focus-visible {
     url('../images/drinks/happy-hour-2-for-14-cocktail-selection.jpg') center/cover no-repeat;
 }
 
+/* ── Legal pages (privacy, terms) ── */
+.legal-prose {
+  max-width: 720px;
+  margin: 0 auto;
+  padding-bottom: 2rem;
+}
+.legal-prose .legal-meta {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: rgba(212,205,189,0.45);
+  margin: 0 0 2.8rem;
+  letter-spacing: var(--track-tight);
+}
+.legal-prose h2 {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: var(--cream);
+  margin: 2.8rem 0 0.7rem;
+  padding-top: 1.8rem;
+  border-top: 1px solid rgba(201,168,92,0.12);
+}
+.legal-prose h2:first-of-type {
+  margin-top: 0;
+  border-top: none;
+  padding-top: 0;
+}
+.legal-prose p {
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--cream-dim);
+  margin: 0 0 0.9rem;
+}
+.legal-prose ul {
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--cream-dim);
+  margin: 0 0 0.9rem 1.4rem;
+  padding: 0;
+}
+.legal-prose li { margin-bottom: 0.3rem; }
+.legal-prose a { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
+.legal-prose strong { color: var(--cream); font-weight: 500; }
+
 .eyebrow {
   display: inline-block;
   margin: 0 0 0.7rem;
