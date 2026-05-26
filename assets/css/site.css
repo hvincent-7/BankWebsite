@@ -1612,6 +1612,56 @@ input[type="date"].form-input {
   font-family: var(--font-body);
 }
 
+/* Loyalty & Social */
+.loyalty-social-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+.loyalty-social-card {
+  background: var(--ink-soft);
+  border: 1px solid rgba(201,168,92,0.15);
+  border-radius: 6px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+}
+.loyalty-social-card h3 {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--cream);
+  margin: 0;
+}
+.loyalty-social-card p {
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  color: rgba(212,205,189,0.65);
+  line-height: 1.6;
+  max-width: 340px;
+  margin: 0;
+}
+.lsc-icon {
+  width: 44px;
+  height: 44px;
+  color: var(--gold);
+}
+.lsc-icon svg { width: 100%; height: 100%; }
+.lsc-prompt {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0;
+}
+@media (max-width: 640px) {
+  .loyalty-social-grid { grid-template-columns: 1fr; }
+}
+
 /* Secret Garden */
 .secret-garden-inner {
   display: grid;
