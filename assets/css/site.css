@@ -2098,17 +2098,32 @@ input[type="date"].form-input {
 }
 .sig-cocktail-media {
   position: relative;
-  border-radius: 4px;
-  overflow: hidden;
+  border-radius: 6px;
+  overflow: visible; /* allow shadow/outline to show */
   background: var(--ink-soft);
-  /* Supports both portrait and landscape video */
-  max-width: 380px;
+  max-width: 360px;
   margin: 0 auto;
+}
+.sig-cocktail-media::before {
+  /* Outer decorative gold ring */
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 10px;
+  border: 1px solid rgba(201,168,92,0.22);
+  pointer-events: none;
+  z-index: 1;
 }
 .sig-cocktail-video {
   width: 100%;
   display: block;
   object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid rgba(201,168,92,0.5);
+  box-shadow:
+    0 0 0 5px rgba(10,9,8,0.9),
+    0 0 0 6px rgba(201,168,92,0.22),
+    0 24px 64px rgba(0,0,0,0.7);
 }
 .sig-cocktail-content .eyebrow { display: block; margin-bottom: 0.5rem; }
 .sig-cocktail-content .section-title { margin-bottom: 1rem; }
