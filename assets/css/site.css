@@ -2088,6 +2088,54 @@ input[type="date"].form-input {
   }
 }
 
+/* ===== SIGNATURE COCKTAIL FEATURE ===== */
+.sig-cocktail-section { padding-top: 0; }
+.sig-cocktail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.sig-cocktail-media {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--ink-soft);
+  /* Supports both portrait and landscape video */
+  max-width: 380px;
+  margin: 0 auto;
+}
+.sig-cocktail-video {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+.sig-cocktail-content .eyebrow { display: block; margin-bottom: 0.5rem; }
+.sig-cocktail-content .section-title { margin-bottom: 1rem; }
+.sig-cocktail-content .section-copy { margin: 0 0 1.5rem; }
+.sig-cocktail-price {
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--gold);
+  margin: 0 0 0.5rem;
+}
+.sig-cocktail-hh {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  color: rgba(212,205,189,0.5);
+  margin: 0;
+}
+@media (max-width: 768px) {
+  .sig-cocktail {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+  .sig-cocktail-media { max-width: 300px; }
+  .sig-cocktail-content .section-copy { margin-left: auto; margin-right: auto; }
+}
+
 /* ===== FEATURED COCKTAIL SECTION ===== */
 .featured-cocktail {
   display: grid;
