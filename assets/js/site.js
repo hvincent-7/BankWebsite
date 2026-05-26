@@ -77,11 +77,11 @@ const injectLayout = () => {
 
         <div class="footer-bottom">
           <p>© 2026 The Bank Bar. All rights reserved.</p>
+          <p class="footer-legal">Opening hours and events may vary subject to availability and licensing requirements. Challenge 25 policy in operation. Please inform staff of any allergies or dietary requirements.</p>
           <div class="footer-legal-links">
             <a href="privacy.html">Privacy Policy</a>
             <a href="terms.html">Terms &amp; Conditions</a>
           </div>
-          <p class="footer-legal">Challenge 25 in operation &middot; Hours may vary &middot; Please inform staff of any dietary requirements.</p>
         </div>
       </div>
     `;
