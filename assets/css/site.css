@@ -924,7 +924,7 @@ input[type="date"].form-input {
   padding-top: 1.5rem;
   border-top: 1px solid rgba(201,168,92,0.08);
 }
-.footer-legal { color: rgba(212,205,189,0.4); font-size: 0.68rem; margin: 0.6rem auto 0; max-width: 600px; line-height: 1.6; }
+.footer-legal { color: rgba(212,205,189,0.28); font-size: 0.64rem; margin: 0.5rem auto 0; max-width: 600px; line-height: 1.5; }
 .footer-legal-links { display: flex; justify-content: center; gap: 1.2rem; margin-top: 0.6rem; }
 .footer-legal-links a { color: rgba(212,205,189,0.4); font-size: 0.68rem; text-decoration: underline; text-underline-offset: 3px; }
 .footer-legal-links a:hover { color: var(--gold); }
