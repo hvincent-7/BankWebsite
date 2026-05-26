@@ -59,12 +59,29 @@ const injectLayout = () => {
         <!-- Live Open/Closed Status -->
         <div class="open-status" id="open-status"></div>
 
-        <p>© 2026 The Bank Bar. All rights reserved.</p>
-        <p>516 Durham Road, Low Fell, Gateshead, NE9 6HU &middot; 0191 487 9038 &middot; <span id="footer-email"></span></p>
-        <p class="footer-legal">Opening hours and events may vary subject to availability and licensing requirements. Challenge 25 policy in operation. Please inform staff of any allergies or dietary requirements.</p>
-        <div class="footer-legal-links">
-          <a href="privacy.html">Privacy Policy</a>
-          <a href="terms.html">Terms &amp; Conditions</a>
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h4 class="footer-col-heading">Opening Hours</h4>
+            <div class="footer-hours-list" id="footer-hours-list"></div>
+          </div>
+          <div class="footer-col">
+            <h4 class="footer-col-heading">Find Us</h4>
+            <address class="footer-address">
+              <p>516 Durham Road<br>Low Fell, Gateshead<br>NE9 6HU</p>
+              <p><a href="tel:+441914879038">0191 487 9038</a></p>
+              <p><span id="footer-email"></span></p>
+              <p><a href="https://what3words.com/those.taken.taker" target="_blank" rel="noopener noreferrer" aria-label="What Three Words location: those dot taken dot taker"><span class="w3w-mark">///</span>those.taken.taker</a></p>
+            </address>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2026 The Bank Bar. All rights reserved.</p>
+          <p class="footer-legal">Opening hours and events may vary subject to availability and licensing requirements. Challenge 25 policy in operation. Please inform staff of any allergies or dietary requirements.</p>
+          <div class="footer-legal-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms &amp; Conditions</a>
+          </div>
         </div>
       </div>
     `;
@@ -728,6 +745,7 @@ const init = async () => {
     renderCocktails(siteData);
     renderHappyHour(siteData);
     renderHours(siteData);
+    renderFooterHours(siteData);
     renderReviews(siteData);
     renderPrivateHirePackages(siteData);
     initOpenStatus(siteData);
@@ -822,6 +840,25 @@ const renderReviews = (siteData) => {
 };
 
 // Newsletter Form
+// Footer Hours
+const renderFooterHours = (siteData) => {
+  const el = document.getElementById('footer-hours-list');
+  if (!el || !siteData?.openingHours) return;
+
+  const dayOrder = { Monday:0, Tuesday:1, Wednesday:2, Thursday:3, Friday:4, Saturday:5, Sunday:6 };
+  const dayAbbr  = { Monday:'Mon', Tuesday:'Tue', Wednesday:'Wed', Thursday:'Thu', Friday:'Fri', Saturday:'Sat', Sunday:'Sun' };
+  const todayName = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][new Date().getDay()];
+
+  el.innerHTML = [...siteData.openingHours]
+    .sort((a, b) => (dayOrder[a.day] ?? 99) - (dayOrder[b.day] ?? 99))
+    .map(h => `
+      <div class="footer-hour-row${h.day === todayName ? ' today' : ''}">
+        <span class="fh-day">${dayAbbr[h.day] || h.day}</span>
+        <span class="fh-time${h.closed ? ' fh-closed' : ''}">${escapeHtml(h.time)}</span>
+      </div>
+    `).join('');
+};
+
 // Open/Closed Status
 const initOpenStatus = (siteData) => {
   const statusEl = document.getElementById('open-status');
