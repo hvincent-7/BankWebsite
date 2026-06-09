@@ -109,6 +109,8 @@ const initMobileNav = () => {
     nav.classList.toggle('open', open);
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+    document.body.style.overflow = open ? 'hidden' : '';
+    document.documentElement.style.overflow = open ? 'hidden' : '';
   };
 
   toggle.addEventListener('click', () => {
@@ -464,7 +466,7 @@ const buildHoursMap = (openingHours = []) => {
     }
 
     const normalizedTime = row.time.replace(/approx\.?/gi, '').trim();
-    const parts = normalizedTime.split(/\s*[–-]\s*/);
+    const parts = normalizedTime.split(/\s*-\s*/);
     if (parts.length !== 2) {
       map[dayIndex] = null;
       return map;
@@ -788,7 +790,7 @@ const renderReviews = (siteData) => {
       <div class="review-stars" aria-label="${r.rating} out of 5 stars">${stars(r.rating)}</div>
       <blockquote class="review-quote">"${escapeHtml(r.quote)}"</blockquote>
       <div class="review-footer">
-        <span class="review-author">— ${escapeHtml(r.author)}</span>
+        <span class="review-author">- ${escapeHtml(r.author)}</span>
         ${sourceIcon(r.source)}
       </div>
     </div>

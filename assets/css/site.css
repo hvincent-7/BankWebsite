@@ -194,7 +194,7 @@ select:focus-visible {
   z-index: 2;
 }
 
-/* Hero image gallery — triptych */
+/* Hero image gallery - triptych */
 .hero-bg {
   position: absolute;
   inset: 0;
@@ -1830,7 +1830,7 @@ input[type="date"].form-input {
     pointer-events: none;
     transition: max-height 220ms ease, opacity 220ms ease, transform 220ms ease;
   }
-  /* Make the nav itself full-screen when open — avoids backdrop-filter stacking context trapping fixed children */
+  /* Make the nav itself full-screen when open - avoids backdrop-filter stacking context trapping fixed children */
   .site-nav.open {
     position: fixed;
     top: 0;
@@ -1868,7 +1868,7 @@ input[type="date"].form-input {
 
 @media (max-width: 500px) {
   .gallery { grid-template-columns: 1fr; }
-  /* Keep cocktail cards horizontal — image fills card height */
+  /* Keep cocktail cards horizontal - image fills card height */
   .cocktail-card { flex-direction: row; }
   .cocktail-card-image { 
     width: 90px; 

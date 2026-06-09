@@ -634,32 +634,32 @@
     },
     {
       "day": "Tuesday",
-      "time": "4pm – 9pm",
+      "time": "4pm - 9pm",
       "closed": false
     },
     {
       "day": "Wednesday",
-      "time": "12:30pm – 10pm",
+      "time": "12:30pm - 10pm",
       "closed": false
     },
     {
       "day": "Thursday",
-      "time": "12:30pm – 10pm",
+      "time": "12:30pm - 10pm",
       "closed": false
     },
     {
       "day": "Friday",
-      "time": "12:30pm – 11:30pm",
+      "time": "12:30pm - 11:30pm",
       "closed": false
     },
     {
       "day": "Saturday",
-      "time": "12:30pm – 11:30pm",
+      "time": "12:30pm - 11:30pm",
       "closed": false
     },
     {
       "day": "Sunday",
-      "time": "12pm – 7pm",
+      "time": "12pm - 7pm",
       "closed": false
     }
   ],

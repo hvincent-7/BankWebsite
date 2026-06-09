@@ -79,7 +79,7 @@ app.use((err, req, res, next) => {
 
 app.listen(PORT, () => {
   console.log(`
-🏦 The Bank Website — Local Development Server
+🏦 The Bank Website - Local Development Server
 
 📍 Website:    http://localhost:${PORT}
 📡 API:        http://localhost:${PORT}/api/menu
