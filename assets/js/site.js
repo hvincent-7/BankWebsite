@@ -29,7 +29,6 @@ const injectLayout = () => {
             <li><a href="index.html" class="${current === 'home' ? 'active' : ''}" ${current === 'home' ? 'aria-current="page"' : ''}>Home</a></li>
             <li><a href="menus.html" class="${current === 'menus' ? 'active' : ''}" ${current === 'menus' ? 'aria-current="page"' : ''}>Menus</a></li>
             <li><a href="drinks.html" class="${current === 'drinks' ? 'active' : ''}" ${current === 'drinks' ? 'aria-current="page"' : ''}>Drinks</a></li>
-            <li><a href="secret-garden.html" class="${current === 'secret-garden' ? 'active' : ''}" ${current === 'secret-garden' ? 'aria-current="page"' : ''}>Secret Garden</a></li>
             <li><a href="private-hire.html" class="${current === 'private-hire' ? 'active' : ''}" ${current === 'private-hire' ? 'aria-current="page"' : ''}>Private Hire</a></li>
             <li><a href="visit.html" class="${current === 'visit' ? 'active' : ''}" ${current === 'visit' ? 'aria-current="page"' : ''}>Visit</a></li>
           </ul>
