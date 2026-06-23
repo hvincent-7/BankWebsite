@@ -466,7 +466,7 @@ const buildHoursMap = (openingHours = []) => {
     }
 
     const normalizedTime = row.time.replace(/approx\.?/gi, '').trim();
-    const parts = normalizedTime.split(/\s*-\s*/);
+    const parts = normalizedTime.split(/\s*[-–]\s*/);
     if (parts.length !== 2) {
       map[dayIndex] = null;
       return map;
