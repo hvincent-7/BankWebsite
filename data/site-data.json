@@ -313,153 +313,151 @@
       "label": "Delivery",
       "type": "delivery",
       "note": "Order from The Bank to your door",
-      "menu": {
-        "columns": [
-          {
-            "sections": [
-              {
-                "title": "Tapas",
-                "items": [
-                  {
-                    "name": "Tempura King Prawns",
-                    "price": "£11",
-                    "desc": "Asian slaw & sweet chilli dip"
-                  },
-                  {
-                    "name": "Thai Beef Skewers",
-                    "price": "£10",
-                    "desc": "Slaw & black bean aioli"
-                  },
-                  {
-                    "name": "Char Sui Belly Pork",
-                    "price": "£10",
-                    "desc": "Slaw & 5 spice carrot purée"
-                  },
-                  {
-                    "name": "Mussels",
-                    "price": "£10",
-                    "desc": "Thai curry or white wine sauce"
-                  },
-                  {
-                    "name": "Panko Breaded Calamari",
-                    "price": "£9",
-                    "desc": "Garlic mayonnaise"
-                  },
-                  {
-                    "name": "Fish Goujons",
-                    "price": "£9",
-                    "desc": "Battered cod, tartare sauce"
-                  }
-                ]
-              },
-              {
-                "title": "Light Bites",
-                "items": [
-                  {
-                    "name": "Chicken Wings",
-                    "price": "£10",
-                    "desc": "BBQ, salt & chilli, or spicy"
-                  },
-                  {
-                    "name": "Halloumi Fries",
-                    "price": "£8",
-                    "desc": "Spring onions, sweet chilli (V, GF)"
-                  },
-                  {
-                    "name": "Pan Fried Chorizo",
-                    "price": "£8",
-                    "desc": "Red wine and garlic (GF)"
-                  },
-                  {
-                    "name": "Beef Meatballs",
-                    "price": "£9",
-                    "desc": "Spicy tomato sauce, spring onions (GF)"
-                  },
-                  {
-                    "name": "Patatas Bravas",
-                    "price": "£8",
-                    "desc": "Spicy bravas sauce (VG)"
-                  },
-                  {
-                    "name": "Hummus & Red Pepper Bruschetta",
-                    "price": "£8",
-                    "desc": "Rocket & balsamic glaze (VG)"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "sections": [
-              {
-                "title": "Mains",
-                "items": [
-                  {
-                    "name": "Hand-Battered Cod",
-                    "price": "£15",
-                    "desc": "Chunky chips, mushy peas, tartare sauce"
-                  },
-                  {
-                    "name": "Chicken Katsu",
-                    "price": "£16",
-                    "desc": "Crispy breaded chicken, Japanese-style curry sauce, steamed rice"
-                  },
-                  {
-                    "name": "Thai Green Vegetable Curry",
-                    "price": "£16",
-                    "desc": "Lemongrass, coconut milk, vegetables, steamed rice (V, VG, GF)"
-                  },
-                  {
-                    "name": "Homemade Lasagne",
-                    "price": "£15",
-                    "desc": "Beef mince, napoli sauce, mozzarella, chunky chips, salad"
-                  }
-                ]
-              },
-              {
-                "title": "Burgers",
-                "items": [
-                  {
-                    "name": "Smash Burger",
-                    "price": "£15",
-                    "desc": "Two smashed beef patties, lettuce, tomato, red onion, mature cheese, burger sauce, coleslaw, fries"
-                  },
-                  {
-                    "name": "Peri Peri Chicken Burger",
-                    "price": "£15",
-                    "desc": "Double fried chicken, Monterey Jack, fries"
-                  },
-                  {
-                    "name": "Veggie Burger",
-                    "price": "£14",
-                    "desc": "Halloumi, sweet chilli mayo, sweet potato fries (V)"
-                  }
-                ]
-              },
-              {
-                "title": "Desserts",
-                "items": [
-                  {
-                    "name": "Chocolate Brownie",
-                    "price": "£7",
-                    "desc": "Served with vanilla ice cream"
-                  },
-                  {
-                    "name": "Sticky Toffee Pudding",
-                    "price": "£7",
-                    "desc": "Served with custard or vanilla ice cream"
-                  },
-                  {
-                    "name": "Ice Cream",
-                    "price": "£5",
-                    "desc": "Choice of vanilla, chocolate or strawberry ice cream"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
+      "columns": [
+        {
+          "sections": [
+            {
+              "title": "Tapas",
+              "items": [
+                {
+                  "name": "Tempura King Prawns",
+                  "price": "£11",
+                  "desc": "Asian slaw & sweet chilli dip"
+                },
+                {
+                  "name": "Thai Beef Skewers",
+                  "price": "£10",
+                  "desc": "Slaw & black bean aioli"
+                },
+                {
+                  "name": "Char Sui Belly Pork",
+                  "price": "£10",
+                  "desc": "Slaw & 5 spice carrot purée"
+                },
+                {
+                  "name": "Mussels",
+                  "price": "£10",
+                  "desc": "Thai curry or white wine sauce"
+                },
+                {
+                  "name": "Panko Breaded Calamari",
+                  "price": "£9",
+                  "desc": "Garlic mayonnaise"
+                },
+                {
+                  "name": "Fish Goujons",
+                  "price": "£9",
+                  "desc": "Battered cod, tartare sauce"
+                }
+              ]
+            },
+            {
+              "title": "Light Bites",
+              "items": [
+                {
+                  "name": "Chicken Wings",
+                  "price": "£10",
+                  "desc": "BBQ, salt & chilli, or spicy"
+                },
+                {
+                  "name": "Halloumi Fries",
+                  "price": "£8",
+                  "desc": "Spring onions, sweet chilli (V, GF)"
+                },
+                {
+                  "name": "Pan Fried Chorizo",
+                  "price": "£8",
+                  "desc": "Red wine and garlic (GF)"
+                },
+                {
+                  "name": "Beef Meatballs",
+                  "price": "£9",
+                  "desc": "Spicy tomato sauce, spring onions (GF)"
+                },
+                {
+                  "name": "Patatas Bravas",
+                  "price": "£8",
+                  "desc": "Spicy bravas sauce (VG)"
+                },
+                {
+                  "name": "Hummus & Red Pepper Bruschetta",
+                  "price": "£8",
+                  "desc": "Rocket & balsamic glaze (VG)"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sections": [
+            {
+              "title": "Mains",
+              "items": [
+                {
+                  "name": "Hand-Battered Cod",
+                  "price": "£15",
+                  "desc": "Chunky chips, mushy peas, tartare sauce"
+                },
+                {
+                  "name": "Chicken Katsu",
+                  "price": "£16",
+                  "desc": "Crispy breaded chicken, Japanese-style curry sauce, steamed rice"
+                },
+                {
+                  "name": "Thai Green Vegetable Curry",
+                  "price": "£16",
+                  "desc": "Lemongrass, coconut milk, vegetables, steamed rice (V, VG, GF)"
+                },
+                {
+                  "name": "Homemade Lasagne",
+                  "price": "£15",
+                  "desc": "Beef mince, napoli sauce, mozzarella, chunky chips, salad"
+                }
+              ]
+            },
+            {
+              "title": "Burgers",
+              "items": [
+                {
+                  "name": "Smash Burger",
+                  "price": "£15",
+                  "desc": "Two smashed beef patties, lettuce, tomato, red onion, mature cheese, burger sauce, coleslaw, fries"
+                },
+                {
+                  "name": "Peri Peri Chicken Burger",
+                  "price": "£15",
+                  "desc": "Double fried chicken, Monterey Jack, fries"
+                },
+                {
+                  "name": "Veggie Burger",
+                  "price": "£14",
+                  "desc": "Halloumi, sweet chilli mayo, sweet potato fries (V)"
+                }
+              ]
+            },
+            {
+              "title": "Desserts",
+              "items": [
+                {
+                  "name": "Chocolate Brownie",
+                  "price": "£7",
+                  "desc": "Served with vanilla ice cream"
+                },
+                {
+                  "name": "Sticky Toffee Pudding",
+                  "price": "£7",
+                  "desc": "Served with custard or vanilla ice cream"
+                },
+                {
+                  "name": "Ice Cream",
+                  "price": "£5",
+                  "desc": "Choice of vanilla, chocolate or strawberry ice cream"
+                }
+              ]
+            }
+          ]
+        }
+      ],
       "options": [
         {
           "name": "Uber Eats",

@@ -8,6 +8,8 @@
     "start": "node server.js",
     "build": "echo 'Static site - no build needed'",
     "vercel-build": "echo 'Static site with serverless API'",
+    "export": "node scripts/export-airtable.js",
+    "build-data": "node scripts/build-from-csv.js",
     "import": "node scripts/import-airtable.js",
     "clear-airtable": "node scripts/clear-airtable.js",
     "test": "echo \"Error: no test specified\" && exit 1"

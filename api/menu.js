@@ -1,4 +1,21 @@
 const axios = require('axios');
+const fs = require('fs');
+const path = require('path');
+
+// Bundled snapshot used as a fallback when Airtable returns no usable data
+// (e.g. rate limited, or the monthly API request quota is exhausted).
+let localSnapshot = null;
+function getLocalSnapshot() {
+  if (localSnapshot) return localSnapshot;
+  try {
+    const raw = fs.readFileSync(path.join(__dirname, '..', 'data', 'site-data.json'), 'utf8');
+    localSnapshot = JSON.parse(raw);
+  } catch (e) {
+    console.warn('Could not load local site-data.json fallback:', e.message);
+    localSnapshot = null;
+  }
+  return localSnapshot;
+}
 
 // Enhanced cache with stale-while-revalidate pattern
 const cache = {
@@ -236,6 +253,18 @@ async function fetchAirtableData(forceRefresh = false) {
 
     const transformedData = transformData(cocktails, happyHour, openingHours, wines, hotBeverages, menuTabs, menuSections, menuItems, deliveryOptions, reviews);
 
+    // If Airtable returned nothing usable (e.g. every table 429'd because the
+    // monthly API quota is exhausted), fall back to the bundled snapshot rather
+    // than serving an empty payload that renders as a blank site.
+    if (!cocktails.length && !openingHours.length && !menuTabs.length) {
+      const snapshot = getLocalSnapshot();
+      if (snapshot) {
+        console.warn('Airtable returned no usable data; serving local snapshot');
+        return { ...snapshot, _meta: { source: 'local-fallback', cached: new Date().toISOString() } };
+      }
+      return transformedData;
+    }
+
     // Only cache if we got at least some data
     if (cocktails.length > 0 || happyHour.length > 0 || openingHours.length > 0) {
       cache.data = transformedData;
@@ -249,6 +278,12 @@ async function fetchAirtableData(forceRefresh = false) {
     if (cache.data) {
       console.warn('Returning stale cache due to error');
       return { ...cache.data, _meta: { ...cache.data._meta, stale: true } };
+    }
+    // No cache: serve the bundled snapshot so the site stays populated
+    const snapshot = getLocalSnapshot();
+    if (snapshot) {
+      console.warn('Returning local snapshot due to error');
+      return { ...snapshot, _meta: { source: 'local-fallback', cached: new Date().toISOString() } };
     }
     throw error;
   }
@@ -270,24 +305,25 @@ module.exports = async (req, res) => {
   if (req.url?.includes('health')) {
     return res.status(200).json({
       status: 'ok',
-      cache: getCacheState(),
+      source: 'snapshot',
       timestamp: new Date().toISOString()
     });
   }
 
-  try {
-    const data = await fetchAirtableData();
-    return res.status(200).json(data);
-  } catch (error) {
-    console.error('API Error:', error);
-    return res.status(500).json({
-      error: 'Failed to fetch menu data',
-      message: process.env.NODE_ENV === 'development' ? error.message : 'Internal server error',
-      fallback: true
-    });
+  // The site now serves content directly from the bundled snapshot
+  // (data/site-data.json). Airtable is no longer queried per request. This
+  // endpoint is kept so existing links keep working; to refresh content,
+  // edit the snapshot (or regenerate it via scripts/build-from-csv.js).
+  const snapshot = getLocalSnapshot();
+  if (snapshot) {
+    return res.status(200).json({ ...snapshot, _meta: { source: 'snapshot' } });
   }
+  return res.status(500).json({ error: 'Snapshot unavailable' });
 };
 
 // Export for testing
 module.exports.fetchAirtableData = fetchAirtableData;
 module.exports.getCacheState = getCacheState;
+// Exported so scripts/export-airtable.js can reuse the exact same fetch/transform logic
+module.exports.fetchAllRecords = fetchAllRecords;
+module.exports.transformData = transformData;

@@ -234,7 +234,7 @@ const renderMenus = (siteData) => {
       const active = i === 0;
       return `
       <div id="${panelId}" class="menu-panel${active ? ' active' : ''}" role="tabpanel" aria-labelledby="${tabId}" ${active ? '' : 'hidden'}>
-        <div class="menu-cols">${tab.columns.map(renderMenuColumn).join('')}</div>
+        <div class="menu-cols">${(tab.columns || tab.menu?.columns || []).map(renderMenuColumn).join('')}</div>
         ${tab.type === 'delivery' && tab.options?.length
           ? `<div class="delivery-order-section">
               <h3 class="delivery-order-heading">Order for Delivery</h3>
@@ -719,29 +719,14 @@ const init = async () => {
   setLoadingState(true);
 
   try {
-    // Attempt to fetch from the API with retry, fallback to local data
-    let response;
-    try {
-      response = await fetchWithRetry('/api/menu');
-    } catch {
-      console.warn('API unavailable, using local data');
-      response = await fetch('./data/site-data.json');
-    }
-
+    // Content is served directly from the bundled snapshot (data/site-data.json).
+    // To update the site, edit that file and redeploy. (Airtable is no longer
+    // queried on each visit; see scripts/build-from-csv.js to regenerate the
+    // snapshot from CSV exports.)
+    const response = await fetchWithRetry('./data/site-data.json');
     if (!response.ok) throw new Error('Could not load data');
     const siteData = await response.json();
 
-    // If API returned no reviews, fall back to local data for reviews
-    if (!siteData.reviews || !siteData.reviews.length) {
-      try {
-        const localRes = await fetch('/data/site-data.json');
-        if (localRes.ok) {
-          const localData = await localRes.json();
-          siteData.reviews = localData.reviews || [];
-        }
-      } catch { /* keep empty */ }
-    }
-    
     renderMenus(siteData);
     renderCocktails(siteData);
     renderHappyHour(siteData);
