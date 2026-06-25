@@ -937,7 +937,7 @@
   "privateHirePackages": [
     {
       "name": "Bronze Package",
-      "price": "From £350*",
+      "price": "From £400*",
       "note": "Price based on 30 people. Additional guests £10pp",
       "foodIncluded": [
         "Selection of Finger Sandwiches (Tuna Mayo, Egg Mayo & Coronation Chicken)",
@@ -964,7 +964,7 @@
     },
     {
       "name": "Silver Package",
-      "price": "From £450*",
+      "price": "From £500*",
       "note": "Price based on 30 people. Additional guests £13pp",
       "foodIncluded": [
         "Selection of Finger Sandwiches (Tuna Mayo, Egg Mayo & Coronation Chicken)",
