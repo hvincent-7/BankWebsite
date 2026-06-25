@@ -993,4 +993,32 @@ if (document.readyState === 'loading') {
   initVisualEnhancements();
 }
 
+// Auto-refresh when a new deployment is detected.
+// Polls the current page's ETag (set by Vercel to a content hash) every 5 minutes.
+// Skips reload if the user is actively typing in a form field.
+const initAutoRefresh = () => {
+  const INTERVAL = 5 * 60 * 1000;
+  let knownEtag = null;
+
+  const fetchEtag = async () => {
+    try {
+      const res = await fetch(window.location.pathname, { method: 'HEAD', cache: 'no-store' });
+      return res.headers.get('etag') || res.headers.get('last-modified') || null;
+    } catch {
+      return null;
+    }
+  };
+
+  fetchEtag().then(etag => { knownEtag = etag; });
+
+  setInterval(async () => {
+    const etag = await fetchEtag();
+    if (!etag || !knownEtag || etag === knownEtag) return;
+    const active = document.activeElement;
+    const inForm = active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.tagName === 'SELECT');
+    if (!inForm) window.location.reload(true);
+  }, INTERVAL);
+};
+
+initAutoRefresh();
 init();
