@@ -301,7 +301,7 @@ const renderPrivateHirePackages = (siteData) => {
   if (!packagesEl || !siteData.privateHirePackages?.length) return;
 
   packagesEl.innerHTML = siteData.privateHirePackages.map((pkg) => `
-    <article class="card reveal private-hire-package">
+    <article class="card private-hire-package">
       <div class="private-hire-package-header">
         <div>
           <p class="eyebrow">Private Hire</p>
