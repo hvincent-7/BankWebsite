@@ -243,6 +243,18 @@ select:focus-visible {
   text-transform: uppercase;
   letter-spacing: var(--track-display);
 }
+/* Sits between the tagline and the buttons, so it pulls up into the tagline's
+   bottom margin and takes that 2rem gap below itself instead. */
+.hero p.hero-location {
+  margin: -1.1rem 0 2rem;
+  color: var(--gold-light);
+  font-family: var(--serif);
+  font-size: clamp(1.15rem, 2.6vw, 1.5rem);
+  font-style: italic;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
 
 .page-hero {
   padding: 3.5rem 0 1.8rem;
