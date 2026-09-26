@@ -17,6 +17,9 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!-- Warm the connection to the booking widget's origin before the iframe asks for it. -->
+  <link rel="preconnect" href="https://web.dojo.app">
+  <link rel="dns-prefetch" href="https://graphql.dojo.app">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/site.css">
   <script defer src="/_vercel/insights/script.js"></script>
@@ -32,13 +35,57 @@
         <p class="section-copy reveal copy-center">Wines &middot; Cocktails &middot; Tapas</p>
       </div>
     </section>
-    <section class="section">
-      <div class="container card reveal max-w-760">
-        <p class="section-copy max-w-none">All bookings are managed through Dojo for live availability.</p>
-        <a class="btn btn-primary" href="#" data-dojo-link="true" target="_blank" rel="noopener noreferrer" aria-label="Book instantly with Dojo (opens in a new tab)">Book Instantly with Dojo</a>
-        <p class="menu-note">For same-day bookings or large groups, call 0191 487 9038.</p>
+    <section class="section booking-section">
+      <div class="container">
+
+        <!-- SUNDAY NOTICE. The Dojo widget below is a cross-origin iframe, so the browser
+             will not let this page see which date a guest picks, and Dojo sends no
+             events out of the frame. We cannot react to "Sunday selected", so the
+             message is put in front of every guest instead: this always-visible note,
+             plus the dialog at the foot of the page, which opens once per visit.
+             The wording is replaced at runtime with sundayNote from data/site-data.json
+             when that loads, so the JSON stays the one place to change it. -->
+        <div class="booking-notice reveal" role="note">
+          <p class="booking-notice-title">Booking for a Sunday?</p>
+          <p data-sunday-note>Serving Tapas and Main Menu only. Please note we do not serve Sunday lunch.</p>
+        </div>
+
+        <!-- THE BOOKING WIDGET. Same Dojo vendor URL every "Reserve" button used to open in
+             a new tab; only where the booking happens has changed. No sandbox attribute:
+             the form needs scripts, storage and top-level navigation for its payment and
+             confirmation steps. Dojo has no height-sync protocol, so the frame is sized
+             generously rather than guessed short (see .booking-frame in site.css). -->
+        <div class="booking-frame-wrap">
+          <iframe class="booking-frame"
+                  src="https://web.dojo.app/create_booking/vendor/0XYLokEoeff77KUU00p7ex68kXi4SF8dCobxdAlAkQ0_restaurant"
+                  title="The Bank online booking"
+                  loading="eager"
+                  referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+
+        <!-- Always visible, not behind a disclosure: Safari and Firefox block third-party
+             storage by default, which can leave an embedded widget failing quietly. -->
+        <div class="booking-fallback">
+          <p><strong>Form not loading?</strong> Some browsers block embedded booking forms.
+             You can <a href="#" data-dojo-link="true" target="_blank" rel="noopener noreferrer">open our booking page in a new tab</a>,
+             or call <a href="tel:+441914879038">0191 487 9038</a> and we will book you in.</p>
+          <p class="menu-note">For same-day bookings or large groups, please call us.
+             Bookings are handled by Dojo, who may set their own cookies once you use the form.</p>
+        </div>
       </div>
     </section>
+
+    <!-- Opened once per visit by initSundayNotice() in site.js. A native <dialog>, so
+         focus trapping, Escape to close and the backdrop come from the browser. -->
+    <dialog class="booking-dialog" id="sunday-dialog" aria-labelledby="sunday-dialog-title">
+      <form method="dialog">
+        <p class="eyebrow">Before you book</p>
+        <h2 id="sunday-dialog-title">No Sunday lunch</h2>
+        <p data-sunday-note>Serving Tapas and Main Menu only. Please note we do not serve Sunday lunch.</p>
+        <p class="booking-dialog-hint">Our Tapas and Main Menu are served as usual on Sundays, so you are very welcome to book for those.</p>
+        <button class="btn btn-primary" value="ok" autofocus>Got it, continue to booking</button>
+      </form>
+    </dialog>
   </main>
 
   <footer id="app-footer" class="site-footer"></footer>

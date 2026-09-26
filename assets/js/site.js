@@ -32,7 +32,7 @@ const injectLayout = () => {
             <li><a href="private-hire.html" class="${current === 'private-hire' ? 'active' : ''}" ${current === 'private-hire' ? 'aria-current="page"' : ''}>Private Hire</a></li>
             <li><a href="visit.html" class="${current === 'visit' ? 'active' : ''}" ${current === 'visit' ? 'aria-current="page"' : ''}>Visit</a></li>
           </ul>
-          <a class="nav-cta" href="${DOJO_BOOKING_URL}" target="_blank" rel="noopener noreferrer" aria-label="Reserve with Dojo (opens in a new tab)">Reserve</a>
+          <a class="nav-cta" href="book.html" ${current === 'book' ? 'aria-current="page"' : ''}>Reserve</a>
         </div>
       </div>
     `;
@@ -636,6 +636,36 @@ const wireDojoLinks = () => {
   });
 };
 
+// Sunday notice on book.html. The Dojo widget is a cross-origin iframe, so we
+// cannot see which date a guest picks inside it; instead the notice is shown
+// before they start, once per browser session.
+const SUNDAY_NOTICE_KEY = 'bank-sunday-notice-seen';
+
+const initSundayNotice = () => {
+  const dialog = document.getElementById('sunday-dialog');
+  if (!(dialog instanceof HTMLDialogElement) || typeof dialog.showModal !== 'function') return;
+
+  let seen = false;
+  try { seen = sessionStorage.getItem(SUNDAY_NOTICE_KEY) === '1'; } catch (e) { /* storage blocked */ }
+  if (seen) return;
+
+  dialog.addEventListener('close', () => {
+    try { sessionStorage.setItem(SUNDAY_NOTICE_KEY, '1'); } catch (e) { /* storage blocked */ }
+  });
+  // Clicking the backdrop (outside the dialog box) also dismisses it.
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+  dialog.showModal();
+};
+
+const renderSundayNote = (siteData) => {
+  if (!siteData.sundayNote) return;
+  document.querySelectorAll('[data-sunday-note]').forEach((el) => {
+    el.textContent = siteData.sundayNote;
+  });
+};
+
 const wirePrivateHireForm = () => {
   const form = document.getElementById('private-hire-form');
   if (!form) return;
@@ -712,6 +742,7 @@ const init = async () => {
   initStickyNav();
   initReveal();
   wireDojoLinks();
+  initSundayNotice();
   wirePrivateHireForm();
   initParallax();
   initFloatingButton();
@@ -734,6 +765,7 @@ const init = async () => {
     renderFooterHours(siteData);
     renderReviews(siteData);
     renderPrivateHirePackages(siteData);
+    renderSundayNote(siteData);
     initOpenStatus(siteData);
     
     // Drinks page
