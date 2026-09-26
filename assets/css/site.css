@@ -255,6 +255,22 @@ select:focus-visible {
   text-transform: none;
   letter-spacing: 0.02em;
 }
+/* The promo banner's sparkle, either side. The "/ ''" gives it empty alt text
+   so screen readers don't announce it; the line before is the fallback for
+   browsers that don't support alt text in content. */
+.hero p.hero-location::before,
+.hero p.hero-location::after {
+  content: '\2726';
+  content: '\2726' / '';
+  display: inline-block;
+  color: var(--gold);
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 0.8em;
+  vertical-align: 0.15em;
+}
+.hero p.hero-location::before { margin-right: 0.75em; }
+.hero p.hero-location::after { margin-left: 0.75em; }
 
 .page-hero {
   padding: 3.5rem 0 1.8rem;
