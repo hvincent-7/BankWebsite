@@ -243,6 +243,34 @@ select:focus-visible {
   text-transform: uppercase;
   letter-spacing: var(--track-display);
 }
+/* Sits between the tagline and the buttons, so it pulls up into the tagline's
+   bottom margin and takes that 2rem gap below itself instead. */
+.hero p.hero-location {
+  margin: -1.1rem 0 2rem;
+  color: var(--gold-light);
+  font-family: var(--serif);
+  font-size: clamp(1.15rem, 2.6vw, 1.5rem);
+  font-style: italic;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+/* The promo banner's sparkle, either side. The "/ ''" gives it empty alt text
+   so screen readers don't announce it; the line before is the fallback for
+   browsers that don't support alt text in content. */
+.hero p.hero-location::before,
+.hero p.hero-location::after {
+  content: '\2726';
+  content: '\2726' / '';
+  display: inline-block;
+  color: var(--gold);
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 0.8em;
+  vertical-align: 0.15em;
+}
+.hero p.hero-location::before { margin-right: 0.75em; }
+.hero p.hero-location::after { margin-left: 0.75em; }
 
 .page-hero {
   padding: 3.5rem 0 1.8rem;
@@ -3063,4 +3091,81 @@ input[type="date"].form-input {
   .status-dot {
     animation: none;
   }
+}
+
+/* ----------------------------------------------------------------------------
+   Booking page (book.html)
+   The Dojo widget is embedded rather than linked. Dojo publishes no height-sync
+   protocol, so the frame is sized generously: a frame guessed short scrolls
+   inside itself, which on a phone is worse than no embed at all.
+   ---------------------------------------------------------------------------- */
+.booking-section { padding-top: 1rem; }
+
+.booking-notice {
+  max-width: 900px;
+  margin: 0 auto 1.25rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid rgba(201,168,92,0.45);
+  border-left: 3px solid var(--gold);
+  background: var(--ink-soft);
+}
+.booking-notice p { margin: 0; color: var(--cream); line-height: 1.6; }
+.booking-notice .booking-notice-title {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  color: var(--gold);
+  margin-bottom: 0.2rem;
+}
+
+.booking-frame-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  overflow: hidden;
+  background: var(--ink);
+  border: 1px solid rgba(201,168,92,0.25);
+}
+/* dvh with a vh line before it for older browsers, and a px floor: on a phone,
+   vh ignores the browser chrome, so a frame sized in vh alone hides its last
+   rows behind the address bar. */
+.booking-frame {
+  display: block;
+  width: 100%;
+  height: 80vh;
+  height: 80dvh;
+  min-height: 720px;
+  border: 0;
+}
+
+.booking-fallback {
+  max-width: 62ch;
+  margin: 1.5rem auto 0;
+  text-align: center;
+  color: var(--cream-dim);
+  line-height: 1.7;
+}
+.booking-fallback a { color: var(--gold); }
+
+.booking-dialog {
+  width: min(92vw, 460px);
+  padding: 2rem 1.5rem 1.6rem;
+  background: var(--ink-mid);
+  color: var(--cream);
+  border: 1px solid rgba(201,168,92,0.45);
+  text-align: center;
+}
+.booking-dialog::backdrop { background: rgba(0,0,0,0.72); }
+.booking-dialog h2 {
+  margin: 0.3rem 0 0.8rem;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 2rem;
+  color: var(--gold);
+}
+.booking-dialog p { margin: 0 0 0.9rem; line-height: 1.6; }
+.booking-dialog .booking-dialog-hint { color: var(--cream-dim); font-size: 0.9rem; }
+.booking-dialog .btn {
+  margin-top: 0.6rem;
+  border: 0;
+  cursor: pointer;
+  font-family: var(--sans);
 }
