@@ -1860,8 +1860,10 @@ input[type="date"].form-input {
     pointer-events: none;
     transition: max-height 220ms ease, opacity 220ms ease, transform 220ms ease;
   }
-  /* Make the nav itself full-screen when open - avoids backdrop-filter stacking context trapping fixed children */
-  .site-nav.open {
+  /* Make the nav itself full-screen when open - avoids backdrop-filter stacking context trapping fixed children.
+     .closing keeps the overlay in place while the menu collapses, so the close animation does not play inside the sticky bar */
+  .site-nav.open,
+  .site-nav.closing {
     position: fixed;
     top: 0;
     left: 0;
@@ -1871,16 +1873,19 @@ input[type="date"].form-input {
     overflow-y: auto;
     z-index: 20;
   }
-  .site-nav.open .site-nav-inner {
+  .site-nav.open .site-nav-inner,
+  .site-nav.closing .site-nav-inner {
     flex-direction: column;
     align-items: stretch;
   }
-  .site-nav.open .brand {
+  .site-nav.open .brand,
+  .site-nav.closing .brand {
     width: 100%;
     justify-content: center;
     padding: 1.2rem 0 0;
   }
-  .site-nav.open .nav-toggle {
+  .site-nav.open .nav-toggle,
+  .site-nav.closing .nav-toggle {
     margin-left: auto;
   }
   .site-nav.open .nav-primary {
