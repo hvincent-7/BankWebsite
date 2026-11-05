@@ -21,8 +21,10 @@ const injectLayout = () => {
         <a class="brand" href="index.html" aria-label="The Bank home">
           ${LOGO_IMG}
         </a>
-        <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-primary" aria-label="Toggle navigation">
-          <span class="nav-toggle-lines" aria-hidden="true"></span>
+        ${current === 'book' ? '' : '<a class="nav-reserve-top" href="book.html">Reserve</a>'}
+        <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-primary" aria-label="Open navigation">
+          <span class="nav-toggle-label">Menu</span>
+          <span class="nav-toggle-lines" aria-hidden="true"><span></span><span></span><span></span></span>
         </button>
         <div id="nav-primary" class="nav-primary">
           <ul class="nav-links">
@@ -33,6 +35,7 @@ const injectLayout = () => {
             <li><a href="visit.html" class="${current === 'visit' ? 'active' : ''}" ${current === 'visit' ? 'aria-current="page"' : ''}>Visit</a></li>
           </ul>
           <a class="nav-cta" href="book.html" ${current === 'book' ? 'aria-current="page"' : ''}>Reserve</a>
+          <a class="nav-phone" href="tel:+441914879038">0191 487 9038</a>
         </div>
       </div>
     `;
@@ -102,7 +105,7 @@ const injectEmail = () => {
 const initMobileNav = () => {
   const nav = document.querySelector('.site-nav');
   const toggle = nav?.querySelector('.nav-toggle');
-  const links = nav?.querySelectorAll('.nav-links a, .nav-cta');
+  const links = nav?.querySelectorAll('.nav-links a, .nav-cta, .nav-phone');
   if (!nav || !toggle) return;
 
   let closingTimer = null;
@@ -149,6 +152,201 @@ const initStickyNav = () => {
 
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
+};
+
+/* ---------------------------------------------------------------------------
+   Seasonal nav: decorative shapes drifting behind the bar and a short closable
+   message under it. Each season is just data: a name, a dates(year) function
+   returning its [first, last] day (inclusive, visitor's local time), the shapes
+   to drop and the note to show. Preview any season with ?season=<name>, or
+   switch the effect off with ?season=off.
+   --------------------------------------------------------------------------- */
+const prefersReducedMotion = () =>
+  window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const onDay = (y, m, d) => new Date(y, m - 1, d);
+const addDays = (date, n) => new Date(date.getFullYear(), date.getMonth(), date.getDate() + n);
+const weekEnding = (sunday) => [addDays(sunday, -6), sunday];
+const sundayOnOrAfter = (date) => addDays(date, (7 - date.getDay()) % 7);
+
+// Western Easter Sunday (anonymous Gregorian algorithm)
+const easterSunday = (y) => {
+  const a = y % 19, b = Math.floor(y / 100), c = y % 100;
+  const h = (19 * a + b - Math.floor(b / 4) - Math.floor((b - Math.floor((b + 8) / 25) + 1) / 3) + 15) % 30;
+  const l = (32 + 2 * (b % 4) + 2 * Math.floor(c / 4) - h - (c % 4)) % 7;
+  const n = h + l - 7 * Math.floor((a + 11 * h + 22 * l) / 451) + 114;
+  return onDay(y, Math.floor(n / 31), (n % 31) + 1);
+};
+
+const thirdSundayOfJune = (y) => {
+  const first = onDay(y, 6, 1);
+  return addDays(first, (7 - first.getDay()) % 7 + 14);
+};
+
+const SEASONS = [
+  { name: 'valentines', dates: (y) => [onDay(y, 2, 7), onDay(y, 2, 14)],
+    shapes: ['heart', 'petal', 'petal', 'heart'],
+    note: { text: "Happy Valentine's Day from all of us at The&nbsp;Bank.", link: { href: 'book.html', label: 'Reserve a table' } } },
+  { name: 'mothers-day', dates: (y) => weekEnding(addDays(easterSunday(y), -21)),
+    shapes: ['tulip', 'tulip', 'heart'],
+    note: { text: 'Treat Mum this Mothering Sunday.', link: { href: 'book.html', label: 'Reserve a table' } } },
+  { name: 'fathers-day', dates: (y) => weekEnding(thirdSundayOfJune(y)),
+    shapes: ['tie', 'moustache'],
+    note: { text: "Treat Dad this Father's Day.", link: { href: 'book.html', label: 'Reserve a table' } } },
+  { name: 'halloween', dates: (y) => [onDay(y, 10, 20), onDay(y, 10, 31)],
+    shapes: ['pumpkin', 'pumpkin', 'bat'],
+    note: { text: 'Happy Halloween from all of us at The&nbsp;Bank.' } },
+  // Fireworks from the 1st until the Sunday on or after Bonfire Night
+  { name: 'bonfire-night', dates: (y) => [onDay(y, 11, 1), sundayOnOrAfter(onDay(y, 11, 5))],
+    shapes: ['burst', 'burst', 'spark'],
+    note: { text: 'Happy Bonfire Night from all of us at The&nbsp;Bank.' } },
+  { name: 'christmas', dates: (y) => [onDay(y, 11, 15), onDay(y, 12, 30)],
+    shapes: ['flake', 'flake', 'tree'],
+    note: { text: 'Merry Christmas from all of us at The&nbsp;Bank.', link: { href: 'private-hire.html', label: 'Book your festive party' } } },
+  // Crosses the year boundary: currentSeason() also checks last year's range
+  { name: 'new-year', dates: (y) => [onDay(y, 12, 31), onDay(y + 1, 1, 2)],
+    shapes: ['burst', 'spark', 'spark'],
+    note: { text: 'Happy New Year from all of us at The&nbsp;Bank.' } }
+];
+
+// Wide shapes are drawn larger so they read at the same weight
+const SHAPE_SCALE = { bat: 1.4, moustache: 1.4, tie: 1.5, tulip: 1.35 };
+
+// All shapes use currentColor so the CSS decides the colour (gold / cream)
+const SEASON_SHAPES = {
+  heart:
+    '<svg viewBox="0 0 24 24"><path d="M12 20.5s-7.4-4.4-9.1-9.2C1.8 8 3.8 4.6 7.1 4.6c2.1 0 3.8 1.1 4.9 2.9 1.1-1.8 2.8-2.9 4.9-2.9 3.3 0 5.3 3.4 4.2 6.7-1.7 4.8-9.1 9.2-9.1 9.2z" fill="currentColor"/></svg>',
+  petal:
+    '<svg viewBox="0 0 24 24"><path d="M5.5 19.5C3 14.5 5 7 11.5 4.3 17 2 21 5 20 9.5 19 14.5 12.5 20.5 5.5 19.5z" fill="currentColor"/>' +
+    '<path d="M6.5 18c1.5-4.6 5-8.6 10.5-11" fill="none" stroke="#0D0C0A" stroke-width="1.1" stroke-linecap="round" opacity=".45"/></svg>',
+  tulip:
+    '<svg viewBox="0 0 24 24">' +
+    '<path d="M12 14v8" stroke="currentColor" stroke-width="1.4" opacity=".6"/>' +
+    '<path d="M12 20.5Q8 20.2 6.6 16.2Q10.6 16.4 12 20.5z" fill="currentColor" opacity=".6"/>' +
+    '<path d="M7 4.2Q8.8 5.4 9.8 7.4Q10.6 4.6 12 3Q13.4 4.6 14.2 7.4Q15.2 5.4 17 4.2Q18 9 16 11.8Q14.4 14 12 14.2Q9.6 14 8 11.8Q6 9 7 4.2z" fill="currentColor"/>' +
+    '</svg>',
+  tie:
+    '<svg viewBox="0 0 24 24">' +
+    '<path d="M9.8 3h4.4l-.9 2.8h-2.6z" fill="currentColor" opacity=".7"/>' +
+    '<path d="M10.7 5.8h2.6l1.9 10.4L12 21l-3.2-4.8z" fill="currentColor"/>' +
+    '<g fill="#0D0C0A" opacity=".55"><circle cx="12" cy="9" r=".8"/><circle cx="10.9" cy="12.5" r=".8"/><circle cx="13.1" cy="12.5" r=".8"/><circle cx="12" cy="16" r=".8"/></g>' +
+    '</svg>',
+  moustache:
+    '<svg viewBox="0 0 24 24"><path d="M12 11.4C10.8 9.8 8.6 9.2 6.8 10 5.3 10.7 4.6 12.2 3.7 13.3 3.2 13.9 2.4 14 1.8 13.6 2.2 15.4 3.9 16.5 5.8 16.4 8.3 16.2 10.4 14.9 12 13.4 13.6 14.9 15.7 16.2 18.2 16.4 20.1 16.5 21.8 15.4 22.2 13.6 21.6 14 20.8 13.9 20.3 13.3 19.4 12.2 18.7 10.7 17.2 10 15.4 9.2 13.2 9.8 12 11.4z" fill="currentColor"/></svg>',
+  burst:
+    '<svg viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">' +
+    '<path d="M12 7.5V2M16.5 12H22M12 16.5V22M7.5 12H2"/>' +
+    '<path d="M15.2 8.8 18 6M15.2 15.2 18 18M8.8 15.2 6 18M8.8 8.8 6 6" opacity=".6"/>' +
+    '</g><circle cx="12" cy="12" r="1.8" fill="currentColor"/></svg>',
+  spark:
+    '<svg viewBox="0 0 24 24"><path d="M12 3l1.8 7.2L21 12l-7.2 1.8L12 21l-1.8-7.2L3 12l7.2-1.8z" fill="currentColor"/></svg>',
+  flake:
+    '<svg viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">' +
+    '<path d="M12 2v20M12 6 9.5 3.8M12 6l2.5-2.2M12 18l-2.5 2.2M12 18l2.5 2.2"/>' +
+    '<path transform="rotate(60 12 12)" d="M12 2v20M12 6 9.5 3.8M12 6l2.5-2.2M12 18l-2.5 2.2M12 18l2.5 2.2"/>' +
+    '<path transform="rotate(120 12 12)" d="M12 2v20M12 6 9.5 3.8M12 6l2.5-2.2M12 18l-2.5 2.2M12 18l2.5 2.2"/>' +
+    '</g></svg>',
+  tree:
+    '<svg viewBox="0 0 24 24">' +
+    '<path d="M12 2 7 9h2.5l-4 6h3L4 21h16l-4.5-6h3l-4-6H17z" fill="currentColor"/>' +
+    '<rect x="10.5" y="21" width="3" height="2.5" fill="currentColor" opacity=".6"/>' +
+    '<circle cx="12" cy="2.4" r="1.7" fill="currentColor"/>' +
+    '</svg>',
+  pumpkin:
+    '<svg viewBox="0 0 24 24">' +
+    '<path d="M12 6.8c-1.2-.9-2.8-1.2-4.4-.8C4.3 6.8 2.5 9.9 2.5 13.7c0 4 2.4 6.8 5.4 6.8 1.5 0 2.9-.5 4.1-1.4 1.2.9 2.6 1.4 4.1 1.4 3 0 5.4-2.8 5.4-6.8 0-3.8-1.8-6.9-5.1-7.7-1.6-.4-3.2-.1-4.4.8z" fill="currentColor"/>' +
+    '<path d="M12 7.3c-1.6 2.2-1.6 9.8 0 12M12 7.3c1.6 2.2 1.6 9.8 0 12" fill="none" stroke="#0D0C0A" stroke-width="1" opacity=".45"/>' +
+    '<path d="M11.2 7c0-2 .5-3.5 2-4.4l1 1.1c-1 .7-1.4 1.8-1.4 3.3z" fill="currentColor" opacity=".7"/>' +
+    '</svg>',
+  bat:
+    '<svg viewBox="0 0 24 24">' +
+    '<path d="M12 8.6 13.3 6.4l.4 2.8.5.2Q19 7 23 8l-1.5 4.8Q20 11.4 18.6 13.4Q17 12.4 15.6 15.2Q14.2 13.6 13 16l-1 1.4-1-1.4Q9.8 13.6 8.4 15.2Q7 12.4 5.4 13.4Q4 11.4 2.5 12.8L1 8Q5 7 9.8 9.4l.5-.2.4-2.8z" fill="currentColor"/>' +
+    '</svg>'
+};
+
+const currentSeason = () => {
+  const forced = /[?&]season=([a-z-]+)/.exec(window.location.search);
+  if (forced) {
+    return SEASONS.find((s) => s.name === forced[1]) || null;
+  }
+  const now = new Date();
+  const today = onDay(now.getFullYear(), now.getMonth() + 1, now.getDate());
+  const inRange = ([first, last]) => today >= first && today <= last;
+  // Check this year's and last year's ranges so a season that spans New Year matches in January too
+  return SEASONS.find((s) => inRange(s.dates(today.getFullYear())) || inRange(s.dates(today.getFullYear() - 1))) || null;
+};
+
+const addSeasonShapes = (nav, season) => {
+  const count = window.innerWidth < 700 ? 8 : 16;
+  let drops = '';
+  for (let i = 0; i < count; i++) {
+    const shape = season.shapes[Math.floor(Math.random() * season.shapes.length)];
+    const fall = 6 + Math.random() * 4;
+    const sway = 2.5 + Math.random() * 2;
+    drops +=
+      `<span class="nav-season-drop" style="left:${((i + Math.random()) * 100 / count).toFixed(1)}%;` +
+      `--size:${Math.round((11 + Math.random() * 7) * (SHAPE_SCALE[shape] || 1))}px;` +
+      `animation-duration:${fall.toFixed(2)}s;animation-delay:-${(Math.random() * fall).toFixed(2)}s">` +
+      `<span class="nav-season-shape" style="animation-duration:${sway.toFixed(2)}s;animation-delay:-${(Math.random() * sway).toFixed(2)}s">` +
+      SEASON_SHAPES[shape] +
+      '</span></span>';
+  }
+
+  const layer = document.createElement('div');
+  layer.className = `nav-season nav-season--${season.name}`;
+  layer.setAttribute('aria-hidden', 'true');
+  layer.innerHTML = drops;
+  nav.appendChild(layer);
+  nav.classList.add('has-season');
+};
+
+// A short message under the bar, shown at the top of the page only. Once
+// closed it stays closed for the rest of that season on this device.
+const SEASON_NOTE_KEY = 'bankSeasonNote';
+
+const addSeasonNote = (nav, season) => {
+  const note = season.note;
+  if (!note) return;
+  const key = `${season.name}:${new Date().getFullYear()}`;
+  const previewing = /[?&]season=/.test(window.location.search);
+  try {
+    if (!previewing && window.localStorage.getItem(SEASON_NOTE_KEY) === key) return;
+  } catch (e) { /* storage blocked: show the note */ }
+
+  const remember = () => {
+    try { window.localStorage.setItem(SEASON_NOTE_KEY, key); } catch (e) { /* not remembered */ }
+  };
+
+  const link = note.link
+    ? ` <a class="nav-season-note-link" href="${note.link.href}">${note.link.label}</a>`
+    : '';
+
+  const el = document.createElement('div');
+  el.className = `nav-season-note nav-season-note--${season.name}`;
+  el.innerHTML =
+    `<span class="nav-season-note-icon" aria-hidden="true">${SEASON_SHAPES[season.shapes[0]]}</span>` +
+    `<p>${note.text}${link}</p>` +
+    '<button class="nav-season-note-close" type="button" aria-label="Close message">' +
+    '<svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true" focusable="false">' +
+    '<path d="M2 2l8 8M10 2l-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>' +
+    '</button>';
+  nav.appendChild(el);
+
+  el.querySelector('.nav-season-note-close').addEventListener('click', () => {
+    el.remove();
+    remember();
+  });
+  el.querySelector('.nav-season-note-link')?.addEventListener('click', remember);
+  window.setTimeout(() => el.classList.add('is-in'), 600);
+};
+
+const initSeasonalNav = () => {
+  const nav = document.getElementById('app-nav');
+  if (!nav?.classList.contains('site-nav')) return;
+  const season = currentSeason();
+  if (!season) return;
+  if (!prefersReducedMotion()) addSeasonShapes(nav, season);
+  addSeasonNote(nav, season);
 };
 
 const initReveal = () => {
@@ -749,6 +947,7 @@ const init = async () => {
   initAccessibility();
   initMobileNav();
   initStickyNav();
+  initSeasonalNav();
   initReveal();
   wireDojoLinks();
   initSundayNotice();
