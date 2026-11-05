@@ -1845,6 +1845,8 @@ input[type="date"].form-input {
   .gallery { grid-template-columns: repeat(2, 1fr); }
   .package-selector { grid-template-columns: 1fr; }
   .site-nav-inner { height: auto; min-height: 66px; padding: 0.7rem 0; align-items: center; flex-wrap: wrap; }
+  /* The desktop .scrolled rule fixes the bar at 95px; on mobile that squashes the open menu off screen */
+  .site-nav.scrolled .site-nav-inner { height: auto; }
   .nav-toggle { display: inline-flex; margin-left: auto; }
   .nav-primary {
     display: flex;

@@ -896,6 +896,8 @@ const initOpenStatus = (siteData) => {
     if (todayHours && hour >= todayHours.open && hour < todayHours.close) {
       isOpen = true;
       message = `Open now · Closes around ${format12Hour(todayHours.close)}`;
+    } else if (todayHours && hour < todayHours.open) {
+      message = `Closed · Opens today at ${format12Hour(todayHours.open)}`;
     } else {
       // Find next opening
       let nextDay = day;
