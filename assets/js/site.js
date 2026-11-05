@@ -105,7 +105,16 @@ const initMobileNav = () => {
   const links = nav?.querySelectorAll('.nav-links a, .nav-cta');
   if (!nav || !toggle) return;
 
+  let closingTimer = null;
   const setOpen = (open) => {
+    // Keep the full-screen overlay (.closing) until the collapse transition
+    // has finished, otherwise the fading menu shows inside the normal bar
+    clearTimeout(closingTimer);
+    nav.classList.remove('closing');
+    if (!open && nav.classList.contains('open')) {
+      nav.classList.add('closing');
+      closingTimer = setTimeout(() => nav.classList.remove('closing'), 260);
+    }
     nav.classList.toggle('open', open);
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
@@ -896,6 +905,8 @@ const initOpenStatus = (siteData) => {
     if (todayHours && hour >= todayHours.open && hour < todayHours.close) {
       isOpen = true;
       message = `Open now · Closes around ${format12Hour(todayHours.close)}`;
+    } else if (todayHours && hour < todayHours.open) {
+      message = `Closed · Opens today at ${format12Hour(todayHours.open)}`;
     } else {
       // Find next opening
       let nextDay = day;
